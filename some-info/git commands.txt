@@ -1,0 +1,12 @@
+vytvoreny novy adresar:
+
+git add menoadresara
+
+commitnutie:
+
+git commit -m "spravicka"
+
+push:
+
+git push technik master
+

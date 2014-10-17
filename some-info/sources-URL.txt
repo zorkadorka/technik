@@ -1,0 +1,4 @@
+rozne menu pre prihlaseneho a odhlaseneho
+ - header.php temy mala zmena v kode
+
+http://rocketgeek.com/tips-and-tricks/creating-menus-based-on-login-status/

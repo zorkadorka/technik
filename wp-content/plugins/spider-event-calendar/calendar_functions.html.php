@@ -1594,13 +1594,7 @@ ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spide
                   </td>
                 </tr>
 
-                <tr>
-                  <td class="key"><label for="place">Place: </label></td>
-                  <td>
-                    <input style="width:240px" class="inputbox" type="text" name="place" id="place" size="20" maxlength="20" value="" />
-                    
-                  </td>
-                </tr>
+
 
                 <tr>
                   <td class="key"><label for="selhour_from">Time: </label></td>

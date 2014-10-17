@@ -4628,3 +4628,15 @@ function wp_validate_boolean( $var ) {
 
 	return (bool) $var;
 }
+
+/**
+* Pridanie noveho usera / roly, Lubica == admin
+* Moze pridavat, upravovat clanky, nemoze menit jadro
+*/
+
+function add_roles_on_plugin_activation() {
+       add_role( 'admin', 'Admin-lubica', array(  ) );
+ }
+ 
+ //register_activation_hook( __FILE__, 'add_roles_on_plugin_activation' );
+

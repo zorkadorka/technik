@@ -246,7 +246,8 @@ if(jQuery(window).width() > 900 )
         document.getElementById('sbox-window').close();
       }
     };
-    <?php global $wpdb;
+    <?php 
+    global $wpdb;
     $calendarr = $wpdb->get_row($wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "spidercalendar_calendar WHERE id='%d'", $id));
     $year = ($calendarr->def_year ? $calendarr->def_year : date("Y"));
     $month = ($calendarr->def_month ? $calendarr->def_month : date("m"));

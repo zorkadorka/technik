@@ -757,7 +757,7 @@ position: relative;
   $array_days1 = $all_calendar_files[0]['array_days1'];
   $title = $all_calendar_files[0]['title'];
   $ev_ids = $all_calendar_files[0]['ev_ids'];
-
+  print_r($all_calendar_files);
 	
   sort($array_days, SORT_NUMERIC);
   if (!$array_days) {

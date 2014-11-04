@@ -18,14 +18,18 @@
 	<div class="entry-content">
 		<?php
 			//the_content();
-			echo get_avatar( 'zora.moravcikova@gmail.com', 50 );
-			echo get_avatar( 'ahoj@mail.sk', 50 );
-			$i = 1;	
+			/*$i = 1;	
 			while( $user_info = get_userdata($i) ) :
 				$i = $i +1;	
 				echo get_avatar( $user_info->email, 50 );
 			endwhile	
+*/
 
+			$users = get_users( );
+			foreach ($users as $user) {
+				echo $user->user_nicename;
+				echo get_avatar( $user->user_email, 50 );
+			}
 			//edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</span>' );
 		?>
 	</div><!-- .entry-content -->

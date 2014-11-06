@@ -28,7 +28,9 @@
 			$users = get_users( );
 			foreach ($users as $user) {
 				echo $user->user_nicename;
+				echo "\t";
 				echo get_avatar( $user->user_email, 50 );
+				echo "\n";
 			}
 			//edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</span>' );
 		?>

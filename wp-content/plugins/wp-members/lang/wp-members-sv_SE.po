@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WP-Members 2.9.6\n"
+"Project-Id-Version: WP-Members 2.9.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-members\n"
 "POT-Creation-Date: 2014-07-08 10:47-0600\n"
-"PO-Revision-Date: 2014-10-17 11:54-0600\n"
+"PO-Revision-Date: 2014-07-22 12:06-0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -42,8 +42,11 @@ msgstr "Dialogrutor"
 
 # @ wp-members
 #: admin/admin.php:190
+#, fuzzy
 msgid "Emails"
 msgstr ""
+"Du kan anpassa innehållet i e-postmeddelanden som skickas med tillägget "
+"(plugin:et)"
 
 # @ wp-members
 #: admin/dialogs.php:109
@@ -92,7 +95,7 @@ msgstr ""
 
 # @ wp-members
 #: admin/dialogs.php:118
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "You can %s change this here %s by checking the box next to \"Users must be "
 "registered and logged in to comment.\""
@@ -236,36 +239,45 @@ msgid "Latest from ButlerBlog"
 msgstr "Senaste nytt från ButlerBlog"
 
 #: admin/post.php:36 admin/post.php:38
+#, fuzzy
 msgid "Block"
-msgstr ""
+msgstr "Blockera Inlägg som standard"
 
 #: admin/post.php:37 admin/post.php:39
 msgid "Unblock"
 msgstr ""
 
 #: admin/post.php:120
-#, php-format
+#, fuzzy, php-format
 msgid "%s posts %sed."
-msgstr ""
+msgstr "Blockera Inlägg som standard"
 
 # @ wp-members
 #: admin/post.php:138
+#, fuzzy
 msgid "Post Restriction"
-msgstr ""
+msgstr "Registrering av ny användare"
 
 # @ wp-members
 #: admin/post.php:145
+#, fuzzy
 msgid "Page Restriction"
-msgstr ""
+msgstr "Registreringssida:"
 
 #: admin/post.php:263 admin/post.php:295
+#, fuzzy
 msgid "Unblocked?"
 msgstr ""
+"Obs: Inlägg kan fortfarande vara individuellt blockeras eller upphävas på "
+"artikelnivå"
 
 # @ wp-members
 #: admin/post.php:263 admin/post.php:295
+#, fuzzy
 msgid "Blocked?"
 msgstr ""
+"Obs: Inlägg kan fortfarande vara individuellt blockeras eller upphävas på "
+"artikelnivå"
 
 # @ wp-members
 #: admin/tab-captcha.php:35 admin/tab-dialogs.php:44 admin/tab-emails.php:113
@@ -358,6 +370,7 @@ msgid "Characters for image"
 msgstr ""
 
 #: admin/tab-captcha.php:116
+#, fuzzy
 msgid "Number of characters"
 msgstr "Antal ord i utdrag:"
 
@@ -382,8 +395,9 @@ msgid "Width between characters"
 msgstr ""
 
 #: admin/tab-captcha.php:140
+#, fuzzy
 msgid "Image type"
-msgstr ""
+msgstr "fält lades till"
 
 #: admin/tab-captcha.php:154
 msgid ""
@@ -393,13 +407,15 @@ msgstr ""
 
 # @ wp-members
 #: admin/tab-captcha.php:166
+#, fuzzy
 msgid "Update CAPTCHA Settings"
-msgstr "Uppdatera CAPTCHA  inställningarna"
+msgstr "Uppdatera inställningarna"
 
 # @ wp-members
 #: admin/tab-captcha.php:230
+#, fuzzy
 msgid "CAPTCHA was updated for WP-Members"
-msgstr "CAPTCHA blev uppdaterad för WP-Members"
+msgstr "reCAPTCHA blev uppdaterad för WP-Members"
 
 # @ wp-members
 #: admin/tab-dialogs.php:29
@@ -481,13 +497,15 @@ msgstr "WP-Membersdialoger blev uppdaterade"
 
 # @ wp-members
 #: admin/tab-emails.php:30
+#, fuzzy
 msgid "New Registration"
 msgstr "Registrering av ny användare"
 
 # @ wp-members
 #: admin/tab-emails.php:34
+#, fuzzy
 msgid "Registration is Moderated"
-msgstr ""
+msgstr "Registreringen är färdig, användaren är godkänd."
 
 # @ wp-members
 #: admin/tab-emails.php:35
@@ -496,6 +514,7 @@ msgstr "Registreringen är färdig, användaren är godkänd."
 
 # @ wp-members
 #: admin/tab-emails.php:40
+#, fuzzy
 msgid "Password Reset"
 msgstr "Nollställ lösenord"
 
@@ -533,6 +552,7 @@ msgstr "Ange en anpassad e-postadress"
 
 # @ wp-members
 #: admin/tab-emails.php:70 admin/tab-emails.php:74 admin/tab-emails.php:97
+#, fuzzy
 msgid "(optional)"
 msgstr "Valfri"
 
@@ -553,13 +573,15 @@ msgstr "Huvuddel"
 
 # @ wp-members
 #: admin/tab-emails.php:105
+#, fuzzy
 msgid "Update Emails"
-msgstr ""
+msgstr "Användaruppdatering"
 
 # @ wp-members
 #: admin/tab-emails.php:161
+#, fuzzy
 msgid "WP-Members emails were updated"
-msgstr ""
+msgstr "WP-Membersdialoger blev uppdaterade"
 
 # @ wp-members
 #: admin/tab-fields.php:166
@@ -631,8 +653,9 @@ msgstr ""
 
 # @ wp-members
 #: admin/tab-fields.php:310 admin/tab-fields.php:418
+#, fuzzy
 msgid "Field Type"
-msgstr ""
+msgstr "fält lades till"
 
 # @ wp-members
 #: admin/tab-fields.php:316
@@ -656,6 +679,7 @@ msgstr "dropdown"
 
 # @ wp-members
 #: admin/tab-fields.php:320
+#, fuzzy
 msgid "password"
 msgstr "Lösenord"
 
@@ -755,8 +779,9 @@ msgstr "(E-post-fältet är obligatorisk och kan inte tas bort)"
 
 # @ wp-members
 #: admin/tab-fields.php:467
+#, fuzzy
 msgid "Registration Date"
-msgstr ""
+msgstr "Registreringen är färdig"
 
 # @ wp-members
 #: admin/tab-fields.php:470
@@ -766,11 +791,13 @@ msgstr "ursprung"
 # @ wp-members
 # @ default
 #: admin/tab-fields.php:480
+#, fuzzy
 msgid "Active"
 msgstr "Aktivera"
 
 # @ wp-members
 #: admin/tab-fields.php:492
+#, fuzzy
 msgid "Registration IP"
 msgstr "IP @ registrering"
 
@@ -832,9 +859,9 @@ msgstr "Meddela administratören"
 
 # @ wp-members
 #: admin/tab-options.php:57
-#, php-format
+#, fuzzy, php-format
 msgid "Notify %s for each new registration? %s"
-msgstr "Skickar e-post till %s för varje ny registrering? %s"
+msgstr "Skickar e-post till administratören för varje ny registrering?"
 
 # @ wp-members
 #: admin/tab-options.php:58
@@ -848,6 +875,7 @@ msgstr " Godkänn nya registreringar via en administratör"
 
 # @ wp-members
 #: admin/tab-options.php:91
+#, fuzzy
 msgid "Enable CAPTCHA"
 msgstr "Slå på CAPTCHA för registrering"
 
@@ -858,8 +886,9 @@ msgstr "Slå på CAPTCHA för registrering"
 
 # @ wp-members
 #: admin/tab-options.php:60
+#, fuzzy
 msgid "Hide registration"
-msgstr ""
+msgstr "Registreringen är färdig"
 
 #: admin/tab-options.php:60
 msgid "Removes the registration form from blocked content"
@@ -935,8 +964,11 @@ msgid "User Profile Page:"
 msgstr "Användarprofilsida:"
 
 #: admin/tab-options.php:106
+#, fuzzy
 msgid "For creating a forgot password link in the login form"
 msgstr ""
+"Erkännande är uppskattat! Visa länken \"powered by\" på "
+"registreringsformuläret?"
 
 # @ wp-members
 #: admin/tab-options.php:113
@@ -944,8 +976,11 @@ msgid "Register Page:"
 msgstr "Registreringssida:"
 
 #: admin/tab-options.php:116
+#, fuzzy
 msgid "For creating a register link in the login form"
 msgstr ""
+"Erkännande är uppskattat! Visa länken \"powered by\" på "
+"registreringsformuläret?"
 
 # @ wp-members
 #: admin/tab-options.php:126
@@ -974,8 +1009,9 @@ msgstr "Välj en sida"
 
 # @ wp-members
 #: admin/tab-options.php:304
+#, fuzzy
 msgid "USE CUSTOM URL BELOW"
-msgstr ""
+msgstr "Välj ett stylesheet eller ange ett anpassat stylesheet här under"
 
 # @ wp-members
 #: admin/user-export.php:57 admin/user-export.php:172
@@ -1020,13 +1056,15 @@ msgstr "Aktivera denna användare?"
 
 # @ wp-members
 #: admin/user-profile.php:103
+#, fuzzy
 msgid "Reactivate this user?"
-msgstr ""
+msgstr "Användaruppdatering"
 
 # @ wp-members
 #: admin/user-profile.php:108
+#, fuzzy
 msgid "Deactivate this user?"
-msgstr ""
+msgstr "Användaruppdatering"
 
 # @ wp-members
 #: admin/user-profile.php:129
@@ -1040,11 +1078,13 @@ msgid "Export"
 msgstr "Exportera"
 
 #: admin/users.php:50 admin/users.php:91
+#, fuzzy
 msgid "Export All Users"
 msgstr "Exportera"
 
 # @ wp-members
 #: forms.php:95
+#, fuzzy
 msgid "Existing Users Log In"
 msgstr "Logga in"
 
@@ -1090,13 +1130,15 @@ msgstr "Obligatoriskt fält"
 
 # @ wp-members
 #: forms.php:521
+#, fuzzy
 msgid "Reset Form"
-msgstr ""
+msgstr "Det uppstod ett fel med CAPTCHA formuläret."
 
 # @ wp-members
 #: forms.php:523
+#, fuzzy
 msgid "Update Profile"
-msgstr ""
+msgstr "Användarprofilsida:"
 
 # @ wp-members
 #: forms.php:561
@@ -1111,6 +1153,7 @@ msgstr "Var snäll och markera att du accepterar %s Användarvillkoren %s"
 
 # @ wp-members
 #: forms.php:852
+#, fuzzy
 msgid "New User Registration"
 msgstr "Ny användare?"
 
@@ -1120,6 +1163,7 @@ msgstr ""
 
 # @ wp-members
 #: users.php:38
+#, fuzzy
 msgid "Additional Information"
 msgstr "Ytterligare info för kryssrutefält"
 
@@ -1174,8 +1218,9 @@ msgstr "Du är inloggad som %s"
 
 # @ wp-members
 #: wp-members-dialogs.php:208
+#, fuzzy
 msgid "Click to log out."
-msgstr ""
+msgstr "Logga in"
 
 # @ wp-members
 #: wp-members-dialogs.php:209
@@ -1184,13 +1229,15 @@ msgstr "Börja använda webbplatsen."
 
 # @ wp-members
 #: wp-members-dialogs.php:225
+#, fuzzy
 msgid "Click to log out"
-msgstr ""
+msgstr "Logga in"
 
 # @ wp-members
 #: wp-members-dialogs.php:240 wp-members-sidebar.php:47
+#, fuzzy
 msgid "click to log out"
-msgstr ""
+msgstr "Logga in"
 
 # @ wp-members
 #: wp-members-dialogs.php:271
@@ -1214,18 +1261,21 @@ msgstr "Användarnamnet kan inte innehålla icke-alfanumeriska tecken."
 
 # @ wp-members
 #: wp-members-register.php:112 wp-members-register.php:282
+#, fuzzy
 msgid "You must enter a valid email address."
 msgstr "Du måste ange en giltig e-postadress."
 
 # @ wp-members
 #: wp-members-register.php:119
+#, fuzzy
 msgid "Passwords did not match."
 msgstr "Lösenorden matchade inte varandra"
 
 # @ wp-members
 #: wp-members-register.php:120 wp-members-register.php:286
+#, fuzzy
 msgid "Emails did not match."
-msgstr ""
+msgstr "Lösenorden matchade inte varandra"
 
 # @ wp-members
 #: wp-members-register.php:127
@@ -1282,8 +1332,9 @@ msgstr ""
 
 # @ wp-members
 #: wp-members-sidebar.php:118
+#, fuzzy
 msgid "You are not logged in."
-msgstr ""
+msgstr "Du är inloggad som %s"
 
 #: wp-members-sidebar.php:169
 msgid "log in"
@@ -1315,6 +1366,7 @@ msgstr "Titel:"
 
 # @ wp-members
 #: wp-members-tos.php:24
+#, fuzzy
 msgid "Terms of Service"
 msgstr "Användarvillkor (TOS)"
 
@@ -1408,6 +1460,7 @@ msgstr "TOS"
 
 # @ wp-members
 #: Error message dialog strings wp-members-install.php:96
+#, fuzzy
 msgid ""
 "This content is restricted to site members.  If you are an existing user, "
 "please log in.  New users may register below."
@@ -1429,6 +1482,7 @@ msgstr ""
 
 # @ wp-members
 #: wp-members-install.php:99
+#, fuzzy
 msgid ""
 "Congratulations! Your registration was successful.<br /><br />You may now "
 "log in using the password that was emailed to you."

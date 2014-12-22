@@ -111,8 +111,8 @@ function wppb_general_settings_content() {
 			</th>
 			<td>
 				<select id="adminApprovalSelect" name="wppb_general_settings[adminApproval]" class="wppb-select" onchange="wppb_display_page_select_aa(this.value)">
-					<option value="yes" <?php if( !empty( $wppb_generalSettings['adminApproval'] ) && $wppb_generalSettings['adminApproval'] == 'yes' ) echo 'selected'; ?>><?php _e( 'Yes', 'profilebuilder' ); ?></option>
-					<option value="no" <?php if( !empty( $wppb_generalSettings['adminApproval'] ) && $wppb_generalSettings['adminApproval'] == 'no' ) echo 'selected'; ?>><?php _e( 'No', 'profilebuilder' ); ?></option>
+					<option value="yes" <?php if ($wppb_generalSettings['adminApproval'] == 'yes') echo 'selected'; ?>><?php _e( 'Yes', 'profilebuilder' ); ?></option>
+					<option value="no" <?php if ($wppb_generalSettings['adminApproval'] == 'no') echo 'selected'; ?>><?php _e( 'No', 'profilebuilder' ); ?></option>
 				</select>
 				<ul>
 					<li class="description dynamic2"><?php printf( __( 'You can find a list of users at %1$sUsers > All Users > Admin Approval%2$s.', 'profilebuilder' ), '<a href="'.get_bloginfo( 'url' ).'/wp-admin/users.php?page=admin_approval&orderby=registered&order=desc">', '</a>' )?></li>
@@ -173,8 +173,6 @@ function wppb_general_settings_content() {
                 </select>
             </td>
         </tr>
-
-        <?php do_action( 'wppb_extra_general_settings', $wppb_generalSettings ); ?>
 	</table>
 		
 	
@@ -186,29 +184,3 @@ function wppb_general_settings_content() {
 	
 <?php
 }
-
-
-/*
- * Function that sanitizes the general settings
- *
- * @param array $wppb_generalSettings
- *
- * @since v.2.0.7
- */
-function wppb_general_settings_sanitize( $wppb_generalSettings ) {
-
-    $wppb_generalSettings = apply_filters( 'wppb_general_settings_sanitize_extra', $wppb_generalSettings );
-
-    return $wppb_generalSettings;
-}
-
-
-/*
- * Function that pushes settings errors to the user
- *
- * @since v.2.0.7
- */
-function wppb_general_settings_admin_notices() {
-    settings_errors( 'wppb_general_settings' );
-}
-add_action( 'admin_notices', 'wppb_general_settings_admin_notices' );

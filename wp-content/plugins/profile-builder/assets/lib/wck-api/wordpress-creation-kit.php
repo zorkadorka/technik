@@ -167,12 +167,10 @@ class Wordpress_Creation_Kit_PB{
 				
 			}		
 		}
-		else if( $this->args['context'] == 'option' ){
-            if( !empty( $pb_wck_pages_hooknames[$this->args['post_type']] ) ) {
-                add_meta_box($this->args['metabox_id'], $this->args['metabox_title'], array(&$this, 'wck_content'), $pb_wck_pages_hooknames[$this->args['post_type']], $this->args['mb_context'], 'high', array('meta_name' => $this->args['meta_name'], 'meta_array' => $this->args['meta_array']));
-                /* add class to meta box */
-                add_filter("postbox_classes_" . $pb_wck_pages_hooknames[$this->args['post_type']] . "_" . $this->args['metabox_id'], array(&$this, 'wck_add_metabox_classes'));
-            }
+		else if( $this->args['context'] == 'option' ){			
+			add_meta_box($this->args['metabox_id'], $this->args['metabox_title'], array( &$this, 'wck_content' ), $pb_wck_pages_hooknames[$this->args['post_type']], $this->args['mb_context'], 'high',  array( 'meta_name' => $this->args['meta_name'], 'meta_array' => $this->args['meta_array']) );
+			/* add class to meta box */
+			add_filter( "postbox_classes_".$pb_wck_pages_hooknames[$this->args['post_type']]."_".$this->args['metabox_id'], array( &$this, 'wck_add_metabox_classes' ) );
 		}
 	}	
 	
@@ -346,6 +344,7 @@ class Wordpress_Creation_Kit_PB{
 		
 		$form = '';
 		$form .= '<tr id="update_container_'.$meta.'_'.$element_id.'" ' . $wck_update_container_css_class . '><td colspan="4">';
+		
 		if($results != null){
 			$i = 0;
 			$form .= '<ul class="mb-list-entry-fields">';			
@@ -357,7 +356,7 @@ class Wordpress_Creation_Kit_PB{
 						$value = $results[$element_id][Wordpress_Creation_Kit_PB::wck_generate_slug( $details['title'], $details )];
 					else 
 						$value = '';
-
+					
 					$form = apply_filters( "wck_before_update_form_{$meta}_element_{$i}", $form, $element_id, $value );
 					
 					$form .= '<li class="row-'. esc_attr( Wordpress_Creation_Kit_PB::wck_generate_slug( $details['title'], $details ) ) .'">';
@@ -423,7 +422,7 @@ class Wordpress_Creation_Kit_PB{
 				$i++;
 			}
 		}
-		$list .= apply_filters( 'wck_metabox_content_footer_'.$meta , '', $id );
+		$list .= apply_filters( 'wck_metabox_content_footer_'.$meta , '' );
 		$list .= '</table>';
 		
 		$list = apply_filters('wck_metabox_content_'.$meta, $list, $id);
@@ -500,8 +499,8 @@ class Wordpress_Creation_Kit_PB{
 		}
 		
 		$list .= '</td>';				
-		$list .= '<td style="text-align:center;vertical-align:middle;" class="wck-edit"><a href="javascript:void(0)" class="button-secondary"  onclick=\'showUpdateFormMeta("'.esc_js($meta).'", "'.esc_js($id).'", "'.esc_js($element_id).'", "'.esc_js($edit_nonce).'")\' title="'. __( 'Edit this item', 'wck' ) .'">'. apply_filters( 'wck_edit_button', __('Edit','wck'), $meta ) .'</a></td>';
-		$list .= '<td style="text-align:center;vertical-align:middle;" class="wck-delete"><a href="javascript:void(0)" class="mbdelete" onclick=\'removeMeta("'.esc_js($meta).'", "'.esc_js($id).'", "'.esc_js($element_id).'", "'.esc_js($delete_nonce).'")\' title="'. __( 'Delete this item', 'wck' ) .'">'. apply_filters( 'wck_delete_button', __( 'Delete', 'wck' ), $meta) .'</a></td>';
+		$list .= '<td style="text-align:center;vertical-align:middle;" class="wck-edit"><a href="javascript:void(0)" class="button-secondary"  onclick=\'showUpdateFormMeta("'.esc_js($meta).'", "'.esc_js($id).'", "'.esc_js($element_id).'", "'.esc_js($edit_nonce).'")\' title="'. __( 'Edit this item', 'wck' ) .'">'. __( 'Edit', 'wck' ) .'</a></td>';
+		$list .= '<td style="text-align:center;vertical-align:middle;" class="wck-delete"><a href="javascript:void(0)" class="mbdelete" onclick=\'removeMeta("'.esc_js($meta).'", "'.esc_js($id).'", "'.esc_js($element_id).'", "'.esc_js($delete_nonce).'")\' title="'. __( 'Delete this item', 'wck' ) .'">'. __( 'Delete', 'wck' ) .'</a></td>';
 			
 		$list .= "</tr> \r\n";
 	
@@ -674,9 +673,9 @@ class Wordpress_Creation_Kit_PB{
 			$values = $_POST['values'];
 		else
 			$values = array();
-
+		
 		$values = apply_filters( "wck_add_meta_filter_values_{$meta}", $values );
-
+		
 		/* check required fields */
 		$errors = self::wck_test_required( $this->args['meta_array'], $meta, $values, $id );		
 		if( $errors != '' ){
@@ -836,10 +835,8 @@ class Wordpress_Creation_Kit_PB{
 		check_ajax_referer( "wck-edit-entry" );		
 		$meta = $_POST['meta'];
 		$id = absint($_POST['id']);
-		$element_id = $_POST['element_id'];
-
-        do_action( "wck_before_adding_form_{$meta}", $id, $element_id );
-
+		$element_id = $_POST['element_id'];	
+		
 		echo self::mb_update_form($this->args['meta_array'], $meta, $id, $element_id);
 		
 		do_action( "wck_after_adding_form", $meta, $id, $element_id );
@@ -888,11 +885,11 @@ class Wordpress_Creation_Kit_PB{
 		if( $this->args['unserialize_fields'] && $this->args['context'] == 'post_meta' ){			
 			
 			$meta_suffix = 1;			
-
+			
 			if( !empty( $results ) ){
-				foreach( $results as $result ){
-					foreach ( $result as $name => $value){
-						update_post_meta($id, $meta.'_'.$name.'_'.$meta_suffix, $value);
+				foreach( $results as $result ){				
+					foreach ( $result as $name => $value){					
+						update_post_meta($id, $meta.'_'.$name.'_'.$meta_suffix, $value);					
 					}
 					$meta_suffix++;			
 				}
@@ -1033,32 +1030,33 @@ class Wordpress_Creation_Kit_PB{
 
 	function wck_media_send_to_editor($html, $id)
 	{
-        if( !empty( $_POST["_wp_http_referer"] ) ) {
-            parse_str($_POST["_wp_http_referer"], $arr_postinfo);
-            if (isset($arr_postinfo["mb_type"])) {
-                $file_src = wp_get_attachment_url($id);
-                $thumbnail = wp_get_attachment_image($id, array(80, 60), true);
-                $file_name = get_the_title($id);
-
-                if (preg_match('/^.*?\.(\w+)$/', get_attached_file($id), $matches))
-                    $file_type = esc_html(strtoupper($matches[1]));
-                else
-                    $file_type = strtoupper(str_replace('image/', '', get_post_mime_type($id)));
-
-                ?>
-                <script type="text/javascript">
-
-                    self.parent.window.<?php echo $arr_postinfo["mb_type"];?>.val('<?php echo $id; ?>');
-                    self.parent.window.<?php echo $arr_postinfo["mb_info_div"];?>.html('<?php echo $thumbnail ?><p><span class="file-name"><?php echo $file_name; ?></span><span class="file-type"><?php echo $file_type; ?></span><span class="wck-remove-upload"><?php _e( 'Remove', 'wck' )?></span></p>');
-
-                    self.parent.tb_remove();
-
-                </script>
-                <?php
-                exit;
-            }
-        }
-		else{
+		parse_str($_POST["_wp_http_referer"], $arr_postinfo);
+		
+		if(isset($arr_postinfo["mb_type"]))
+		{
+			$file_src = wp_get_attachment_url($id);
+			$thumbnail = wp_get_attachment_image( $id, array( 80, 60 ), true );
+			$file_name = get_the_title( $id );
+			
+			if ( preg_match( '/^.*?\.(\w+)$/', get_attached_file( $id ), $matches ) )
+				$file_type = esc_html( strtoupper( $matches[1] ) );
+			else
+				$file_type = strtoupper( str_replace( 'image/', '', get_post_mime_type( $id ) ) );
+		
+			?>
+			<script type="text/javascript">				
+				
+				self.parent.window. <?php echo $arr_postinfo["mb_type"];?> .val('<?php echo $id; ?>');
+				self.parent.window. <?php echo $arr_postinfo["mb_info_div"];?> .html('<?php echo $thumbnail ?><p><span class="file-name"><?php echo $file_name; ?></span><span class="file-type"><?php echo $file_type; ?></span><span class="wck-remove-upload"><?php _e( 'Remove', 'wck' )?></span></p>');
+				
+				self.parent.tb_remove();
+				
+			</script>
+			<?php
+			exit;
+		} 
+		else 
+		{
 			return $html;
 		}
 		
@@ -1335,22 +1333,16 @@ class WCK_Page_Creator_PB{
 	 */
 	function wck_page_init(){			
 		global $pb_wck_pages_hooknames;
-
-        /* don't add the page at all if the user doesn't meet the capabilities */
-        if( !empty( $this->args['capability'] ) ){
-            if( !current_user_can( $this->args['capability'] ) )
-                return;
-        }
 		
 		/* Create the page using either add_menu_page or add_submenu_page functions depending on the 'page_type' parameter. */
 		if( $this->args['page_type'] == 'menu_page' ){
 			$this->hookname = add_menu_page( $this->args['page_title'], $this->args['menu_title'], $this->args['capability'], $this->args['menu_slug'], array( &$this, 'wck_page_template' ), $this->args['icon_url'], $this->args['position'] );
-
+			
 			$pb_wck_pages_hooknames[$this->args['menu_slug']] = $this->hookname;
 		}
 		else if( $this->args['page_type'] == 'submenu_page' ){
 			$this->hookname = add_submenu_page( $this->args['parent_slug'], $this->args['page_title'], $this->args['menu_title'], $this->args['capability'], $this->args['menu_slug'], array( &$this, 'wck_page_template' ) );
-
+			
 			$pb_wck_pages_hooknames[$this->args['menu_slug']] = $this->hookname;
 		}
 

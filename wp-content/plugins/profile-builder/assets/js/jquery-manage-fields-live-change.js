@@ -364,7 +364,9 @@ function wppb_hide_properties_for_already_added_fields( container_name ){
 
 	jQuery( container_name + ' tr' ).each(function() {
 
-		field = jQuery('.row-field pre', this).text();
+		field = jQuery('.row-field', this).text();
+		field = jQuery.trim(field.replace('Field: ', ''));
+
 
 		jQuery( 'li', this ).each(function() {
 			var class_name = '';
@@ -431,15 +433,6 @@ function wppb_edit_form_properties( container_name, element_id ){
 		for (var key in to_show)
 			jQuery( container_name + ' #' + element_id + ' ' + to_show[key] ).show();
 
-        var properties = fields[ jQuery.trim(field) ]['properties'];
-        if( typeof properties !== 'undefined' && properties ) {
-            for( var key in properties ) {
-                if( typeof properties['meta_name_value'] !== 'undefined' ) {
-                    jQuery( container_name + ' ' + '#meta-name').attr( 'readonly', true );
-                }
-            }
-        }
-
 		jQuery( container_name + ' ' + '.mb-list-entry-fields .button-primary' ).removeAttr( 'disabled' );
 	}
 }
@@ -472,27 +465,24 @@ function wppb_display_needed_fields( index, container_name, current_field_select
                 meta_name = jQuery(this).text();
                 if( meta_name.indexOf( 'custom_field' ) !== -1 ){
                     var meta_name = meta_name.replace('custom_field', '' );
-                    /* we should have an underscore present in custom_field_# so remove it */
+                    /* backwards compatibility check in PB 1.3 meta_name was custom_field_#  */
                     meta_name = meta_name.replace('_', '' );
-
                     if( isNaN( meta_name ) ){
                         meta_name = Math.floor((Math.random() * 200) + 100);
                     }
-                    numbers.push( parseInt(meta_name) );
+                    numbers.push( meta_name );
                 }
-
             });
             if( numbers.length > 0 ){
-                numbers.sort( function(a, b){return a-b} );
+                numbers.sort();
                 numbers.reverse();
                 meta_number = parseInt(numbers[0])+1;
             }
             else
                 meta_number = 1;
 
-            meta_value = 'custom_field_' + meta_number;
+            meta_value = 'custom_field'+meta_number;
         }
-
 		jQuery( container_name + ' ' + '#meta-name' ).val( meta_value );
 		jQuery( container_name + ' ' + '#meta-name' ).attr( 'readonly', false );
 	}

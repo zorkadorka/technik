@@ -90,8 +90,7 @@ function wpmem_users_page_load()
 	// if exporting all users, do it, then exit
 	if( isset( $_REQUEST['export_all'] ) && $_REQUEST['export_all'] == __( 'Export All Users', 'wp-members' ) ) {
 		include_once( WPMEM_PATH . 'admin/user-export.php' );
-		$today = date( "m-d-y" ); 
-		wpmem_export_users( array( 'export'=>'all', 'filename'=>'user-export-' . $today . '.csv' ), '' );
+		wpmem_export_all_users();
 		exit();
 	}
 	
@@ -174,7 +173,7 @@ function wpmem_users_page_load()
 
 		$users  = ( isset( $_REQUEST['users'] ) ) ? $_REQUEST['users'] : false;
 		include_once( WPMEM_PATH . 'admin/user-export.php' );
-		wpmem_export_users( array( 'export'=>'selected' ), $users );
+		wpmem_export_selected( $users );
 		return;
 		break;
 		

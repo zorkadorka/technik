@@ -57,7 +57,7 @@ if ( 'grid' === $mode ) {
 
 	require_once( ABSPATH . 'wp-admin/admin-header.php' );
 	?>
-	<div class="wrap" id="wp-media-grid">
+	<div class="wrap">
 		<h2>
 		<?php
 		echo esc_html( $title );

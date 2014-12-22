@@ -7,7 +7,7 @@
 // whitelist options, you can add more register_settings changing the second parameter
 function wppb_register_settings() {
 	register_setting( 'wppb_option_group', 'wppb_default_settings' );
-	register_setting( 'wppb_general_settings', 'wppb_general_settings', 'wppb_general_settings_sanitize' );
+	register_setting( 'wppb_general_settings', 'wppb_general_settings' );
 	register_setting( 'wppb_display_admin_settings', 'wppb_display_admin_settings' );
 	register_setting( 'wppb_profile_builder_pro_serial', 'wppb_profile_builder_pro_serial' );
 	register_setting( 'wppb_profile_builder_hobbyist_serial', 'wppb_profile_builder_hobbyist_serial' );
@@ -95,9 +95,7 @@ if ( is_admin() ){
 		
 		add_action( 'show_user_profile', 'display_profile_extra_fields_in_admin', 10 );
 		add_action( 'edit_user_profile', 'display_profile_extra_fields_in_admin', 10 );
-        global $pagenow;
-        if( $pagenow != 'user-new.php' )
-            add_action( 'user_profile_update_errors', 'wppb_validate_backend_fields', 10, 3 );
+        add_action( 'user_profile_update_errors', 'wppb_validate_backend_fields', 10, 3 );
 		add_action( 'personal_options_update', 'save_profile_extra_fields_in_admin', 10 );
 		add_action( 'edit_user_profile_update', 'save_profile_extra_fields_in_admin', 10 );
 	}
@@ -132,7 +130,7 @@ if ( is_admin() ){
 
 
 /**
- * Function that overwrites the default wp_mail function and sends out emails
+ * Function that overwites the default wp_mail function and sends out emails
  *
  * @since v.2.0
  *
@@ -223,9 +221,6 @@ add_action( 'admin_menu', 'wppb_remove_main_menu_page', 11 );
  * @return void
  */
 function wppb_print_cpt_script( $hook ){
-	wp_enqueue_script( 'jquery-ui-dialog' );
-    wp_enqueue_style( 'wp-jquery-ui-dialog' );
-    
 	if ( $hook == 'profile-builder_page_manage-fields' ){
 		wp_enqueue_script( 'wppb-manage-fields-live-change', WPPB_PLUGIN_URL . 'assets/js/jquery-manage-fields-live-change.js', array(), PROFILE_BUILDER_VERSION, true );
 	}
@@ -312,10 +307,9 @@ function wppb_changeDefaultAvatar( $avatar, $id_or_email, $size, $default, $alt 
 		foreach( $wppb_manage_fields as $value ){
 			if ( $value['field'] == 'Avatar'){
 				$customUserAvatar = get_user_meta( $my_user_id, 'resized_avatar_'.$value['id'], true );
-                $customUserAvatarRelativePath = get_user_meta( $my_user_id, 'resized_avatar_'.$value['id'].'_relative_path', true );
-
-				if ( ( ($customUserAvatar != '') || ($customUserAvatar != null) ) && file_exists($customUserAvatarRelativePath) ){
-					$avatar = "<img alt='{$alt}' src='{$customUserAvatar}' class='avatar avatar-{$size} photo avatar-default' height='{$size}' width='{$size}' />";
+				
+				if (($customUserAvatar != '') || ($customUserAvatar != null)){				
+					$avatar = "<img alt='{$alt}' src='{$customUserAvatar}' class='avatar avatar-{$value['avatar-size']} photo avatar-default' height='{$size}' width='{$size}' />";
 				}
 			}
 		}
@@ -353,44 +347,42 @@ function wppb_resize_avatar( $userID, $userlisting_size = null, $userlisting_cro
 			
 			$width = ( !empty( $userlisting_size ) ? $userlisting_size : $width );
 			$height = ( !empty( $userlisting_size ) ? $userlisting_size : $height );
+					
+			// retrieve the original image (in original size)
+			$avatar_directory_path = get_user_meta( $userID, 'avatar_directory_path_'.$value['id'], true );
+			
+			$image = wp_get_image_editor( $avatar_directory_path );			
+			if ( !is_wp_error( $image ) ) {
+				do_action( 'wppb_before_avatar_resizing', $image, $userID, $value['meta-name'], $value['avatar-size'] );
+				
+				$crop = apply_filters( 'wppb_avatar_crop_resize', ( !empty( $userlisting_crop ) ? $userlisting_crop : false ) );
+				
+				$resize = $image->resize( $width, $height, $crop );
+				
+				if ($resize !== FALSE) {
+					do_action( 'wppb_avatar_resizing', $image, $resize );
+					
+					$fileType = apply_filters( 'wppb_resized_file_extension', 'png' );
+					
+					$wp_upload_array = wp_upload_dir(); // Array of key => value pairs
+					
+					//create file(name); both with directory and url
+					$fileName_dir = $image->generate_filename( NULL, $wp_upload_array['basedir'].'/profile_builder/avatars/', $fileType );
+					
+					if ( PHP_OS == "WIN32" || PHP_OS == "WINNT" )
+						$fileName_dir = str_replace( '\\', '/', $fileName_dir );
+					
+					$fileName_url = str_replace( str_replace( '\\', '/', $wp_upload_array['basedir'] ), $wp_upload_array['baseurl'], $fileName_dir );
 
-            if( !strpos( get_user_meta( $userID, 'resized_avatar_'.$value['id'], true ), $width . 'x' . $height ) ) {
-                // retrieve the original image (in original size)
-                $avatar_directory_path = get_user_meta( $userID, 'avatar_directory_path_'.$value['id'], true );
-
-                $image = wp_get_image_editor( $avatar_directory_path );
-                if ( !is_wp_error( $image ) ) {
-                    do_action( 'wppb_before_avatar_resizing', $image, $userID, $value['meta-name'], $value['avatar-size'] );
-
-                    $crop = apply_filters( 'wppb_avatar_crop_resize', ( !empty( $userlisting_crop ) ? $userlisting_crop : false ) );
-
-                    $resize = $image->resize( $width, $height, $crop );
-
-                    if ($resize !== FALSE) {
-                        do_action( 'wppb_avatar_resizing', $image, $resize );
-
-                        $fileType = apply_filters( 'wppb_resized_file_extension', 'png' );
-
-                        $wp_upload_array = wp_upload_dir(); // Array of key => value pairs
-
-                        //create file(name); both with directory and url
-                        $fileName_dir = $image->generate_filename( NULL, $wp_upload_array['basedir'].'/profile_builder/avatars/', $fileType );
-
-                        if ( PHP_OS == "WIN32" || PHP_OS == "WINNT" )
-                            $fileName_dir = str_replace( '\\', '/', $fileName_dir );
-
-                        $fileName_url = str_replace( str_replace( '\\', '/', $wp_upload_array['basedir'] ), $wp_upload_array['baseurl'], $fileName_dir );
-
-                        //save the newly created (resized) avatar on the disc
-                        $image->save( $fileName_dir );
-
-                        update_user_meta( $userID, 'resized_avatar_'.$value['id'], $fileName_url );
-                        update_user_meta( $userID, 'resized_avatar_'.$value['id'].'_relative_path', $fileName_dir );
-
-                        do_action( 'wppb_after_avatar_resizing', $image, $fileName_dir, $fileName_url );
-                    }
-                }
-            }
+					//save the newly created (resized) avatar on the disc
+					$image->save( $fileName_dir );
+					
+					update_user_meta( $userID, 'resized_avatar_'.$value['id'], $fileName_url );
+					update_user_meta( $userID, 'resized_avatar_'.$value['id'].'_relative_path', $fileName_dir );
+					
+					do_action( 'wppb_after_avatar_resizing', $image, $fileName_dir, $fileName_url );
+				}
+			}
 		}
 	}
 }
@@ -473,7 +465,7 @@ function wppb_check_password_strength(){
     $wppb_generalSettings = get_option( 'wppb_general_settings' );
     if( isset( $_POST['wppb_password_strength'] ) && !empty( $wppb_generalSettings['minimum_password_strength'] ) ){
         $password_strength_array = array( 'short' => 0, 'bad' => 1, 'good' => 2, 'strong' => 3 );
-        $password_strength_text = array( 'short' => __( 'Very Weak', 'profilebuilder' ), 'bad' => __( 'Weak', 'profilebuilder' ), 'good' => __( 'Medium', 'profilebuilder' ), 'strong' => __( 'Strong', 'profilebuilder' ) );
+        $password_strength_text = array( 'short' => __( 'Very Week', 'profilebuilder' ), 'bad' => __( 'Week', 'profilebuilder' ), 'good' => __( 'Medium', 'profilebuilder' ), 'strong' => __( 'Strong', 'profilebuilder' ) );
         if( $password_strength_array[$_POST['wppb_password_strength']] < $password_strength_array[$wppb_generalSettings['minimum_password_strength']] ){
             return $password_strength_text[$wppb_generalSettings['minimum_password_strength']];
         }
@@ -487,7 +479,7 @@ function wppb_check_password_strength(){
 function wppb_password_length_text(){
     $wppb_generalSettings = get_option( 'wppb_general_settings' );
     if( !empty( $wppb_generalSettings['minimum_password_length'] ) ){
-        return sprintf(__('Minimum length of %d characters', 'profilebuilder'), $wppb_generalSettings['minimum_password_length']);
+        return __( 'Minimum length of '. $wppb_generalSettings['minimum_password_length'] .' characters', 'profilebuilder' );
     }
     return '';
 }
@@ -561,7 +553,7 @@ function wppb_password_strength_check(){
  * Create functions for repeating error messages in front-end forms
  */
 function wppb_required_field_error($field_title='') {
-    $required_error = apply_filters('wppb_required_error' , __('This field is required','profilebuilder') , $field_title);
+    $required_error = __(apply_filters('wppb_required_error' , 'This field is required' , $field_title),'profilebuilder');
 
     return $required_error;
 
@@ -571,67 +563,3 @@ function wppb_required_field_error($field_title='') {
 function wppb_get_query_var( $varname ){
     return apply_filters( 'wppb_get_query_var_'.$varname, get_query_var( $varname ) );
 }
-
-/*Filter the "Save Changes" button text, to make it translatable*/
-function wppb_change_save_changes_button($value){
-    $value = __('Save Changes','profilebuilder');
-    return $value;
-}
-add_filter( 'wck_save_changes_button', 'wppb_change_save_changes_button', 10, 2);
-
-/*Filter the "Cancel" button text, to make it translatable*/
-function wppb_change_cancel_button($value){
-    $value = __('Cancel','profilebuilder');
-    return $value;
-}
-add_filter( 'wck_cancel_button', 'wppb_change_cancel_button', 10, 2);
-
-/*Filter the "Delete" button text, to make it translatable*/
-function wppb_change_delete_button($value){
-    $value = __('Delete','profilebuilder');
-    return $value;
-}
-add_filter( 'wck_delete_button', 'wppb_change_delete_button', 10, 2);
-
-/*Filter the "Edit" button text, to make it translatable*/
-function wppb_change_edit_button($value){
-    $value = __('Edit','profilebuilder');
-    return $value;
-}
-add_filter( 'wck_edit_button', 'wppb_change_edit_button', 10, 2);
-
-/*Filter the User Listing, Register Forms and Edit Profile forms metabox header content, to make it translatable*/
-function wppb_change_metabox_content_header(){
-  return '<thead><tr><th class="wck-number">#</th><th class="wck-content">'. __( 'Content', 'profilebuilder' ) .'</th><th class="wck-edit">'. __( 'Edit', 'profilebuilder' ) .'</th><th class="wck-delete">'. __( 'Delete', 'profilebuilder' ) .'</th></tr></thead>';
-}
-add_filter('wck_metabox_content_header_wppb_ul_page_settings', 'wppb_change_metabox_content_header', 1);
-add_filter('wck_metabox_content_header_wppb_rf_page_settings', 'wppb_change_metabox_content_header', 1);
-add_filter('wck_metabox_content_header_wppb_epf_page_settings', 'wppb_change_metabox_content_header', 1);
-
-
-/* Add a notice if people are not able to register via Profile Builder; Membership -> "Anyone can register" checkbox is not checked under WordPress admin UI -> Settings -> General tab */
-if ( get_option('users_can_register') == false) {
-    if( is_multisite() ) {
-        new WPPB_Add_General_Notices('wppb_anyone_can_register',
-            sprintf(__('To allow users to register for your website via Profile Builder, you first must enable user registration. Go to %1$sNetwork Settings%2$s, and under Registration Settings make sure to check “User accounts may be registered”. %3$sDismiss%4$s', 'profilebuilder'), "<a href='" . network_admin_url('settings.php') . "'>", "</a>", "<a href='" . add_query_arg('wppb_anyone_can_register_dismiss_notification', '0') . "'>", "</a>"),
-            'update-nag');
-    }else{
-        new WPPB_Add_General_Notices('wppb_anyone_can_register',
-            sprintf(__('To allow users to register for your website via Profile Builder, you first must enable user registration. Go to %1$sSettings -> General%2$s tab, and under Membership make sure to check “Anyone can register”. %3$sDismiss%4$s', 'profilebuilder'), "<a href='" . admin_url('options-general.php') . "'>", "</a>", "<a href='" . add_query_arg('wppb_anyone_can_register_dismiss_notification', '0') . "'>", "</a>"),
-            'update-nag');
-    }
-}
-
-/*Filter default WordPress notices ("Post published. Post updated."), add post type name for User Listing, Registration Forms and Edit Profile Forms*/
-function wppb_change_default_post_updated_messages($messages){
-    global $post;
-    $post_type = get_post_type($post->ID);
-    $object = get_post_type_object($post_type);
-
-    if ( ($post_type == 'wppb-rf-cpt')||($post_type == 'wppb-epf-cpt')||($post_type == 'wppb-ul-cpt') ){
-        $messages['post'][1] = $object->labels->name . ' updated.';
-        $messages['post'][6] = $object->labels->name . ' published.';
-    }
-    return $messages;
-}
-add_filter('post_updated_messages','wppb_change_default_post_updated_messages', 2);

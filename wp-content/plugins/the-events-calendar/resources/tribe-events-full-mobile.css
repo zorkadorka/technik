@@ -36,7 +36,7 @@ a.tribe-events-gmap {
 	margin-top: 2em;
 }
 
-.tribe-events-day .tribe-events-day-time-slot .type-tribe_events {
+.tribe-events-day .tribe-events-day-time-slot .vevent {
 	margin-left: 0;
 }
 
@@ -174,6 +174,9 @@ a.tribe-events-gmap {
 /* = Single Event Template Styles
    @ Template: single-event.php
 =============================================*/
+.single-tribe_events div.tribe_events.hentry.vevent {
+	padding: 0;
+}
 .single-tribe_events .tribe-events-schedule {		
 	padding: 12px;
 	margin: 18px 0 8px;
@@ -248,45 +251,38 @@ a.tribe-events-gmap {
 	background-color: #333;
 	margin: 5px auto;
 }
-.tribe-events-calendar .tribe-events-has-events.tribe-events-othermonth:after {
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
-		filter: alpha(opacity=40);
-  -moz-opacity: 0.4;
--khtml-opacity: 0.4;
-	   opacity: 0.4;
-}
 /* Actual Event Styles */
-#tribe-mobile-container .type-tribe_events {
+#tribe-mobile-container .hentry.vevent {
 	padding: 20px 0 16px;
 	margin-bottom: 0;
 }
-#tribe-mobile-container .type-tribe_events ~ .type-tribe_events {
+#tribe-mobile-container .hentry.vevent ~ .hentry.vevent {
 	padding: 15px 0;
 	border-top: 1px solid #ddd;
 }
-#tribe-mobile-container .type-tribe_events h4 {
+#tribe-mobile-container .hentry.vevent h4 {
 	font-size: 1.25em;
 	margin: 0 0 2px;
 	line-height: 1.35;
 }
-#tribe-mobile-container .type-tribe_events .time-details {
+#tribe-mobile-container .hentry.vevent .time-details {
 	font-size: 13px;
 	font-weight: bold;
 	margin: 0 0 2px;
 }
-#tribe-mobile-container .type-tribe_events .tribe-events-event-image {
+#tribe-mobile-container .hentry.vevent .tribe-events-event-image {
 	float: left;
 	width: 25%;
 	margin: 5px 15px 10px 0;
 }
-#tribe-mobile-container .type-tribe_events .tribe-events-event-image a {
+#tribe-mobile-container .hentry.vevent .tribe-events-event-image a {
 	display: block;
 }
-#tribe-mobile-container .type-tribe_events .entry-summary.description {
+#tribe-mobile-container .hentry.vevent .entry-summary.description {
 	padding: 0;
 	margin-bottom: 0;
 }
-#tribe-mobile-container .type-tribe_events .tribe-events-read-more {
+#tribe-mobile-container .hentry.vevent .tribe-events-read-more {
 	margin-top: 8px;
 	display: inline-block;
 }
@@ -300,7 +296,7 @@ a.tribe-events-gmap {
    @ Template: month.php
 =============================================*/	
 .tribe-events-calendar td .tribe-events-viewmore,
-.tribe-events-calendar td .type-tribe_events {
+.tribe-events-calendar td .hentry {
 	display: none;
 }	
 #tribe-events-content .tribe-events-calendar td {

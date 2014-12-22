@@ -54,6 +54,8 @@ $organizer = tribe_get_organizer();
 <div class="tribe-events-event-meta vcard">
 	<div class="author <?php echo $has_venue_address; ?>">
 
+		<?php echo get_the_content() ?>
+
 		<!-- Schedule & Recurrence Details -->
 		<div class="updated published time-details">
 			<?php echo tribe_events_event_schedule_details() ?>

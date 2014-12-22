@@ -168,7 +168,8 @@ $wpua_options_page_title = apply_filters('wpua_options_page_title', $wpua_option
         </fieldset>
         </td>
       </tr>
-        <tr valign="top" id="avatar-rating" <?php echo ((bool) $wpua_disable_gravatar == 1) ? 'style="display:none"' : ''?>>
+      <?php if((bool) $wpua_disable_gravatar != 1) : ?>
+        <tr valign="top" id="avatar-rating">
           <th scope="row"><?php _e('Maximum Rating'); ?></th>
           <td>
             <fieldset>
@@ -188,6 +189,9 @@ $wpua_options_page_title = apply_filters('wpua_options_page_title', $wpua_option
             </fieldset>
           </td>
         </tr>
+      <?php else : ?>
+        <input type="hidden" id="avatar_rating" name="avatar_rating" value="<?php echo get_option('avatar_rating'); ?>" />
+      <?php endif; ?>
       <tr valign="top">
         <th scope="row"><?php _e('Default Avatar') ?></th>
         <td class="defaultavatarpicker">

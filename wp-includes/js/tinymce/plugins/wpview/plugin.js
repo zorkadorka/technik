@@ -12,7 +12,7 @@ tinymce.PluginManager.add( 'wpview', function( editor ) {
 		firstFocus = true,
 		_noop = function() { return false; },
 		isios = /iPad|iPod|iPhone/.test( navigator.userAgent ),
-		cursorInterval, lastKeyDownNode, setViewCursorTries, focus, execCommandView, execCommandBefore;
+		cursorInterval, lastKeyDownNode, setViewCursorTries, focus, execCommandView;
 
 	function getView( node ) {
 		return getParent( node, 'wpview-wrap' );
@@ -115,13 +115,8 @@ tinymce.PluginManager.add( 'wpview', function( editor ) {
 		var clipboard,
 			dom = editor.dom;
 
-		if ( ! viewNode ) {
-			return;
-		}
-
-		// Adjust the toolbar position and bail if node is already selected.
-		if ( viewNode === selected ) {
-			adjustToolbarPosition( viewNode );
+		// Bail if node is already selected.
+		if ( ! viewNode || viewNode === selected ) {
 			return;
 		}
 
@@ -133,7 +128,6 @@ tinymce.PluginManager.add( 'wpview', function( editor ) {
 		deselect();
 		selected = viewNode;
 		dom.setAttrib( viewNode, 'data-mce-selected', 1 );
-		adjustToolbarPosition( viewNode );
 
 		clipboard = dom.create( 'div', {
 			'class': 'wpview-clipboard',
@@ -155,24 +149,6 @@ tinymce.PluginManager.add( 'wpview', function( editor ) {
 
 		editor.nodeChanged();
 		editor.fire( 'wpview-selected', viewNode );
-	}
-
-	function adjustToolbarPosition( viewNode ) {
-		var delta = 0,
-			toolbar = editor.$( viewNode ).find( '.toolbar' ),
-			editorToolbar = tinymce.$( editor.editorContainer ).find( '.mce-toolbar-grp' )[0],
-			editorToolbarBottom = ( editorToolbar && editorToolbar.getBoundingClientRect().bottom ) || 0;
-		
-		if ( toolbar.length && editor.iframeElement ) {
-			// 48 = 43 for the toolbar + 5 buffer
-			delta = viewNode.getBoundingClientRect().top + editor.iframeElement.getBoundingClientRect().top - editorToolbarBottom - 48;
-		}
-
-		if ( delta < 0 ) {
-			toolbar.removeClass( 'mce-arrow-down' ).css({ top: ( -43 + delta * -1 ) });
-		} else if ( delta > 0 && ! toolbar.hasClass( 'mce-arrow-down' ) ) {
-			toolbar.addClass( 'mce-arrow-down' ).css({ top: '' });
-		}
 	}
 
 	/**
@@ -392,7 +368,7 @@ tinymce.PluginManager.add( 'wpview', function( editor ) {
 	// Ref: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent.keyCode
 	function isSpecialKey( key ) {
 		return ( ( key <= 47 && key !== VK.SPACEBAR && key !== VK.ENTER && key !== VK.DELETE && key !== VK.BACKSPACE && ( key < 37 || key > 40 ) ) ||
-			key >= 224 || // OEM or non-printable
+			key >= 224 || // OEM or non-printable 
 			( key >= 144 && key <= 150 ) || // Num Lock, Scroll Lock, OEM
 			( key >= 91 && key <= 93 ) || // Windows keys
 			( key >= 112 && key <= 135 ) ); // F keys
@@ -673,8 +649,8 @@ tinymce.PluginManager.add( 'wpview', function( editor ) {
 		var node = editor.selection.getNode(),
 			view;
 
-		if ( node && ( ( execCommandBefore = node.className === 'wpview-selection-before' ) || node.className === 'wpview-selection-after' ) && ( view = getView( node ) ) ) {
-			handleEnter( view, execCommandBefore );
+		if ( node && ( node.className === 'wpview-selection-before' || node.className === 'wpview-selection-after' ) && ( view = getView( node ) ) ) {
+			handleEnter( view );
 			execCommandView = view;
 		}
 	});
@@ -689,11 +665,11 @@ tinymce.PluginManager.add( 'wpview', function( editor ) {
 		}
 
 		if ( execCommandView ) {
-			node = execCommandView[ execCommandBefore ? 'previousSibling' : 'nextSibling' ];
+			node = execCommandView.nextSibling;
 
 			if ( node && node.nodeName === 'P' && editor.dom.isEmpty( node ) ) {
 				editor.dom.remove( node );
-				setViewCursor( execCommandBefore, execCommandView );
+				setViewCursor( false, execCommandView );
 			}
 
 			execCommandView = false;

@@ -12,7 +12,7 @@ function signup_password_random_password_filter( $password ) {
 		$password = $_POST['user_pass'];
 		
 	elseif ( !is_null( $key ) ) {
-		$signup = ( is_multisite() ? $wpdb->get_row( $wpdb->prepare( "SELECT * FROM " . $wpdb->signups . " WHERE activation_key = %s", $key ) ) : $wpdb->get_row( $wpdb->prepare( "SELECT * FROM " . $wpdb->base_prefix . "signups WHERE activation_key = %s", $key ) ) );
+		$signup = ( is_multisite() ? $wpdb->get_row( $wpdb->prepare( "SELECT * FROM " . $wpdb->signups . " WHERE activation_key = %s", $key ) ) : $wpdb->get_row( $wpdb->prepare( "SELECT * FROM " . $wpdb->prefix . "signups WHERE activation_key = %s", $key ) ) );
 		
 		if ( empty( $signup ) || $signup->active ) {
 			//bad key or already active
@@ -40,7 +40,7 @@ function wppb_activate_signup( $key ) {
 	$bloginfo = get_bloginfo( 'name' );
 	$wppb_general_settings = get_option( 'wppb_general_settings' );
 
-	$signup = ( is_multisite() ? $wpdb->get_row( $wpdb->prepare("SELECT * FROM $wpdb->signups WHERE activation_key = %s", $key) ) : $wpdb->get_row( $wpdb->prepare( "SELECT * FROM ".$wpdb->base_prefix."signups WHERE activation_key = %s", $key ) ) );
+	$signup = ( is_multisite() ? $wpdb->get_row( $wpdb->prepare("SELECT * FROM $wpdb->signups WHERE activation_key = %s", $key) ) : $wpdb->get_row( $wpdb->prepare( "SELECT * FROM ".$wpdb->prefix."signups WHERE activation_key = %s", $key ) ) );
 	
 	if ( empty( $signup ) )
 		return apply_filters( 'wppb_register_activate_user_error_message1', '<p class="error">'.__( 'Invalid activation key!', 'profilebuilder' ).'</p>');
@@ -54,8 +54,7 @@ function wppb_activate_signup( $key ) {
 	$user_login = ( ( isset( $wppb_general_settings['loginWith'] ) && ( $wppb_general_settings['loginWith'] == 'email' ) ) ? trim( $signup->user_email ) : trim( $signup->user_login ) );
 		
 	$user_email = esc_sql( $signup->user_email );
-    /* the password is in hashed form in the signup table so we will add it later */
-	$password = NULL;
+	$password = base64_decode( $meta['user_pass'] );
 
 	$user_id = username_exists( $user_login );
 
@@ -71,7 +70,7 @@ function wppb_activate_signup( $key ) {
 		return apply_filters( 'wppb_register_activate_user_error_message5', '<p class="error">'.__( 'This username is already activated!', 'profilebuilder' ).'</p>' );
 	
 	else{
-		$inserted_user = ( is_multisite() ? $wpdb->update( $wpdb->signups, array( 'active' => 1, 'activated' => current_time( 'mysql', true ) ), array( 'activation_key' => $key ) ) : $wpdb->update( $wpdb->base_prefix.'signups', array( 'active' => 1, 'activated' => current_time( 'mysql', true ) ), array( 'activation_key' => $key ) ) );
+		$inserted_user = ( is_multisite() ? $wpdb->update( $wpdb->signups, array( 'active' => 1, 'activated' => $current_time( 'mysql', true ) ), array( 'activation_key' => $key ) ) : $wpdb->update( $wpdb->prefix.'signups', array( 'active' => 1, 'activated' => current_time( 'mysql', true ) ), array( 'activation_key' => $key ) ) );
 
 		wppb_add_meta_to_user_on_activation( $user_id, '', $meta );
 		
@@ -84,15 +83,6 @@ function wppb_activate_signup( $key ) {
 
         if ( !isset( $wppb_generalSettings['adminApproval'] ) )
             $wppb_generalSettings['adminApproval'] = 'no';
-
-        /* copy the hashed password from signup meta to wp user table */
-        if( !empty( $meta['user_pass'] ) ){
-            /* we might still have the base64 encoded password in signups and not the hash */
-            if( base64_encode(base64_decode($meta['user_pass'], true)) === $meta['user_pass'] )
-                $meta['user_pass'] = wp_hash_password( $meta['user_pass'] );
-
-            $wpdb->update( $wpdb->users, array('user_pass' => $meta['user_pass'] ), array('ID' => $user_id) );
-        }
 		
 		wppb_notify_user_registration_email($bloginfo, $user_login, $user_email, 'sending', $password, $wppb_generalSettings['adminApproval']);
 		

@@ -10,3 +10,11 @@ push:
 
 git push technik master
 
+revert
+git revert HEAD~3 
+ --- vrati sa na 4. posledny commit, vrati posledne 4 commity
+ --- vytvori ako keby novy commit s opacnou akciou
+
+git reset --hard <id of commit alebo ten HEAD style>
+ --- vrati sa v historii spat, nieco ako nastavenie toho HEAD, ze co je tvoj posledny commit a vsetko co bolo potom zabudne
+ --- neodporuca sa, zabudnu sa ocmmity potom, radsej pouzit revert

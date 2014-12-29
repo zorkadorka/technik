@@ -177,6 +177,14 @@ $admin_body_class .= ' no-customize-support no-svg';
  */
 $admin_body_classes = apply_filters( 'admin_body_class', '' );
 ?>
+<?php
+
+   /* global $wpdb;
+    echo "<pre>";
+    print_r($wpdb->queries);
+    echo "</pre>";*/
+
+ ?>
 <body class="wp-admin wp-core-ui no-js <?php echo $admin_body_classes . ' ' . $admin_body_class; ?>">
 <script type="text/javascript">
 	document.body.className = document.body.className.replace('no-js','js');

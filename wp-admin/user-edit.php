@@ -16,12 +16,13 @@ $current_user = wp_get_current_user();
 if ( ! defined( 'IS_PROFILE_PAGE' ) )
 	define( 'IS_PROFILE_PAGE', ( $user_id == $current_user->ID ) );
 
-if ( ! $user_id && IS_PROFILE_PAGE )
+if ( ! $user_id && IS_PROFILE_PAGE ) 
 	$user_id = $current_user->ID;
 elseif ( ! $user_id && ! IS_PROFILE_PAGE )
-	wp_die(__( 'Invalid user ID.' ) );
+	wp_die(__( "Invalid user ID. ! IS_PROFILE_PAGE " ) );
 elseif ( ! get_userdata( $user_id ) )
-	wp_die( __('Invalid user ID.') );
+	wp_die( __("Invalid user ID.") );
+
 
 wp_enqueue_script('user-profile');
 

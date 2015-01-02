@@ -19,6 +19,15 @@ h1
 	font-weight: normal;
 }
 
+a {
+	color: #edca61;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
 #footer {
 	background-color: #777;
 }
@@ -96,9 +105,10 @@ BODY
 	padding: 8px;
 }
 
-#body aside h1
+#body aside h2
 {
-	font-size: 30px;
+	font-weight: 100; 
+	font-size: 24px;
 	padding: 10px;
 	margin-top: 0;
 	margin-bottom: 0;

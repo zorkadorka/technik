@@ -2,7 +2,12 @@
 
 <h1>page</h1>
 <section id="body">
-
+<?php
+		wp_nav_menu( array(
+			'theme_location' => 'main-menu',
+        	'walker'  =>  new Walker_Custom_Menu(get_the_ID()) //use our custom walker
+        ) );
+	?> 
 <nav>
 	<ul>
 		<li><a href="#" class="active">História</a></li>

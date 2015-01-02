@@ -4,19 +4,23 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
     <title><?php wp_title(); ?></title>
     <link rel="profile" href="http://gmpg.org/xfn/11" />
+    <link href='http://fonts.googleapis.com/css?family=Pontano+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="screen" />
 	<?php wp_head(); ?>
 </head>
 <body>
-<div class="white-overlay"></div>
+<div class="bg-image-blur js-parallax"></div>
+<div class="container bg-image">
 
-<div id="container">
-<header>
-<h1>
-	FS Technik
-</h1>
-<h3>Slovak Folklore Ensemble</h3>
+<div id="header">
+	<header>
+	
+	<?php
+	wp_nav_menu( array(
+		'theme_location' => 'primary',
+		'container_class' => 'menu'
+	) );
+	?>
+	</header>
 
-</header>
-
- <?php wp_nav_menu(array('container_class' => 'menu' )); ?>
+</div>

@@ -50,3 +50,18 @@ function technik_scripts() {
 	wp_enqueue_script( 'jquery-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '20140918' );
 }
 add_action('wp_enqueue_scripts', 'technik_scripts');
+
+//
+// zaregistrovanie oblasti kam sa budu vykreslovat widgety
+//
+function register_sidebar_area() {
+	register_sidebar( array(
+		'name' => 'Right Sidebar',
+		'id' => 'sidebar',
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '',
+		'after_title' => '',
+	) );
+}
+add_action('widgets_init', 'register_sidebar_area');

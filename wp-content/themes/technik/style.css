@@ -194,12 +194,16 @@ HEADER
 	display: inline-block;
 }
 
+#header div.menu ul.sub-menu {
+	display: none;
+	position: absolute;
+	background-color: rgba(255,255,255,0.5);
+	border-bottom: 1px solid #edca61;
+}
+
 #header div.menu ul li {
 	margin-right: 30px;
 	display: inline-block;
-}
-#header div.menu ul li ul.children {
-	display: none;
 }
 
 #header div.menu ul li a {
@@ -218,12 +222,7 @@ HEADER
 	border-bottom: 2px solid black;
 }
 
-#header nav ul.submenu {
-	display: none;
-	position: absolute;
-	background-color: rgba(255,255,255,0.5);
-	border-bottom: 1px solid #edca61;
-}
+
 
 #header nav ul.submenu li {
 	display: block;
@@ -235,3 +234,4 @@ HEADER
 
 #header .logo {
 	height: 500px;
+}

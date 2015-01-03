@@ -16,11 +16,15 @@
 	<header>
 	
 	<?php
-	wp_nav_menu( array(
+	
+	$menu = is_user_logged_in() ? 'Main Menu loggedIn' : 'Main Menu';
+	
+	wp_nav_menu( array( 
+		'menu' => $menu, 
 		'theme_location' => 'primary',
-		'container_class' => 'menu',
-		
-	) );
+		'container_class' => 'menu'  ) 
+	);
+
 	?>
 	</header>
 

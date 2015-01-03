@@ -19,7 +19,7 @@ add_action('init', 'register_main_menu');
  * pridanie podpory pre ukazky clankov
  */ 
 function emw_add_excerpt_support () {
-    add_post_type_support('page', 'excerpt');
+	add_post_type_support('page', 'excerpt');
 }
 add_action ('init', 'emw_add_excerpt_support');
 
@@ -27,7 +27,7 @@ add_action ('init', 'emw_add_excerpt_support');
 // funkcia ktoru vyuzivaju excerpts a vracia link na detail postu
 //
 function new_excerpt_more($more) {
-   global $post;
+	global $post;
 	return '<a class="moretag" href="'. get_permalink($post->ID) . '"> Zobraziť viac...</a>';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
@@ -68,9 +68,15 @@ function register_sidebar_area() {
 		'after_widget' => '',
 		'before_title' => '',
 		'after_title' => '',
-	) );
+		) );
 }
 add_action('widgets_init', 'register_sidebar_area');
+
+function log_var($var) {
+	echo '<pre>';
+ 	print_r($var);
+ 	echo '</pre>';
+}
 
 
 class Walker_Custom_Menu extends Walker {
@@ -80,10 +86,10 @@ class Walker_Custom_Menu extends Walker {
 	private $parent_page_id = 0;
 
 	 // Tell Walker where to inherit it's parent and id values
-    var $db_fields = array(
-        'parent' => 'nav_menu_item', 
-        'id'     => 'db_id' 
-    );
+	var $db_fields = array(
+		'parent' => 'nav_menu_item', 
+		'id'     => 'db_id' 
+		);
 
 	function __construct($id) {
 		$this->parent_page_id = $id;	
@@ -94,13 +100,17 @@ class Walker_Custom_Menu extends Walker {
      * 
      * Note: Menu objects include url and title properties, so we will use those.
      */
-   function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-   		if ($item->post_parent == get_the_ID()) {
-	        $output .= sprintf( "\n<li><a href='%s'%s>%s</a></li>\n",
-	            $item->url,
-	            ( $item->object_id === get_the_ID() ) ? ' class="current"' : '',
-	            $item->title.'  '.$item->post_parent
-	        );
-        }
-    }
-}
+     function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+     	$current_id = get_the_ID();
+     	$parent_id = wp_get_post_parent_id($current_id);
+
+     	
+     	if ($item->post_parent == 0) return;
+   		if ($item->post_parent == $current_id || $item->post_parent == $parent_id)
+     	$output .= sprintf( "\n<li><a href='%s'%s>%s</a></li>\n",
+     		$item->url,
+     		( $item->object_id === $current_id ) ? ' class="current"' : '',
+     		$item->title//.'  post_parent: '.$item->post_parent.' current_id: '.$current_id.' parent_id: '.$parent_id
+     		);
+     }
+ }

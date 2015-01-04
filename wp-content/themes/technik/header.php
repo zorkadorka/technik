@@ -16,6 +16,7 @@
 	FS Technik
 </h1>
 <h3>Slovak Folklore Ensemble</h3>
+
 </header>
 
  <?php wp_nav_menu(array('container_class' => 'menu' )); ?>

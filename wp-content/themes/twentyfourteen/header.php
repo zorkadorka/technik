@@ -29,7 +29,14 @@
 	<![endif]-->
 	<?php wp_head(); ?>
 </head>
+<?php
 
+  /*  global $wpdb;
+    echo "<pre>";
+    print_r($wpdb->queries);
+    echo "</pre>";*/
+
+ ?>
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
 	<?php if ( get_header_image() ) : ?>

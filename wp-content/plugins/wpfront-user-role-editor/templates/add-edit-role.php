@@ -119,36 +119,16 @@
         <div class="metabox-holder">
             <?php
             foreach ($this->get_capability_groups() as $key => $value) {
-                ?>
-                <div class="postbox <?php echo $value->deprecated ? 'deprecated' : 'active' ?> <?php echo $value->hidden ? 'hidden' : '' ?>">
-                    <h3 class="hndle">
-                        <input type="checkbox" class="select-all" id="<?php echo $value->key ?>" <?php echo $value->disabled ? 'disabled' : '' ?> />
-                        <label for="<?php echo $value->key ?>"><?php echo $value->display_name; ?></label>
-                    </h3>
-                    <div class="inside">
-                        <div class="main">
-                            <?php
-                            foreach ($value->caps as $cap) {
-                                ?>
-                                <div>
-                                    <input type="checkbox" id="<?php echo $cap; ?>" name="capabilities[<?php echo $cap; ?>]" <?php echo $value->disabled ? 'disabled' : '' ?> <?php echo $this->capability_checked($cap) ? 'checked' : '' ?> />
-                                    <label for="<?php echo $cap; ?>"><?php echo $cap; ?></label>
-                                    <?php if ($value->has_help) { ?>
-                                        <a target="_blank" href="<?php echo $this->get_help_url($cap); ?>">
-                                            <img class="help" src="<?php echo $this->image_url() . 'help.png'; ?>" />
-                                        </a>
-                                    <?php } ?>
-                                </div>
-                                <?php
-                            }
-                            ?>
-                        </div>
-                    </div>
-                </div>
-                <?php
+                add_meta_box("postbox-$key", $this->postbox_title($value), array($this, 'postbox_render'), self::MENU_SLUG, 'normal', 'default', $value);
             }
+            do_meta_boxes(self::MENU_SLUG, 'normal', null);
             ?>
         </div>
+
+        <?php
+        wp_nonce_field('closedpostboxes', 'closedpostboxesnonce', false);
+        wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false);
+        ?>
 
         <p class="submit">
             <input type="submit" name="createrole" id="createusersub" class="button button-primary" value="<?php echo $this->role == NULL ? $this->__('Add New Role') : $this->__('Update Role'); ?>" <?php echo $this->is_submit_disabled() ? 'disabled' : ''; ?> />
@@ -170,13 +150,13 @@
         }
 
         $("div.role-add-new div.postbox input.select-all").click(function() {
-            $(this).parent().next().find("input").prop("checked", $(this).prop("checked"));
+            $(this).closest('div.postbox').find("input").prop("checked", $(this).prop("checked"));
+        }).parent().click(function(event) {
+            event.stopPropagation();
         });
-
         $("div.role-add-new div.postbox div.main input").click(function() {
             change_select_all($(this));
         });
-
         $("div.role-add-new table.sub-head td.sub-head-controls input.chk-helpers").click(function() {
             if ($(this).hasClass('select-all')) {
                 $("div.role-add-new div.postbox").find("input:not(:disabled)").prop("checked", true);
@@ -185,7 +165,6 @@
                 $("div.role-add-new div.postbox").find("input:not(:disabled)").prop("checked", false);
             }
         });
-
 <?php
 if ($this->role == NULL) {
     ?>
@@ -194,7 +173,6 @@ if ($this->role == NULL) {
                     return;
                 $("#role_name").val($.trim($(this).val()).toLowerCase().replace(/ /g, "_").replace(/\W/g, ""));
             });
-
             $("#role_name").blur(function() {
                 var ele = $(this);
                 var str = $.trim(ele.val()).toLowerCase();
@@ -214,7 +192,6 @@ if ($this->role == NULL) {
             }
             $("#role_name").blur();
         });
-
         $("#createusersub").click(function() {
             var role_name = $("#role_name");
             var display_name = $("#display_name");
@@ -238,16 +215,23 @@ if ($this->role == NULL) {
 
             return true;
         });
-
         $("#cap_apply").click(function() {
             if ($(this).prev().val() == "")
                 return;
-
             var button = $(this).prop("disabled", true);
             var data = {
                 "action": "wpfront_user_role_editor_copy_capabilities",
-                "role": $(this).prev().val()
+                "role": $(this).prev().val(),
+                "referer": <?php echo json_encode($_SERVER['REQUEST_URI']); ?>,
+                "nonce": <?php echo json_encode(wp_create_nonce($_SERVER['REQUEST_URI'])); ?>
             };
+<?php
+if ($this->multisite) {
+    ?>
+                data["multisite"] = true;
+    <?php
+}
+?>
             $.post(ajaxurl, data, function(response) {
                 $("div.role-add-new div.postbox input").prop("checked", false);
                 for (m in response) {
@@ -259,6 +243,14 @@ if ($this->role == NULL) {
 
         $("div.role-add-new div.postbox div.main input:first-child").each(function() {
             change_select_all($(this));
+        });
+
+        //postbox
+        $(function() {
+            $('.if-js-closed').removeClass('if-js-closed').addClass('closed');
+            postboxes.add_postbox_toggles('<?php echo self::MENU_SLUG; ?>');
+            $('div.postbox div.main.hidden').closest('div.postbox').addClass('hide-if-js');
+            $('div.postbox div.main.visible').closest('div.postbox').removeClass('hide-if-js');
         });
     })(jQuery);
 </script>

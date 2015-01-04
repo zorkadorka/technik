@@ -20,9 +20,9 @@ $(function() {
 
 		prevSubmenu.stop().fadeOut();
 		
-		self.find('>a').stop().hide();
+		self.find('>a').stop().css('visibility','hidden');
 
-		prevA.stop().fadeIn();
+		prevA.stop().css('visibility','visible');
 
  	});
 
@@ -49,9 +49,9 @@ $(function() {
 
 		if (prevSubmenu.length > 0) {
 			prevSubmenu.stop().fadeIn();
-			prevA.stop().fadeOut();
+			prevA.stop().css('visibility','hidden');
 		}
-		parentAnchor.stop().show();
+		parentAnchor.stop().css('visibility','visible');
 	}
 	);
 })

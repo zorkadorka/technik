@@ -6,6 +6,7 @@
     <link rel="profile" href="http://gmpg.org/xfn/11" />
     <link href='http://fonts.googleapis.com/css?family=Pontano+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/css/nav.css" type="text/css" media="screen" />
 	<?php wp_head(); ?>
 </head>
 <body>

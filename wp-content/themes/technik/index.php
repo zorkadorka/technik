@@ -9,14 +9,6 @@
         ) );
 	?>
 
-	<nav>
-		<ul>
-			<li><a href="#" class="active">História</a></li>
-			<li><a href="#">Členovia</a></li>
-			<li><a href="#">Program</a></li>
-		</ul>
-	</nav>
-
 <section class="posts">
 <?php 
 if ( have_posts() ) {

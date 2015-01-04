@@ -14,7 +14,7 @@ body, html {
 	font-size: 17px;
 }
 
-h1 
+h1, h2, h3, h4, h5
 {
 	font-weight: normal;
 }
@@ -91,7 +91,6 @@ BODY
 #body {
 	width: 1100px;
 	margin: auto auto;
-	padding-top: 50px;
 	color: white;
 	word-spacing: -1
 }
@@ -159,10 +158,14 @@ HEADER
 *
 */
 
-#header {
-	background-color: #edca61;
+header {
+	background-color: rgba(0,0,0,0.7);
 	height: 150px;
 	border-bottom: 1px solid black;
+	color: #edca61;
+	width: 100%;
+	text-align: center;
+	padding: 10px;
 }
 
 .header-filter {
@@ -174,57 +177,75 @@ HEADER
 	height: 100%;
 }
 
-#header header {
+header .technik-logo {
+	height: 100%;
+	vertical-align: middle;
+}
+
+header h1,
+header h2 {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+hgroup {
 	margin: auto auto;
 	width: 1100px;
-	padding: 15px;
+	height: 100%;
+	vertical-align: middle;
 }
 
-#header img {
+header header hgroup {
+	height: 100%;
+}
+
+header img {
 	display: inline;
 }
 
-#header div.menu {
-	display: inline;
-	position: relative;
-	margin-left: 30px;
+nav {
+	margin-top: 50px;
+	margin-bottom: 10px;
 }
 
-#header div.menu ul {
+nav a {
+	color: #fff;
+}
+
+nav ul {
 	display: inline-block;
 }
 
-#header div.menu ul.sub-menu {
+nav ul.sub-menu {
 	display: none;
 	position: absolute;
 	background-color: rgba(255,255,255,0.5);
 	border-bottom: 1px solid #edca61;
 }
 
-#header div.menu ul li {
+nav ul li {
 	margin-right: 30px;
 	display: inline-block;
 }
 
-#header div.menu ul li a {
-	color: #000;
+nav ul li a {
 	text-decoration: none;
 	font-size: 25px;
 	transition: font-size 1s;
 }
 
-#header div.menu a:hover {
+nav a:hover {
 	font-size: 40px;
 }
 
-#header div.menu ul li.current-menu-item {
+nav ul li.current-menu-item {
 	font-size: 40px;
-	border-bottom: 2px solid black;
+	border-bottom: 2px solid #edca61;
 }
 
 
 
-#header nav ul.submenu li {
+header nav ul.submenu li {
 	display: block;
 }
 
@@ -232,6 +253,6 @@ HEADER
 
 
 
-#header .logo {
+header .logo {
 	height: 500px;
 }

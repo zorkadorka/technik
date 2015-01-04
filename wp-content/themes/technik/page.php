@@ -1,13 +1,12 @@
 <?php get_header(); ?>
 
-<h1>page - get_the_ID = <?= get_the_ID() ?>; post_parent_id <?= wp_get_post_parent_id(get_the_ID()) ?></h1>
-<section id="body">
+
 <?php
-		wp_nav_menu( array(
+/*		wp_nav_menu( array(
 			'theme_location' => 'main-menu',
         	'walker'  =>  new Walker_Custom_Menu(get_the_ID()), //use our custom walker
         	'container' => 'nav',
-        ) );
+        ) );*/
 	?>
 
 <section class="posts">
@@ -36,5 +35,5 @@ if ( have_posts() ) {
 </aside>
 
 </section>
-
+<h1>page - get_the_ID = <?= get_the_ID() ?>; post_parent_id <?= wp_get_post_parent_id(get_the_ID()) ?></h1>
 <?php get_footer(); ?>

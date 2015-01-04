@@ -12,20 +12,25 @@
 <div class="bg-image-blur js-parallax"></div>
 <div class="container bg-image">
 
-<div id="header">
-	<header>
+<header>
 	
-	<?php
-	
-	$menu = is_user_logged_in() ? 'Main Menu loggedIn' : 'Main Menu';
-	
-	wp_nav_menu( array( 
-		'menu' => $menu, 
-		'theme_location' => 'primary',
-		'container_class' => 'menu'  ) 
-	);
+	<hgroup>
+		<h1>FS Technik</h1>
+		<img src="<?= get_bloginfo('template_url') ?>/images/logo-cropped.png" alt="technik-logo" class="technik-logo">
+		<h2>Slovak folklore ensemble</h2>
+	</hgroup>
 
+	
+</header>
+
+
+<section id="body">
+<?php
+		$menu = is_user_logged_in() ? 'Main Menu loggedIn' : 'Main Menu';
+		wp_nav_menu( array( 
+			'menu' => $menu, 
+			'theme_location' => 'primary',
+			'container_class' => 'menu',
+			'container' => 'nav',  ) 
+		);
 	?>
-	</header>
-
-</div>

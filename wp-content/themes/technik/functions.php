@@ -53,7 +53,8 @@ ini_set( 'mysql.trace_mode', 0 );
 //
 function technik_scripts() {
 	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-1.11.1.min.js' );
-	wp_enqueue_script( 'jquery-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '20140918' );
+	//wp_enqueue_script( 'jquery-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '20140918' );
+	wp_enqueue_script( 'jquery-scrolling', get_template_directory_uri() . '/js/scrolling.js', array( 'jquery' ), '20140918' );
 }
 add_action('wp_enqueue_scripts', 'technik_scripts');
 
@@ -107,10 +108,11 @@ class Walker_Custom_Menu extends Walker {
      	
      	if ($item->post_parent == 0) return;
    		if ($item->post_parent == $current_id || $item->post_parent == $parent_id)
-     	$output .= sprintf( "\n<li><a href='%s'%s>%s</a></li>\n",
+     	$output .= sprintf( "\n<li><a href='%s' %s>%s</a></li>\n",
      		$item->url,
-     		( $item->object_id === $current_id ) ? ' class="current"' : '',
-     		$item->title//.'  post_parent: '.$item->post_parent.' current_id: '.$current_id.' parent_id: '.$parent_id
+     		( $item->object_id == $current_id ) ? ' class="active"' : '',
+     		//$item->title.'  post_parent: '.$item->post_parent.' current_id: '.$current_id.' parent_id: '.$parent_id
+     		$item->title
      		);
      }
  }

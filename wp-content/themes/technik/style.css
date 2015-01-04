@@ -5,263 +5,187 @@ Description: hell yeah
 Version: 1.0
 */
 
-body, html
-{
+
+body, html {
 	background-color: #fff;
-	background: url(images/pozadie.jpg) no-repeat center center fixed; 
-	background-attachment: initial\9;
-	-webkit-background-size: cover;
-  	-moz-background-size: cover;
-  	-o-background-size: cover;
-  	background-size: cover;	
-  	height: 100%;
-  	margin: 0;
-  	padding: 0;
-  	font-family: 'Trebuchet MS', sans-serif;
+	font-family: 'Pontano Sans', sans-serif;
+	margin: 0;
+	padding: 0;
+	font-size: 17px;
 }
 
-a
-{
-	color: #E56717;
+ul, li {
+	margin: 0;
+	padding: 0;
 }
 
-.white-overlay
+h1, h2, h3, h4, h5
 {
-	background-color: #fff;
+	font-weight: normal;
+}
+
+a {
+	color: #edca61;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#footer {
+	background-color: #777;
+}
+
+.full-screen {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	opacity: 0.8;
-
 }
 
-#container
-{
-	background-color: #fff;
-	background: url(images/logo-cropped.png) no-repeat top center;
-	width: 980px;
-	margin: auto auto;
-  	opacity: 0.83;
-  	position: relative;
-  	min-height: 100%;
-}
-
-.content-wrapper
-{
-	padding: 0px 60px 0px 60px;
-	text-align: justify;
-}
-
-div.menu
-{
-	font-size: 35px;
-/*	margin-left: 113px; tieto pixelove hodnoty su validne pre automaticky nastaveny padding pre ul ktory som zrusil	*/
-	margin-left: 15%;
-}
-
-div.menu a
-{
-	text-decoration: none;
-}
-
-div.menu ul
-{
-	list-style: none;
-	padding: 0;
-	height: 100px;
-}
-
-div.menu ul li
-{
-	display: inline-block;
-	/*margin-right: 40px;*/
-	margin-right: 5%;
-}
-
-div.menu ul li a
-{
-	transition: text-shadow 0.2s;
-}
-
-div.menu ul li a:hover
-{
-	text-shadow: 0px 0px 10px orange;
-}
-
-div.menu ul a 
-{
-	color: black;
-}
-
-header h1
-{
-	font-size: 84px;
-	margin-top: 15px;
-	font-weight: lighter;
-	margin-left: 37px;
-	margin-bottom: 0px;
-	display: inline;
-}
-
-header h3
-{
-	margin-top: 0px;
-	display: inline;
-	text-transform: uppercase;
-	margin-left: 131px;
-	font-weight: 100;
-}
-
-.subnav
-{
-	font-size: 25px;
-}
-
-div.menu ul li.active
-{
-	text-decoration: underline;
-}
-
-div.menu ul.sub-menu
-{
-	display: none;
+.container {
 	position: absolute;
-	font-size: 25px;
-	padding-left: 0;
-	padding-top: 35px;
-	/*
-	Tato sirka je divny hack, ktory som pouzil po zmenie zobrazovania menu (registracia nav_menu aby
-	sa zobrazoval aj v backende),
-	v ramci toho sa pomenili triedy, a sub-class mal z nejakeho dovodu, ktory nemam cas odhalovat,
-	malu sirku do ktoreho sa sub-itemy nezmestili
-
-	45 je empiricky zistena hodnota
-	*/
-	width: 45%;
+	left: 0;
+	right: 0;
+	top: 0;
 }
 
-div.menu li.current_page_item
-{
-	border-bottom: 2px solid orange;
+.bg-image-blur {
+	
+	background: url(images/pozadie.jpg) no-repeat fixed;
+	background-size: cover;
+
+	position: fixed;
+	left: 0;
+	right: 0;
+	height: 100%;
+	content: "";
+	z-index: -1;
+	/*opacity: 0.7;*/
+
+	filter: blur(3px); /* Someday, sigh ... */ 
+	-webkit-filter: blur(3px); /* Prefixed CSS3 blur filters */
+	-moz-filter: blur(3px); 
+	-o-filter: blur(3px); 
+	-ms-filter: blur(3px); 
+	filter: url(#blur); /* Firefox needs SVG */
+	filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='5'); /* IE lte 9 */
+	
 }
 
-div.menu li.current_page_item.menu-item-has-children ul.sub-menu,
-div.menu li.current_page_parent.menu-item-has-children ul.sub-menu
-{
-	display: block;	
+.bg-image-blur::before {
+	position: fixed;
+	left: 0;
+	right: 0;
+	height: 100%;
+	content: "";
+	z-index: 0;
+	background-color: rgba(255,255,255,0.4);
 }
 
-span.post-image img
-{
-	float: left;
-	margin: 7px;
-	padding: 7px;
-	border: 1px solid dimGray;	
+/*
+*
+*
+BODY
+*
+*
+*/
+
+#body {
+	width: 1100px;
+	margin: auto auto;
+	color: white;
+	word-spacing: -1
 }
 
-span.post-image.thumbnail img
-{
-	width: 200px;
-	height: auto;
+#body aside {
+	width: 300px;
+	display: inline-block;
+	vertical-align: top;
+	background-color: rgba(0, 0, 0, 0.7);
+	margin-left: 9px;
+	padding: 8px;
 }
 
-span.post-image.full-image img
+#body aside h2
 {
-	max-width: 50%;
-	height: auto;
+	font-weight: 100; 
+	font-size: 24px;
+	padding: 10px;
+	margin-top: 0;
+	margin-bottom: 0;
+	color: #edca61;
 }
 
-img.alignright {float:right; margin:0 0 1em 1em}
-img.alignleft {float:left; margin:0 1em 1em 0}
-img.aligncenter {display: block; margin-left: auto; margin-right: auto}
-a img.alignright {float:right; margin:0 0 1em 1em}
-a img.alignleft {float:left; margin:0 1em 1em 0}
-a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
-
-.post
-{
-	clear: both;
+#body section.posts {
+	display: inline-block;
+	width: 770px;
 }
 
-.separator
-{
-	clear: both;
+#body article {
 	width: 100%;
-	margin-top: 35px;
-	margin-bottom: 35px;
-	background-color: #888;
-    height: 1px;
+	background-color: rgba(0, 0, 0, 0.7);
+	padding: 10px;
+	box-sizing: border-box;
 }
 
-.separator.gradient
-{
 
-    background: -webkit-linear-gradient(left, rgba(255,0,0,0), #888, rgba(255,0,0,0)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(right, rgba(255,0,0,0), #888, rgba(255,0,0,0)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(right, rgba(255,0,0,0), #888, rgba(255,0,0,0)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to right, rgba(255,0,0,0), #888, rgba(255,0,0,0)); /* Standard syntax (must be last) */
-}
 
-.separator.transparent
-{
-	background: none;
-}
+/*
+*
+*
+HEADER
+*
+*
+*/
 
-a img
-{
-	border: none;
-}
-
-a.more-link:hover
-{
-	background-color: #333;
-}
-
-footer p
-{
+header {
+	background-color: rgba(0,0,0,0.7);
+	height: 150px;
+	border-bottom: 1px solid black;
+	color: #edca61;
+	width: 100%;
 	text-align: center;
+	padding: 10px;
 }
 
-footer
-{
-	height: 200px;
+.header-filter {
+	opacity: 0;
+	position: fixed;
+	left: 0;
+	right: 0;
+	content: "";
+	height: 100%;
 }
 
-.pagination
-{
-	text-align: center;
+header .technik-logo {
+	height: 100%;
+	vertical-align: middle;
 }
 
-@media (max-width: 980px)
-{
+header h1,
+header h2 {
+	display: inline-block;
+	vertical-align: middle;
+}
 
-	header h1
-	{
-		font-size: 8.5vw;
-		margin-left: 11px;
-	}
+hgroup {
+	margin: auto auto;
+	width: 1100px;
+	height: 100%;
+	vertical-align: middle;
+}
 
-	header h3
-	{
-		margin-left: 14vw;
-		font-size: 2.6vw;
-	}
+header header hgroup {
+	height: 100%;
+}
 
-	#container
-	{
-		background-size: 100%;
-		width: 100%;
-	}
+header img {
+	display: inline;
+}
 
-	div.menu
-	{
-		font-size: 4vw;
-	}
-
-	div.menu ul.sub-menu
-	{
-		font-size: 3vw;
-	}
+header .logo {
+	height: 500px;
 }

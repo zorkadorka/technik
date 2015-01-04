@@ -80,6 +80,9 @@ function log_var($var) {
 }
 
 
+/*
+	naucili sme sa vela ze, skoda len ze sa to nakoniec nepouzije asi
+*/
 class Walker_Custom_Menu extends Walker {
 
 	private $hidden = false;
@@ -96,23 +99,42 @@ class Walker_Custom_Menu extends Walker {
 		$this->parent_page_id = $id;	
 	}
 
-     /*
-     * At the start of each element, output a <li> and <a> tag structure.
-     * 
-     * Note: Menu objects include url and title properties, so we will use those.
-     */
-     function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-     	$current_id = get_the_ID();
-     	$parent_id = wp_get_post_parent_id($current_id);
+	public function start_lvl( &$output, $depth = 0, $args = array() ) {
+		if ($depth >= 0) {
+			$output .= '<div class="sub-wrap sub-menu"><ul>';
+		}
+		else {
+			parent::start_lvl($output, $depth, $args);	
+		}
+		
+	}
 
-     	
-     	if ($item->post_parent == 0) return;
-   		if ($item->post_parent == $current_id || $item->post_parent == $parent_id)
-     	$output .= sprintf( "\n<li><a href='%s' %s>%s</a></li>\n",
-     		$item->url,
-     		( $item->object_id == $current_id ) ? ' class="active"' : '',
-     		//$item->title.'  post_parent: '.$item->post_parent.' current_id: '.$current_id.' parent_id: '.$parent_id
-     		$item->title
-     		);
-     }
+	public function end_lvl( &$output, $depth = 0, $args = array() ) {
+		if ($depth >= 0) {
+			$output .= '</ul></div">';
+		}
+		else {
+			parent::start_lvl($output, $depth, $args);	
+		}
+	}
+
+	/*
+	* At the start of each element, output a <li> and <a> tag structure.
+	* 
+	* Note: Menu objects include url and title properties, so we will use those.
+	*/
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+		$current_id = get_the_ID();
+		$parent_id = wp_get_post_parent_id($current_id);
+
+		
+		if ($item->post_parent == 0) return;
+		if ($item->post_parent == $current_id || $item->post_parent == $parent_id)
+		$output .= sprintf( "\n<li><a href='%s' %s>%s</a></li>\n",
+			$item->url,
+			( $item->object_id == $current_id ) ? ' class="active"' : '',
+			//$item->title.'  post_parent: '.$item->post_parent.' current_id: '.$current_id.' parent_id: '.$parent_id
+			$item->title
+			);
+	}
  }

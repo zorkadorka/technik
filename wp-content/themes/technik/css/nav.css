@@ -20,7 +20,7 @@ nav ul li {
 
 nav>ul>li {
 	display: inline-block;
-	padding: 30px;
+	padding: 35px;
 	border-left: 1px solid #444;
 	margin-left: -4px;
 }
@@ -62,11 +62,13 @@ nav ul.sub-menu {
 	height: 100%;
 }
 
-nav ul.sub-menu li {
-	display: block;
-	font-size: 20px;
+nav ul.sub-menu {
+	text-align: center;
 }
 
+nav ul.sub-menu li {
+	display: block;
+}
 
 nav ul li.current-menu-item a {
 	color: #edca61;

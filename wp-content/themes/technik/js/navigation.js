@@ -5,13 +5,7 @@
 // write once, never read again!
 $(function() {
 
-	//
-	// zobrazovanie submenu pri prechode myskou cez polozku v menu
-	// v mobilnej verzii toto samozrejme nebude fungovat, pravdepodobne to vyriesime
-	// zobrazenim submenu po tuknuti na polozku (beztak nemame co zobrazit ako top level page) 
-	//
-	$('.menu-item-has-children').hover(function() {
-
+	$('.menu-item-has-children').mouseenter(function() {
 		var self = $(this),
 			submenu = self.find('.sub-menu'),
 			prevSubmenu = $('.current_page_item .sub-menu, .current_page_ancestor .sub-menu');
@@ -22,29 +16,41 @@ $(function() {
 		if (self.hasClass('current_page_item') || self.hasClass('current_page_ancestor')) 
 			return;
 
+		console.log(submenu);
 		submenu.stop().fadeIn();
 
 		prevSubmenu.stop().fadeOut();
 		
+		self.find('>a').stop().hide();
 
-	}, function() {
+ 	});
 
+
+	//
+	// zobrazovanie submenu pri prechode myskou cez polozku v menu
+	// v mobilnej verzii toto samozrejme nebude fungovat, pravdepodobne to vyriesime
+	// zobrazenim submenu po tuknuti na polozku (beztak nemame co zobrazit ako top level page) 
+	//
+	$('.sub-menu').mouseleave(function() {
+		
 		var self = $(this),
-			submenu = self.find('.sub-menu'),
+			parentLi = self.closest('.menu-item-has-children'),
+			parentAnchor = self.siblings('a'),
 			prevSubmenu = $('.current_page_item .sub-menu, .current_page_ancestor .sub-menu');
 
 		// see above
-		if (self.hasClass('current_page_item') || self.hasClass('current_page_ancestor'))
+		if (parentLi.hasClass('current_page_item') || parentLi.hasClass('current_page_ancestor'))
 			return;
 
 		prevSubmenu.stop().fadeIn();
-		submenu.stop().fadeOut();
+		self.stop().fadeOut();
 
-		if (prevSubmenu.length > 0)
+		if (prevSubmenu.length > 0) {
 			prevSubmenu.fadeIn();
-
-	});
-
+			parentAnchor.stop().show();
+		}
+	}
+	);
 })
 
 })(jQuery)

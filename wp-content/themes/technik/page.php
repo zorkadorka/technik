@@ -1,13 +1,10 @@
 <?php get_header(); ?>
 
-
-<?php
-/*		wp_nav_menu( array(
-			'theme_location' => 'main-menu',
-        	'walker'  =>  new Walker_Custom_Menu(get_the_ID()), //use our custom walker
-        	'container' => 'nav',
-        ) );*/
-	?>
+<aside>
+	<?php if ( is_active_sidebar( 'sidebar' ) ) :
+		dynamic_sidebar( 'sidebar' );
+	endif; ?>
+</aside>
 
 <section class="posts">
 <?php 
@@ -26,13 +23,7 @@ if ( have_posts() ) {
 ?>
 </section>
 
-<aside>
-	<h2>Nadchádzajúce vystúpenia</h2>
-	<ul>
-		<li>Trenčín - 21.9.2015</li>
-		<li>Motešice - 22.9.2015</li>
-	</ul>
-</aside>
+
 
 </section>
 <h1>page - get_the_ID = <?= get_the_ID() ?>; post_parent_id <?= wp_get_post_parent_id(get_the_ID()) ?></h1>

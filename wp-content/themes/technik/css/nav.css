@@ -2,6 +2,9 @@ nav {
 	background-color: rgba(0, 0, 0, 0.7);
 	margin-top: 50px;
 	margin-bottom: 10px;
+	width: 770px;
+	display: inline-block;
+	vertical-align: top;
 }
 
 nav a {

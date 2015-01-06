@@ -1,6 +1,6 @@
 <?php get_header(); ?>
-<h1>index</h1>
 
+<section id="top-sidebar">
 <?php
 		wp_nav_menu( array(
 			'theme_location' => 'main-menu',
@@ -8,6 +8,7 @@
         	'container' => 'nav',
         ) );
 	?>
+</section>
 
 <section class="posts">
 <?php 
@@ -26,11 +27,14 @@ if ( have_posts() ) {
 ?>
 </section>
 
-	<aside>
-		<?php if ( is_active_sidebar( 'sidebar' ) ) :
-			dynamic_sidebar( 'sidebar' );
-		endif; ?>
-	</aside>
+
+<aside>
+	<?php if ( is_active_sidebar( 'sidebar' ) ) :
+		dynamic_sidebar( 'sidebar' );
+	endif; ?>
+</aside>
 
 </section>
+
 <?php get_footer(); ?>
+

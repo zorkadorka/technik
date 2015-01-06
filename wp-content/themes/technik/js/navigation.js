@@ -1,4 +1,4 @@
-(function($) {
+/*(function($) {
 
 // document ready
 // unreadable as it can be, because we can

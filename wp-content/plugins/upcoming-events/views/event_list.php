@@ -1,5 +1,4 @@
-
-<h1><?= $instance['title'] ?></h1>
+<h2><?= $instance['title'] ?></h2>
 <ul>
 <?php foreach ($list as $event): ?>
 	<li>

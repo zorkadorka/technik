@@ -1,10 +1,14 @@
 <?php get_header(); ?>
 
-<aside>
-	<?php if ( is_active_sidebar( 'sidebar' ) ) :
-		dynamic_sidebar( 'sidebar' );
-	endif; ?>
-</aside>
+<section id="top-sidebar">
+<?php
+		wp_nav_menu( array(
+			'theme_location' => 'main-menu',
+        	'walker'  =>  new Walker_Custom_Menu(get_the_ID()), //use our custom walker
+        	'container' => 'nav',
+        ) );
+	?>
+</section>
 
 <section class="posts">
 <?php 
@@ -23,8 +27,14 @@ if ( have_posts() ) {
 ?>
 </section>
 
+
+<aside>
+	<?php if ( is_active_sidebar( 'sidebar' ) ) :
+		dynamic_sidebar( 'sidebar' );
+	endif; ?>
+</aside>
+
 </section>
 
-<h1>index</h1>
 <?php get_footer(); ?>
 

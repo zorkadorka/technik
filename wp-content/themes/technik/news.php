@@ -7,7 +7,7 @@ Template Name: Aktuality
 <?php get_header(); ?>
 
 <section class="content-wrapper">
-
+<h1>news</h1>
 <?php 
 /*
  * v tomto radoby cykle sa zobrazi obsah stranky Aktuality

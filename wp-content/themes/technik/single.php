@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <section class="content-wrapper">
-
+<h1>single</h1>
 <?php 
 /*
  * v tomto radoby cykle sa zobrazi obsah stranky Aktuality

@@ -1,0 +1,38 @@
+header nav {
+	margin-top: 50px;
+	margin-left: 50px;
+	font-size: 32px;
+}
+
+header nav ul li {
+	list-style: none;
+	margin-bottom: 10px;
+}
+
+header .sub-menu {
+	display: none;
+}
+
+#body nav a:hover,
+header nav a {
+	text-decoration: none;
+	transition: font-size 1s;
+}
+
+#body nav a:hover,
+header nav a:hover {
+	text-decoration: none;
+	font-size: 40px;
+}
+
+
+#body nav ul li {
+ display: inline-block;
+ margin-right: 40px;
+}
+
+#body nav a {
+	color: black;
+	font-size: 32px;
+	text-decoration: none;
+}

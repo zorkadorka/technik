@@ -1,38 +1,26 @@
-header nav {
-	margin-top: 50px;
-	margin-left: 50px;
-	font-size: 32px;
+ul.menu {
+	margin: 0;
 }
 
-header nav ul li {
-	list-style: none;
-	margin-bottom: 10px;
-}
-
-header .sub-menu {
+ul.sub-menu {
 	display: none;
+	position: absolute;
+	padding: 0;
 }
 
-#body nav a:hover,
-header nav a {
+.menu-item {
+	list-style: none;
+	display: inline-block;
+	margin-right: 30px;
+}
+
+.menu-item a {
 	text-decoration: none;
-	transition: font-size 1s;
+	font-size: 30px;
+	font-weight: 100;
+	color:black;
 }
 
-#body nav a:hover,
-header nav a:hover {
-	text-decoration: none;
-	font-size: 40px;
-}
-
-
-#body nav ul li {
- display: inline-block;
- margin-right: 40px;
-}
-
-#body nav a {
-	color: black;
-	font-size: 32px;
-	text-decoration: none;
+.current-page-ancestor .sub-menu {
+	display: block;
 }

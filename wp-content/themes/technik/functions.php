@@ -82,7 +82,7 @@ function log_var($var) {
 
 /*
 	naucili sme sa vela ze, skoda len ze sa to nakoniec nepouzije asi
-*/
+
 class Walker_Custom_Menu extends Walker {
 
 	private $hidden = false;
@@ -122,7 +122,7 @@ class Walker_Custom_Menu extends Walker {
 	* At the start of each element, output a <li> and <a> tag structure.
 	* 
 	* Note: Menu objects include url and title properties, so we will use those.
-	*/
+	/
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		$current_id = get_the_ID();
 		$parent_id = wp_get_post_parent_id($current_id);
@@ -137,4 +137,4 @@ class Walker_Custom_Menu extends Walker {
 			$item->title
 			);
 	}
- }
+ }*/

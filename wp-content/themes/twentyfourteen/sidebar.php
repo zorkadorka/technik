@@ -15,9 +15,17 @@
 	<h2 class="site-description"><?php echo esc_html( $description ); ?></h2>
 	<?php endif; ?>
 
-	<?php if ( has_nav_menu( 'secondary' ) ) : ?>
+	<?php if ( has_nav_menu( 'secondary' ) && is_user_logged_in() ) : ?>
 	<nav role="navigation" class="navigation site-navigation secondary-navigation">
-		<?php wp_nav_menu( array( 'theme_location' => 'secondary' ) ); ?>
+		
+		<?php
+					//if( is_user_logged_in() ) {
+						$menu = 'Left Menu';
+						wp_nav_menu( array( 'menu' => $menu, 'theme_location' => 'secondary', 'menu_class' => 'nav-menu' ) );
+		?>;
+		
+
+		<!-- <?php wp_nav_menu( array( 'theme_location' => 'secondary' ) ); ?> -->
 	</nav>
 	<?php endif; ?>
 

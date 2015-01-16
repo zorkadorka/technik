@@ -59,12 +59,12 @@
 				<button class="menu-toggle"><?php _e( 'Primary Menu', 'twentyfourteen' ); ?></button>
 				<a class="screen-reader-text skip-link" href="#content"><?php _e( 'Skip to content', 'twentyfourteen' ); ?></a>
 				<?php
-					if( is_user_logged_in() ) {
+					/*if( is_user_logged_in() ) {
 						$menu = 'Main Menu loggedIn';
 					} 
-					else {
+					else {*/
 						$menu = 'Main Menu';
-					}
+					//}
 					wp_nav_menu( array( 'menu' => $menu, 'theme_location' => 'primary', 'menu_class' => 'nav-menu'  ) );
 				?>;
 

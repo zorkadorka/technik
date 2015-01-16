@@ -1,5 +1,6 @@
 ul.menu {
 	margin: 0;
+	height: 70px;
 }
 
 ul.sub-menu {
@@ -21,6 +22,6 @@ ul.sub-menu {
 	color:black;
 }
 
-.current-page-ancestor .sub-menu {
+.current_page_ancestor .sub-menu {
 	display: block;
 }

@@ -32,7 +32,7 @@ $(function() {
 		
 		var self = $(this),
 				submenu = self.find('.sub-menu'),
-				prevSubmenu = $('.current-page-ancestor .sub-menu');
+				prevSubmenu = $('.current_page_ancestor .sub-menu');
 
 		if (self.hasClass('current_page_ancestor'))
 			return;

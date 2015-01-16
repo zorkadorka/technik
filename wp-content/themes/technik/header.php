@@ -18,13 +18,14 @@
 
 	<hgroup>
 		<img src="<?= get_bloginfo('template_url') ?>/images/logo-cropped.png" alt="technik-logo" class="logo">
+		<h1>Slovak folklore ensemble Technik</h1>
 	</hgroup>	
 	
 </header>
 
 <div class="wrap">
 
-<section class="main-content">
+<section class="content main-content">
 
 
 <?php

@@ -21,7 +21,7 @@ if ( have_posts() ) {
 
 </section> <!-- .main-content -->
 
-<aside>
+<aside class="content aside-content">
 	<?php if ( is_active_sidebar( 'sidebar' ) ) :
 		dynamic_sidebar( 'sidebar' );
 	endif; ?>

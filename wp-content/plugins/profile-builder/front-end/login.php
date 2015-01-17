@@ -201,7 +201,7 @@ function wppb_front_end_login( $atts ){
 		$logged_in_message = '<p class="wppb-alert">';
         $user_url = '<a href="'.$authorPostsUrl = get_author_posts_url( $wppb_user->ID ).'" class="wppb-author-url" title="'.$display_name.'">'.$display_name.'</a>';
         $logout_url = '<a href="'.wp_logout_url( $redirectTo = wppb_curpageurl() ).'" class="wppb-logout-url" title="'.__( 'Log out of this account', 'profilebuilder' ).'">'. __( 'Log out', 'profilebuilder').' &raquo;</a>';
-        $logged_in_message .= sprintf(__( 'You are currently logged in as %1$s. %2$s', 'profilebuilder' ), $user_url, $logout_url );
+        $logged_in_message .= sprintf(__( '<h2 class="%3$s">Prihlásený %1$s. %2$s</h2>', 'profilebuilder' ), $user_url, $logout_url, "logged-title");
         $logged_in_message .= '</p><!-- .wppb-alert-->';
 		
 		return apply_filters( 'wppb_login_message', $logged_in_message, $wppb_user->ID, $display_name );

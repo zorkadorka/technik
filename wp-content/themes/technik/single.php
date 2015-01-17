@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
-<section class="content-wrapper">
-<h1>single</h1>
+<section class="post">
+
 <?php 
 /*
  * v tomto radoby cykle sa zobrazi obsah stranky Aktuality
@@ -13,14 +13,14 @@ if ( have_posts() ) {
 ?>
 
 
-<div class="post">
+<article>
 	<h2><?php the_title(); ?></h2>
 	<small><i><?php the_date() ?></i></small>
 	<p>
 		<span class="post-image full-image"><?php the_post_thumbnail() ?></span>
 		<?php the_content() ?>
 	</p>
-</div>
+</article>
 
 <p>
 	<a href="javascript:history.go(-1)" onMouseOver="self.status=document.referrer;return true">Návrat na aktuality</a>
@@ -33,5 +33,15 @@ if ( have_posts() ) {
 
 </section>
 
+</section><!-- .main-content -->
 
+<aside class="content aside-content">
+	<?php get_sidebar(); ?>
+</aside>
+
+
+
+</div> <!-- .wrap -->
+
+<h1>single</h1>
 <?php get_footer(); ?>

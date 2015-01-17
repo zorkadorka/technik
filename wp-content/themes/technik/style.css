@@ -12,12 +12,16 @@ body, html {
 	padding: 0;
 }
 
+a {
+	color: goldenrod;
+}
+
 
 header {
 	position: relative;
 	text-align: center;
 	color: white;
-	height: 500px;
+	height: 480px;
 }
 
 header h1 {
@@ -75,20 +79,28 @@ header h1 {
 }
 
 .content {
-	padding: 5px;
+	padding: 25px;
 	box-sizing: border-box;
 }
 
 .main-content {
 	display: inline-block;
 	margin-right: -4px;
-	width: 65%;
+	width: 750px;
 	border-right: 1px solid #aaa;
 }
 
 aside {
 	display: inline-block;
 	margin-right: -4px;
-	width: 35%;
+	width: 350px;
 	vertical-align: top;
+}
+
+.aside-content .wppb-alert {
+	margin: 0;
+}
+
+.logged-title {
+	margin-top: 0;
 }

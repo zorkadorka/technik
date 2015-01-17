@@ -35,10 +35,8 @@ class Technik_Member_Menu_Widget extends WP_Widget {
 					'menu_class' => 'nav-menu',
 					'container_class' => 'member-menu',
 					'container' => 'nav', ) );
-			?>;
+			?>
 			
-
-			<!-- <?php wp_nav_menu( array( 'theme_location' => 'secondary' ) ); ?> -->
 		</nav>
 		<?php endif; ?>
 

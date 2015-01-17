@@ -32,5 +32,7 @@ if ( have_posts() ) {
 </div> <!-- .wrap -->
 
 <h1>index</h1>
-<?php get_footer(); ?>
+<?php 
+get_sidebar();
+get_footer(); ?>
 

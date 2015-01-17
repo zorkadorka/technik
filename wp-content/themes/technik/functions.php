@@ -9,7 +9,8 @@ function register_main_menu() {
 		'main-menu' => __('Main Menu'),
 		'o-nas-menu' => __('About menu'),
 		'nacviky-menu' => __('Trainings menu'),
-		'foto-video-menu' => __('Foto/video menu')
+		'foto-video-menu' => __('Foto/video menu'),
+		'secondary' => __('Left Menu'),
 		);
 	register_nav_menus($menus);
 }
@@ -78,6 +79,13 @@ function log_var($var) {
  	print_r($var);
  	echo '</pre>';
 }
+
+// This theme uses wp_nav_menu() in two locations. -- copied from twentyfourteen
+	/*register_nav_menus( array(
+		'primary'   => __( 'Top primary menu', 'technik' ),
+		'secondary' => __( 'Secondary menu in left sidebar', 'technik' ),
+	) );*/
+
 
 
 /*

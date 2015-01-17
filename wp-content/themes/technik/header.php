@@ -23,6 +23,8 @@
 	
 </header>
 
+<div class="body-background "></div>
+
 <div class="wrap">
 
 <section class="content main-content">

@@ -27,26 +27,28 @@ header h1 {
 }
 
 .body-background {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	content: "";
-	background: url(seamless_paper_texture.png);
+	
 	z-index: -2;
+
+	background: url(white_wall_hash.png);
 }
 
 .header-background {
 	text-align: center;
 	background-color: black;
 	line-height: 0;
-	height: 500px;
+	height: 480px;
 	position: absolute;
 	width: 100%;
 	z-index: -1;
 
-	background: url(images/1.jpg);
+	background: url(images/mosaic.jpg);
 }
 
 .header-background::after {

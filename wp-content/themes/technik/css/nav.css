@@ -1,6 +1,7 @@
 ul.menu {
 	margin: 0;
-	height: 70px;
+	margin-bottom: 70px;
+	border-bottom: 1px solid #aaa;
 }
 
 ul.sub-menu {
@@ -13,6 +14,7 @@ ul.sub-menu {
 	list-style: none;
 	display: inline-block;
 	margin-right: 30px;
+	
 }
 
 .menu-item a {
@@ -20,8 +22,22 @@ ul.sub-menu {
 	font-size: 30px;
 	font-weight: 100;
 	color:black;
+	transition: color 0.3s;
+}
+
+.menu-item a:hover {
+	color: goldenrod;
 }
 
 .current_page_ancestor .sub-menu {
 	display: block;
+}
+
+.current-menu-ancestor>a {
+	color: goldenrod;
+}
+
+.current-menu-item>a {
+	color: goldenrod;
+/*	border-bottom: 2px solid goldenrod;*/
 }

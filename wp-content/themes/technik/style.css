@@ -82,7 +82,8 @@ header h1 {
 .main-content {
 	display: inline-block;
 	margin-right: -4px;
-	width: 65%
+	width: 65%;
+	border-right: 1px solid #aaa;
 }
 
 aside {

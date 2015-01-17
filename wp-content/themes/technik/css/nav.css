@@ -41,3 +41,15 @@ ul.sub-menu {
 	color: goldenrod;
 /*	border-bottom: 2px solid goldenrod;*/
 }
+
+.sub-menu .menu-item a {
+	font-size: 25px;
+}
+
+.member-menu {
+
+}
+
+.member-menu ul li {
+	display: list-item;
+}

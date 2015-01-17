@@ -24,15 +24,11 @@ if ( have_posts() ) {
 </section> <!-- .main-content -->
 
 <aside class="content aside-content">
-	<?php if ( is_active_sidebar( 'sidebar' ) ) :
-		dynamic_sidebar( 'sidebar' );
-	endif; ?>
+	<?php get_sidebar(); ?>
 </aside>
 
 </div> <!-- .wrap -->
 
 <h1>index</h1>
-<?php 
-get_sidebar();
-get_footer(); ?>
+<?php get_footer(); ?>
 

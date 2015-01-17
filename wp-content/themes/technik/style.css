@@ -10,141 +10,82 @@ body, html {
 	font-family: 'Pontano Sans', sans-serif;
 	margin: 0;
 	padding: 0;
-	font-size: 17px;
 }
 
-ul, li {
-	margin: 0;
-	padding: 0;
+
+header {
+	position: relative;
+	text-align: center;
+	color: white;
+	height: 500px;
 }
 
-h1, h2, h3, h4, h5
-{
-	font-weight: normal;
+header h1 {
+	font-weight: 100;
+	font-size: 60px;
+	text-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
 }
 
-a {
-	color: #edca61;
-	text-decoration: underline;
-	
-}
-
-svg {
+.body-background {
 	position: absolute;
 	top: 0;
-}
-
-#footer {
-	background-color: #777;
-}
-
-.full-screen {
-	position: fixed;
-	top: 0;
+	bottom: 0;
 	left: 0;
+	right: 0;
+	content: "";
+	background: url(seamless_paper_texture.png);
+	z-index: -2;
+}
+
+.header-background {
+	text-align: center;
+	background-color: black;
+	line-height: 0;
+	height: 500px;
+	position: absolute;
 	width: 100%;
-	height: 100%;
-}
-
-.bg-image {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-}
-
-.bg-image-blur {
-	
-	background: url(images/pozadie.jpg) no-repeat fixed;
-	background-size: cover;
-
-	position: fixed;
-	left: 0;
-	right: 0;
-	top: 0;
-	height: 100%;
-	content: "";
 	z-index: -1;
-	/*opacity: 0.7;*/
 
-	filter: blur(3px); /* Someday, sigh ... */ 
-	-webkit-filter: blur(3px); /* Prefixed CSS3 blur filters */
-	-moz-filter: blur(3px); 
-	-o-filter: blur(3px); 
-	-ms-filter: blur(3px); 
-	filter: url(#blur); /* Firefox needs SVG */
-	filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='5'); /* IE lte 9 */
-	
+	background: url(images/1.jpg);
 }
 
-.bg-image-blur::before {
-	position: fixed;
+.header-background::after {
+	position: absolute;
+	top: 0;
+	bottom: 0;
 	left: 0;
 	right: 0;
-	height: 100%;
 	content: "";
-	z-index: 0;
-	background-color: rgba(255,255,255,0.2);
-}
-
-.wrap {
-
-	width: 1500px;
-	
-	margin: 0 auto 0 auto;
-
-	height: 700px;
-
-	position: absolute;
-	top: 50%;
-	margin-top: -350px;
-
-	left: 50%;
-	margin-left: -750px;
+	background-color: #000;
+	opacity: 0.7;
 }
 
 .logo {
-	width: 150px;
-	margin-top: 30px;
+	height: 300px;
+	margin-top: 35px;
+}
+
+.wrap {
+	width: 1100px;
 	margin-left: auto;
 	margin-right: auto;
-	display: block;
+	margin-top: 30px;
 }
 
-header {
-	float: left;
-	width: 300px;
-	border-right: 1px solid black;
-	height: 100%;
-	vertical-align: top;
-	background-color: rgba(0,0,0,0.7);
+.content {
+	padding: 5px;
+	box-sizing: border-box;
 }
 
-#body {
-	vertical-align: top;
-	background-color: rgba(255,255,255,0.4);
-	height: 100%;
-	overflow: auto;
+.main-content {
+	display: inline-block;
+	margin-right: -4px;
+	width: 65%
 }
 
 aside {
 	display: inline-block;
-	width: 300px;
+	margin-right: -4px;
+	width: 35%;
 	vertical-align: top;
-	margin-right: -4px;
-}
-
-.posts {
-	display: inline-block;
-	width: 870px;
-	margin-right: -4px;
-	padding: 30px;
-	box-sizing: border-box;
-}
-
-#top-sidebar {
-	height: 50px;
-	padding-left: 50px;
-	padding-top: 50px;
-	border-bottom: 1px solid black;
 }

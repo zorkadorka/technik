@@ -11,24 +11,28 @@
 </head>
 <body>
 
-<div class="bg-image-blur js-parallax"></div>
-
-
-<div class="wrap">
 <header>
+	<div class="header-background">
+		
+	</div>
+
 	<hgroup>
 		<img src="<?= get_bloginfo('template_url') ?>/images/logo-cropped.png" alt="technik-logo" class="logo">
+		<h1>Slovak folklore ensemble Technik</h1>
 	</hgroup>	
-	<?php
-		$menu = is_user_logged_in() ? 'Main Menu loggedIn' : 'Main Menu';
-		wp_nav_menu( array( 
-			'menu' => $menu, 
-			'theme_location' => 'primary',
-			'container_class' => 'menu',
-			'container' => 'nav',  ) 
-		);
-	?>
+	
 </header>
 
+<div class="wrap">
 
-<section id="body">
+<section class="content main-content">
+
+
+<?php
+	wp_nav_menu( array( 
+		'menu' => 'Main Menu', 
+		'theme_location' => 'primary',
+		'container_class' => 'menu',
+		'container' => 'nav',  ) 
+	);
+?>

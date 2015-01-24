@@ -1,7 +1,7 @@
 <?php 
 /*
-Plugin Name: Nadchádzajúce vystúpenia
-Description: widget pre zobrazovanie nadchadzajucich vystúpení
+Plugin Name: Nadchádzajúce udalosti
+Description: widget pre zobrazovanie nadchadzajucich udalostí
 */
 
 
@@ -14,8 +14,8 @@ class Technik_Upcoming_Widget extends WP_Widget {
 		// widget actual processes
 		parent::__construct(
 			'Technik_Upcoming_Widgetidget', // Base ID
-			__( 'Nadchádzajúce vystúpenia', 'text_domain' ), // Name
-			array( 'description' => __( 'Zobrazí všetky nadchádzajúce vystúpenia (TODO: implementovať aj treningy)', 'text_domain' ), ) // Args
+			__( 'Nadchádzajúce udalosti', 'text_domain' ), // Name
+			array( 'description' => __( 'Zobrazí všetky nadchádzajúce udalosti (TODO: implementovať aj treningy)', 'text_domain' ), ) // Args
 		);
 	}
 
@@ -26,8 +26,13 @@ class Technik_Upcoming_Widget extends WP_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
+
+		if (!empty($instance['logged_only']) && !is_user_logged_in()) {
+			return;
+		}
+
 		// outputs the content of the widget
-		$events = $this->get_events();
+		$events = $this->get_events($instance);
 		
 		$this->check_empty_fields($instance, array('title' => 'Nadpis nezadaný'));
 
@@ -45,6 +50,10 @@ class Technik_Upcoming_Widget extends WP_Widget {
 		// outputs the options form on admin
 
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Nadpis', 'text_domain' );
+
+		$type = ! empty($instance['type']) ? $instance['type'] : 'vystupenie';
+
+		$logged_only = ! empty($instance['logged_only']) ? $instance['logged_only'] : "false";
 
 		/*
 		funkcie _e a __ su wordpressovske funkcie urcene na preklad
@@ -64,20 +73,24 @@ class Technik_Upcoming_Widget extends WP_Widget {
 		// processes widget options to be saved
 		$instance = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['type'] = ( ! empty( $new_instance['type'] ) ) ? strip_tags( $new_instance['type'] ) : '';
+		$instance['logged_only'] = ( ! empty( $new_instance['logged_only'] ) ) ? $new_instance['logged_only'] : "false";
+
 		return $instance;
 	}
 
-	private function get_events() {
+	private function get_events($instance) {
 		/*
 			JLO - refactor constants out
 		*/
+
 		$args = array(
 				'post_type' => 'tribe_events',
 				'tax_query' => array(
 					array(
 						'taxonomy' => 'tribe_events_cat',
 						'field' => 'slug',
-						'terms' => 'vystupenie',
+						'terms' => $instance['type'] //'vystupenie',
 						)
 					),
 			);

@@ -11,6 +11,7 @@ $(function() {
 			prevSubmenu = $('.current_page_item .sub-menu, .current_page_ancestor .sub-menu');
 
 
+
 		// na detaile stranky, kde current page item je polozka zo
 		// submenu ma top level polozka triedu current_page_ancestor
 		if (self.hasClass('current_page_item') || self.hasClass('current_page_ancestor')) 
@@ -34,11 +35,18 @@ $(function() {
 				submenu = self.find('.sub-menu'),
 				prevSubmenu = $('.current_page_ancestor .sub-menu');
 
-		if (self.hasClass('current_page_ancestor'))
+		if (prevSubmenu.length == 0) {
+			prevSubmenu = $('.current-menu-item .sub-menu');
+		}
+		
+
+		if (self.hasClass('current_page_ancestor')
+			|| self.hasClass('current-menu-item') 
+			&& self.hasClass('menu-item-has-children'))
 			return;
 
-		submenu.stop().fadeOut();
 		prevSubmenu.stop().fadeIn();
+		submenu.stop().fadeOut();
 	}
 	);
 })

@@ -2,12 +2,14 @@ ul.menu {
 	margin: 0;
 	margin-bottom: 70px;
 	border-bottom: 1px solid #aaa;
+	display: flex;
 }
 
 ul.sub-menu {
 	display: none;
 	position: absolute;
 	padding: 0;
+	margin-top: 10px;
 }
 
 .menu-item {
@@ -15,6 +17,7 @@ ul.sub-menu {
 	display: inline-block;
 	margin-right: 30px;
 	
+	flex-grow: 1;
 }
 
 .menu-item a {
@@ -59,3 +62,6 @@ ul.sub-menu {
 	font-size: 15px;
 }
 
+.current-menu-item .sub-menu {
+	display: block;
+}

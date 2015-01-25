@@ -12,7 +12,6 @@ $(function() {
 			clientX = 0;
 
 	$('header').mousedown(function(e) {
-		console.log(e);
 		clientX = e.clientX;
 		//pressed = true;
 	});

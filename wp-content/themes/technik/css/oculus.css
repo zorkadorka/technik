@@ -1,0 +1,23 @@
+.oculus {
+	height: 250px;
+	width: 250px;
+	border-radius: 125px;
+	position: absolute;
+
+  background: url(../images/mosaic.jpg) no-repeat rgba(0,0,0,0);
+  background-position: top;
+  background-size: contain;
+  background-attachment: fixed;
+  display: none;
+}
+
+header {
+	overflow: hidden;
+}
+
+.header-background {
+	background: url(../images/1.jpg);
+	background-position: bottom;
+  background-size: cover;
+  background-attachment: fixed;
+}

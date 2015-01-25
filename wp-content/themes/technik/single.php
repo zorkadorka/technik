@@ -16,7 +16,7 @@ if ( have_posts() ) {
 <article>
 	<h2><?php the_title(); ?></h2>
 	<small><i><?php the_date() ?></i></small>
-	<p>
+	<p class="featured-image">
 		<span class="post-image full-image"><?php the_post_thumbnail() ?></span>
 		<?php the_content() ?>
 	</p>

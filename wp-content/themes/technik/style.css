@@ -32,7 +32,11 @@ header h1 {
 	text-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
 }
 
-h1, h2, h3, h4, h5 {
+aside h1, 
+aside h2, 
+aside h3, 
+aside h4, 
+aside h5 {
 	font-weight: 100;
 }
 
@@ -137,6 +141,7 @@ aside {
 	text-align: center;
 }
 
+article img,
 .post-image img {
 	border: 1px solid #aaa;
 	padding: 3px;
@@ -145,6 +150,7 @@ aside {
 	transition: border-width 0.3s;
 }
 
+article img:hover,
 .post-image img:hover {
 	border-color: goldenrod;
 	border-width: 3px;

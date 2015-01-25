@@ -12,9 +12,10 @@ $(function() {
 		var x = e.clientX,
 				y = e.clientY;
 
-		oculus.fadeIn().css({
+		oculus.stop().fadeIn().css({
 			left: x - 125,
-			top: y - 125
+			top: y - 125,
+			cursor: 'none'
 		});
 
 	});

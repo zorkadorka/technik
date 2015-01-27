@@ -29,5 +29,4 @@ if ( have_posts() ) {
 
 </div> <!-- .wrap -->
 
-<h1>page</h1>
 <?php get_footer(); ?>

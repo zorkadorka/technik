@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-
 <section class="posts">
 <?php 
 if ( have_posts() ) {
@@ -29,6 +28,5 @@ if ( have_posts() ) {
 
 </div> <!-- .wrap -->
 
-<h1>index</h1>
 <?php get_footer(); ?>
 

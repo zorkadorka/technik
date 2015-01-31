@@ -77,6 +77,15 @@ function register_sidebar_area() {
 }
 add_action('widgets_init', 'register_sidebar_area');
 
+//
+// taka malickost na odstranenie nezmyselneho html { margin-top: 32px !important }
+// thanks David Walsh http://davidwalsh.name/remove-wordpress-admin-bar-css
+//
+add_action('get_header', 'remove_admin_login_header');
+function remove_admin_login_header() {
+	remove_action('wp_head', '_admin_bar_bump_cb');
+}
+
 function log_var($var) {
 	echo '<pre>';
  	print_r($var);

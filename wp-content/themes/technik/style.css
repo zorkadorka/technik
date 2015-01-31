@@ -8,7 +8,8 @@ Version: 1.0
 
 body, html {
 	font-family: 'Pontano Sans', sans-serif;
-	margin: 0;
+	margin: 0 !important;
+	margin-top: 0 !important;
 	padding: 0;
 	/*text-shadow: 1px 1px 1px #ccc;*/
 	font-size:18px;
@@ -58,7 +59,8 @@ footer::before {
 	content: "";
 	background: url(images/1.jpg);
 	background-size: cover;
-	background-position-y: 260px;
+	background-position-y: 48px;
+	background-attachment: fixed;
 	opacity: 0.35;
 }
 
@@ -97,8 +99,9 @@ footer p {
 	position: absolute;
 	width: 100%;
 	z-index: -1;
-
+	
 	background: url(images/mosaic.jpg);
+	background-attachment: fixed;
 }
 
 .header-background::after {
@@ -132,7 +135,7 @@ footer p {
 }
 
 .aside-content {
-	padding-top: 50px;
+	padding-top: 30px;
 }
 
 .main-content {
@@ -154,10 +157,6 @@ aside {
 	margin: 0;
 }
 
-.logged-title {
-	margin-top: 0;
-}
-
 .event-item {
 	font-size: 17px;
 	color: #000;
@@ -173,7 +172,6 @@ aside {
 	text-align: center;
 }
 
-.envira-gallery-image,
 article img,
 .post-image img {
 	border: 1px solid #aaa;
@@ -183,7 +181,7 @@ article img,
 	transition: border-width 0.3s;
 }
 
-.envira-gallery-image,
+
 article img:hover,
 .post-image img:hover {
 	border-color: goldenrod;

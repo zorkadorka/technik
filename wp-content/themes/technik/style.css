@@ -141,6 +141,7 @@ aside {
 	text-align: center;
 }
 
+.envira-gallery-image,
 article img,
 .post-image img {
 	border: 1px solid #aaa;
@@ -150,6 +151,7 @@ article img,
 	transition: border-width 0.3s;
 }
 
+.envira-gallery-image,
 article img:hover,
 .post-image img:hover {
 	border-color: goldenrod;

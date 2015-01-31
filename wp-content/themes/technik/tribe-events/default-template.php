@@ -32,5 +32,5 @@ get_header(); ?>
 
 </div> <!-- .wrap -->
 
-<h1>tribe-events defaiult-template.php</h1>
+<h1 class="dev-page-type">tribe-events defaiult-template.php</h1>
 <?php get_footer(); ?>

@@ -104,5 +104,5 @@ echo paginate_links( array(
 
 </div> <!-- .wrap -->
 
-<h1>news</h1>
+<h1 class="dev-page-type">news</h1>
 <?php get_footer(); ?>

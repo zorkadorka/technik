@@ -181,3 +181,9 @@ article img:hover,
 	font-style: italic;
 	margin: 10px;
 }
+
+.content a.tribe-events-gcal, 
+.content  a.tribe-events-ical
+{
+	float: none;
+}

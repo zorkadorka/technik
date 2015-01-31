@@ -59,7 +59,7 @@ footer::before {
 	background: url(images/1.jpg);
 	background-size: cover;
 	background-position-y: 260px;
-	opacity: 0.5;
+	opacity: 0.35;
 }
 
 footer p {

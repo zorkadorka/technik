@@ -29,6 +29,6 @@ if ( have_posts() ) {
 
 </div> <!-- .wrap -->
 
-<h1>index</h1>
+<h1 class="dev-page-type">index</h1>
 <?php get_footer(); ?>
 

@@ -1,0 +1,22 @@
+.content article .envira-gallery-wrap, .envira-gallery-wrap * {
+	transition: none;
+}
+
+.content article .envira-gallery-public .envira-gallery-item img {
+	-webkit-transition: none;
+	transition: none;
+}
+
+.content article .envira-gallery-public img.envira-gallery-image {
+	border: 1px solid #aaa;
+	padding: 3px;
+	box-sizing: border-box;
+	transition: border-color 0.3s;
+	transition: border-width 0.3s;
+}
+
+.content article .envira-gallery-public img.envira-gallery-image:hover {
+	border-color: goldenrod;
+	border-width: 3px;
+}
+

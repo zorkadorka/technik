@@ -240,11 +240,13 @@ if ( class_exists( 'TribeEvents' ) ) {
 	 **/
 	function tribe_events_the_previous_month_link() {
 		$html = '';
-		$url  = tribe_get_previous_month_link();
+		$url  = rtrim(tribe_get_previous_month_link(), "/");
 		$date = TribeEvents::instance()->previousMonth( tribe_get_month_view_date() );
 
 		if ( $date >= tribe_events_earliest_date( TribeDateUtils::DBYEARMONTHTIMEFORMAT ) ) {
 			$text = tribe_get_previous_month_text();
+		
+			
 			$html = '<a data-month="' . $date . '" href="' . $url . '" rel="prev"><span>&laquo;</span> ' . $text . ' </a>';
 		}
 
@@ -287,6 +289,7 @@ if ( class_exists( 'TribeEvents' ) ) {
 		if ( isset( $wp_query->query_vars[TribeEvents::TAXONOMY] ) ) {
 			$term = $wp_query->query_vars[TribeEvents::TAXONOMY];
 		}
+
 		$output = $tribe_ecp->getLink( 'month', $tribe_ecp->previousMonth( tribe_get_month_view_date() ), $term );
 
 		return apply_filters( 'tribe_get_previous_month_link', $output );

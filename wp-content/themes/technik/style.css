@@ -8,7 +8,8 @@ Version: 1.0
 
 body, html {
 	font-family: 'Pontano Sans', sans-serif;
-	margin: 0;
+	margin: 0 !important;
+	margin-top: 0 !important;
 	padding: 0;
 	/*text-shadow: 1px 1px 1px #ccc;*/
 	font-size:18px;
@@ -24,6 +25,7 @@ header {
 	text-align: center;
 	color: white;
 	height: 480px;
+	box-shadow: inset 0px -22px 14px -12px rgba(0, 0, 0, 1);
 }
 
 header h1 {
@@ -32,7 +34,7 @@ header h1 {
 	text-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
 }
 
-aside h1, 
+aside h1,
 aside h2, 
 aside h3, 
 aside h4, 
@@ -42,6 +44,39 @@ aside h5 {
 
 h2 {
 	font-size: 1.4em;
+}
+
+footer {
+	height: 300px;
+	background-color: #000;
+	box-shadow: inset 0px 22px 14px -12px rgba(0, 0, 0, 1);
+}
+
+footer::before {
+	position: absolute;
+	width: 100%;
+	height: 300px;
+	content: "";
+	background: url(images/1.jpg);
+	background-size: cover;
+	background-position-y: bottom;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	opacity: 0.35;
+}
+
+footer p {
+	margin-top: 0;
+	position: relative;
+	top: 73px;
+	text-align: center;
+	color: #ccc;
+}
+
+.dev-page-type {
+	position: absolute;
+	right: 1px;
+	color: white;
 }
 
 .body-background {
@@ -65,8 +100,9 @@ h2 {
 	position: absolute;
 	width: 100%;
 	z-index: -1;
-
+	
 	background: url(images/mosaic.jpg);
+	background-attachment: fixed;
 }
 
 .header-background::after {
@@ -100,7 +136,7 @@ h2 {
 }
 
 .aside-content {
-	padding-top: 50px;
+	padding-top: 30px;
 }
 
 .main-content {
@@ -120,10 +156,6 @@ aside {
 
 .aside-content .wppb-alert {
 	margin: 0;
-}
-
-.logged-title {
-	margin-top: 0;
 }
 
 .event-item {
@@ -149,6 +181,7 @@ article img,
 	transition: border-color 0.3s;
 	transition: border-width 0.3s;
 }
+
 
 article img:hover,
 .post-image img:hover {
@@ -178,4 +211,10 @@ article img:hover,
 	font-size: small;
 	font-style: italic;
 	margin: 10px;
+}
+
+.content a.tribe-events-gcal, 
+.content  a.tribe-events-ical
+{
+	float: none;
 }

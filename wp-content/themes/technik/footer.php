@@ -2,9 +2,9 @@
 
 <footer>
 	<div class="separator"></div>
-	<!--
-	<p><small>FS Technik - ANNO 1953 - Powered By Wordpress</small></p>
--->
+	
+	<h1>FS Technik - ANNO 1953 - Powered By Wordpress</h1>
+
 
 </footer>
 

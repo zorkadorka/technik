@@ -58,7 +58,7 @@ function technik_scripts() {
 	wp_enqueue_script( 'jquery-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '20140918' );
 	//wp_enqueue_script( 'jquery-scrolling', get_template_directory_uri() . '/js/vertical-scroll.js', array( 'jquery' ), '20140918' );
 	wp_enqueue_script( 'jquery-oculus', get_template_directory_uri() . '/js/oculus.js', array( 'jquery' ), '20140918' );
-	wp_enqueue_script( 'draggable-logo', get_template_directory_uri() . '/js/draggable-logo.js', array( 'jquery' ), '20140125' );
+	//wp_enqueue_script( 'draggable-logo', get_template_directory_uri() . '/js/draggable-logo.js', array( 'jquery' ), '20140125' );
 }
 add_action('wp_enqueue_scripts', 'technik_scripts');
 
@@ -76,6 +76,15 @@ function register_sidebar_area() {
 		) );
 }
 add_action('widgets_init', 'register_sidebar_area');
+
+//
+// taka malickost na odstranenie nezmyselneho html { margin-top: 32px !important }
+// thanks David Walsh http://davidwalsh.name/remove-wordpress-admin-bar-css
+//
+add_action('get_header', 'remove_admin_login_header');
+function remove_admin_login_header() {
+	remove_action('wp_head', '_admin_bar_bump_cb');
+}
 
 function log_var($var) {
 	echo '<pre>';

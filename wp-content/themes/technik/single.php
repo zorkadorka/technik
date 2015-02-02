@@ -43,5 +43,5 @@ if ( have_posts() ) {
 
 </div> <!-- .wrap -->
 
-<h1>single</h1>
+<h1 class="dev-page-type">single</h1>
 <?php get_footer(); ?>

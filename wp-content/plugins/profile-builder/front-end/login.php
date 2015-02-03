@@ -116,10 +116,7 @@ function wppb_front_end_login( $atts ){
 	$wppb_generalSettings = get_option('wppb_general_settings');
 
 	if( !is_user_logged_in() ){
-		/*
-		prihlasovanie chceme poriesit nejako inak, zatial ho len skryjeme
-		*/
-		return;
+		
 		// set up the form arguments
 		$form_args = array( 'echo' => false, 'id_submit' => 'wppb-submit' );
 

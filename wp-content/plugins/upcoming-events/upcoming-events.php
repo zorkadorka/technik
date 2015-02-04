@@ -93,6 +93,9 @@ class Technik_Upcoming_Widget extends WP_Widget {
 						'terms' => $instance['type'] //'vystupenie',
 						)
 					),
+				'orderby' => '_EventStartDate',
+				'order' => 'ASC',
+				
 			);
 		$query = new WP_Query($args);
 		return $query->get_posts();

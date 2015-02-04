@@ -227,3 +227,72 @@ article img:hover,
 {
 	float: none;
 }
+
+.tribe-events-single-event-title {
+	margin-bottom: 5px;
+}
+
+.tribe-events-schedule h3 {
+	margin-top: 5px;
+}
+.content .tribe-events-schedule {
+	margin: 0;
+}
+
+.tribe-events-sub-nav {
+	list-style: none;
+	padding: 0;
+}
+
+.tribe-events-sub-nav li {
+	display: inline-block;
+}
+
+.tribe-events-sub-nav li:first-of-type {
+	float: left;
+}
+
+.tribe-events-sub-nav li:last-of-type {
+	float: right;
+}
+
+.login-submit
+{
+	display: inline-block;
+	float: left;
+}
+
+.login-remember
+{
+	display: inline-block;
+	float: right;
+}
+
+aside #wppb-login-wrap p {
+	padding-bottom: 4px;
+}
+
+#loginform {
+	font-size: 14px;
+	display: none;
+	padding-bottom: 5px;
+}
+
+.login-wrap {
+	border-bottom: 1px solid #aaa;
+box-shadow: 0px 21px 30px -21px rgba(50, 50, 50, 1);
+}
+
+.login-header {
+	margin-bottom: 0;
+}
+
+.login-header a {
+	color: black;
+	text-decoration: none;
+	transition: 0.3s color;
+}
+
+.login-header a:hover {
+	color: goldenrod;
+}

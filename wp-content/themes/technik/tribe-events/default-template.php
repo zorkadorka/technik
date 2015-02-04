@@ -32,8 +32,6 @@ get_header(); ?>
 
 </div> <!-- .wrap -->
 
-<<<<<<< HEAD
-=======
-<h1 class="dev-page-type">tribe-events defaiult-template.php</h1>
->>>>>>> 2adaa110b4dba5cf45760d41be0b6685b661e3c1
+<h1 class="dev-page-type">tribe-events default-template.php</h1>
+
 <?php get_footer(); ?>

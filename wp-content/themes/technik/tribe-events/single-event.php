@@ -41,10 +41,6 @@ $event_id = get_the_ID();
 	<div id="tribe-events-header" <?php tribe_events_the_header_attributes() ?>>
 		<!-- Navigation -->
 		<h3 class="tribe-events-visuallyhidden"><?php _e( 'Event Navigation', 'tribe-events-calendar' ) ?></h3>
-		<ul class="tribe-events-sub-nav">
-			<li class="tribe-events-nav-previous"><?php tribe_the_prev_event_link( '<span>&laquo;</span> Predchádzajúca udalosť'  ) ?></li>
-			<li class="tribe-events-nav-next"><?php tribe_the_next_event_link( 'Nasledujúca udalosť <span>&raquo;</span>' ) ?></li>
-		</ul>
 		<!-- .tribe-events-sub-nav -->
 	</div>
 	<!-- #tribe-events-header -->
@@ -68,6 +64,11 @@ $event_id = get_the_ID();
 		</div> <!-- #post-x -->
 		<?php if ( get_post_type() == TribeEvents::POSTTYPE && tribe_get_option( 'showComments', false ) ) comments_template() ?>
 	<?php endwhile; ?>
+
+	<ul class="tribe-events-sub-nav">
+		<li class="tribe-events-nav-previous"><?php tribe_the_prev_event_link( '<span>&laquo;</span> Predchádzajúca udalosť'  ) ?></li>
+		<li class="tribe-events-nav-next"><?php tribe_the_next_event_link( 'Nasledujúca udalosť <span>&raquo;</span>' ) ?></li>
+	</ul>
 
 
 </div><!-- #tribe-events-content -->

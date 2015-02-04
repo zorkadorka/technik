@@ -578,7 +578,7 @@ if ( ! class_exists( 'Tribe_Events_Month_Template' ) ) {
 				);
 				apply_filters( 'tribe_events_ajax_response', $response );
 				header( 'Content-type: application/json' );
-				echo json_encode( $response );
+				wp_send_json( $response );
 				die();
 			}
 		}

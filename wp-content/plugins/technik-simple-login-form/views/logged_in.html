@@ -1,5 +1,14 @@
 <h2 class="logged-title">Prihlásený 
-<a href="<?= get_home_url() ?>/archives/author/jarino" class="wppb-author-url" title="Jarino">Jarino</a>. 
+<?php 
+	global $current_user; 
+	$user;
+	get_currentuserinfo(); 
+	$user = $current_user->user_login;
+?>
+
+<a href="<?= get_home_url() ?>/archives/author/<?php echo $user ?>" class="wppb-author-url" title="<?php echo $user ?>"> 
+	<?php echo $user ?>
+</a>.  
 <a href="<?= get_home_url() ?>/wp-login.php?action=logout" class="wppb-logout-url" title="Log out of this account">Log out »</a></h2>
 
 <h1></h1>

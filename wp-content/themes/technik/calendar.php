@@ -3,8 +3,8 @@
 Template Name: Kalendár
 */
 
-get_header(); ?>
-
+get_header(); 
+?>
 
 	<section id="tribe-events-pg-template">
 		<?= "tribe_events_before_html" ?>

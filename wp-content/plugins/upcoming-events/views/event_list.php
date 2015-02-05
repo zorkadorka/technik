@@ -7,9 +7,13 @@ foreach ($list as $event):
 	$c++;
 	?>
 		<li>
-			<a href="<?= $event->guid ?>" class="event-item">
-			<?= date_create($event->EventStartDate)->format('d. m. Y') ?> - <?= $event->post_title; ?>
-			</a>
+			<?php if (is_user_logged_in() ): ?>
+				<a href="<?= $event->guid ?>" class="event-item">
+				<?= date_create($event->EventStartDate)->format('d. m. Y') ?> - <?= $event->post_title; ?>
+				</a> 
+			<?php else: ?>
+			 	<?= date_create($event->EventStartDate)->format('d. m. Y') ?> - <?= $event->post_title; ?>
+			<?php endif?>
 		</li>
 <?php 
 	endif;

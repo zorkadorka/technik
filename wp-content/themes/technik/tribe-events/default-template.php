@@ -14,16 +14,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-get_header(); ?>
-
-
+get_header(); 
+if ( is_user_logged_in() ) :
+?>
 	<section id="tribe-events-pg-template">
 		<?php tribe_events_before_html(); ?>
 		<?php tribe_get_view(); ?>
 		<?php tribe_events_after_html(); ?>
 	</section> <!-- #tribe-events-pg-template -->
 
+<?php else: ?>
+	<h2> Nie si prihlásený, nemáš právo na prístup k týmto informáciám. </h2>
+	<h3> Prosím prihlás sa v pravej časti stránky </h3>
 
+<?php endif ?>
 </section> <!-- .main-content -->
 
 <aside class="content aside-content">

@@ -3,6 +3,24 @@
 require_once('widgets/member_widget.php');
 
 /*
+ * dashboard cleanup for ordinary mortals
+ */
+add_action( 'admin_menu', 'edit_admin_menus', 999);
+function edit_admin_menus()
+{
+	if ( current_user_can( 'manage_options' ) == FALSE )
+	{
+		remove_menu_page('index.php');
+		remove_menu_page('upload.php');
+		remove_action('wp_head', '_admin_bar_bump_cb');
+	}
+}
+
+
+
+
+
+/*
  * pridanie podpory pre editaciu menu v dashboarde
  */
 function register_main_menu() {
@@ -98,4 +116,7 @@ function log_var($var) {
 		'primary'   => __( 'Top primary menu', 'technik' ),
 		'secondary' => __( 'Secondary menu in left sidebar', 'technik' ),
 	) );*/
+
+
+
 

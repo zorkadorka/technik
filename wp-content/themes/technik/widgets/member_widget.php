@@ -41,6 +41,7 @@ class Technik_Member_Menu_Widget extends WP_Widget {
 		<?php endif; ?>
 
 		<?php
+
 	}
 
 	/**

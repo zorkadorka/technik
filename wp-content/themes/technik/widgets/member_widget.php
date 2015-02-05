@@ -26,7 +26,7 @@ class Technik_Member_Menu_Widget extends WP_Widget {
 
 		<?php if (is_user_logged_in() ) : ?>
 		<nav role="navigation" class="navigation site-navigation secondary-navigation">
-			<!--
+			
 			<?php
 				$menu = 'Left menu';
 				wp_nav_menu( array( 
@@ -38,9 +38,9 @@ class Technik_Member_Menu_Widget extends WP_Widget {
 			?>
 			
 
-			-->
+			
 					
-			<!-- HTML kod vygenerovany funkciou hore, musel som zmenit link na Profil a nevedel som ako inak to spravit -->
+			<!-- HTML kod vygenerovany funkciou hore, musel som zmenit link na Profil a nevedel som ako inak to spravit -
 			<nav class="member-menu">
 				<ul id="menu-left-menu" class="nav-menu">
 					<li id="menu-item-427" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-427">
@@ -51,7 +51,7 @@ class Technik_Member_Menu_Widget extends WP_Widget {
 					</li>
 				</ul>
 			</nav>	
-
+-->
 
 		</nav>
 		<?php endif; ?>

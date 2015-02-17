@@ -12,6 +12,7 @@ foreach ($list as $event):
 				<?= date_create($event->EventStartDate)->format('d. m. Y') ?> - <?= $event->post_title; ?>
 				</a> 
 			<?php else: ?>
+				<a href="localhost/technik/mozete-nas-vidiet" class="event-item" >
 			 	<?= date_create($event->EventStartDate)->format('d. m. Y') ?> - <?= $event->post_title; ?>
 			<?php endif?>
 		</li>

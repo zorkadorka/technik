@@ -296,3 +296,7 @@ box-shadow: 0px 21px 30px -21px rgba(50, 50, 50, 1);
 .login-header a:hover {
 	color: goldenrod;
 }
+
+.public-event {
+	margin: 20px;  
+}

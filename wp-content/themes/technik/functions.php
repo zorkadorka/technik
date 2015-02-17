@@ -111,6 +111,32 @@ function log_var($var) {
  	echo '</pre>';
 }
 
+/*funkcia pre vytiahnutie udalosti s tagom verejne */
+
+function get_public_events(){
+	
+	$args = array(
+		'post_type' => 'tribe_events',
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'tribe_events_cat',
+				'field' => 'slug',
+				'terms' => 'vystupenie' 
+				),
+			array(
+				'taxonomy' => 'post_tag',
+				'field' => 'slug',
+				'terms' => 'verejne'
+				)
+			),
+		'orderby' => '_EventStartDate',
+		'order' => 'ASC',
+		
+	);
+	$query = new WP_Query($args);
+	return $query->get_posts();
+}
+
 // This theme uses wp_nav_menu() in two locations. -- copied from twentyfourteen
 	/*register_nav_menus( array(
 		'primary'   => __( 'Top primary menu', 'technik' ),

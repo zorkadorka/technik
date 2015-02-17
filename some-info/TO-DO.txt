@@ -1,0 +1,16 @@
+-- Header zmenit: dat uvodnu nejaku efektnu fotku, pripadne striedat titulnu fotku na zaklade podstranok, 
+   hlavy nas dat do footera kde ich moze byt aj rozny pocet
+
+-- Napisat tutorial pre Lubicu (to napisem ked to bude hotove)
+
+-- Logo STU, bud do sidebaru alebo footer, a nieco splietala ze sa nazvom technik hned musi byt STU?
+
+-- Pridat stranku ponuka CD pod mulitmedia
+
+-- multilanguage robi somarinky -> prekyho hadze hned do en, bud najst iny plugin alebo to nejak poriesit, pridat vyber jazyka a prelozene texty
+
+-- doriesit log out
+
+-- ajax a ciastocne odrolovanie automaticke
+
+-- LOW: v kalendari oddelit farebne vystupenia a treningy

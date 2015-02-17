@@ -27,10 +27,15 @@ class Technik_Upcoming_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		if (!empty($instance['logged_only']) && !is_user_logged_in()) {
-			return;
-		}
+		/*echo "  logged only: ";
+		echo $instance['logged_only'];
+		echo "  is_user logged_in: " ;
+		echo is_user_logged_in();*/
 
+		//if (!($instance['logged_only']) && !is_user_logged_in()) {
+		if ($instance['logged_only'] && !is_user_logged_in()) {
+			 	return;
+		}
 		// outputs the content of the widget
 		$events = $this->get_events($instance);
 		
@@ -74,7 +79,7 @@ class Technik_Upcoming_Widget extends WP_Widget {
 		$instance = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		$instance['type'] = ( ! empty( $new_instance['type'] ) ) ? strip_tags( $new_instance['type'] ) : '';
-		$instance['logged_only'] = ( ! empty( $new_instance['logged_only'] ) ) ? $new_instance['logged_only'] : "false";
+		$instance['logged_only'] = ( ! empty( $new_instance['logged_only'] ) ) ? true : false;
 
 		return $instance;
 	}
@@ -83,6 +88,30 @@ class Technik_Upcoming_Widget extends WP_Widget {
 		/*
 			JLO - refactor constants out
 		*/
+
+		if(!is_user_logged_in()){
+			$args = array(
+				'post_type' => 'tribe_events',
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'tribe_events_cat',
+						'field' => 'slug',
+						'terms' => $instance['type'] //'vystupenie',
+						),
+					array(
+						'taxonomy' => 'post_tag',
+						'field' => 'slug',
+						'terms' => 'verejne'
+						)
+					),
+				'orderby' => '_EventStartDate',
+				'order' => 'ASC',
+				
+			);
+		$query = new WP_Query($args);
+		return $query->get_posts();
+
+		}
 
 		$args = array(
 				'post_type' => 'tribe_events',

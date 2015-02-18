@@ -6,6 +6,7 @@ Template Name: predstavenia
 get_header(); ?>
 
 <section class="predstavenia">
+	<h1>Môžete nás vidieť </h1>
 	<?php 
 		$events = get_public_events();
 		

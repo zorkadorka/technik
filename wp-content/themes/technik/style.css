@@ -297,6 +297,13 @@ box-shadow: 0px 21px 30px -21px rgba(50, 50, 50, 1);
 	color: goldenrod;
 }
 
-.public-event {
-	margin: 20px;  
+.user {
+	position: relative;
+}
+
+.user > a{
+	color: black;
+	text-decoration: none;
+	pointer-events: none;	/*deaktivacia odkazu pri kliku na meno*/
+    cursor: default;
 }

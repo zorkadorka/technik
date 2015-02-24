@@ -27,13 +27,8 @@ class Technik_Upcoming_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		/*echo "  logged only: ";
-		echo $instance['logged_only'];
-		echo "  is_user logged_in: " ;
-		echo is_user_logged_in();*/
-
-		//if (!($instance['logged_only']) && !is_user_logged_in()) {
-		if ($instance['logged_only'] && !is_user_logged_in()) {
+		
+		if (isset($instance['logged_only']) && $instance['logged_only'] && !is_user_logged_in()) {
 			 	return;
 		}
 		// outputs the content of the widget

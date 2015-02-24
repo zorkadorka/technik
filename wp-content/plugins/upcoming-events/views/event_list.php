@@ -2,9 +2,11 @@
 <ul>
 <?php 
 $c = 0;
-foreach ($list as $event): 
-	if($c < 3 && (date_create($event->EventStartDate) >= new DateTime("now")) ) :
+foreach ($list as $event):
+	
+	if($c < 3 ): //&& (date_create($event->EventStartDate) >= new DateTime("now")) ) :
 	$c++;
+	
 	?>
 		<li>
 			<?php if (is_user_logged_in() ): ?>

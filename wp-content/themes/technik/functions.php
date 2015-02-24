@@ -73,8 +73,11 @@ ini_set( 'mysql.trace_mode', 0 );
 //
 function technik_scripts() {
 	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-1.11.1.min.js' );
+	//wp_enqueue_script( 'jquery-fancybox', get_template_directory_uri() . '/js/fancybox/jquery.fancybox-1.3.4.pack.js');
+	//wp_enqueue_script( 'jquery-fancybox', get_template_directory_uri() . '/js/fancybox/jquery.easing-1.4.pack.js');
 	wp_enqueue_script( 'jquery-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '20140918' );
 	wp_enqueue_script( 'jquery-login-form', get_template_directory_uri() . '/js/login-form.js', array( 'jquery' ), '20140918' );
+	
 	//wp_enqueue_script( 'jquery-scrolling', get_template_directory_uri() . '/js/vertical-scroll.js', array( 'jquery' ), '20140918' );
 	//wp_enqueue_script( 'jquery-oculus', get_template_directory_uri() . '/js/oculus.js', array( 'jquery' ), '20140918' );
 	//wp_enqueue_script( 'draggable-logo', get_template_directory_uri() . '/js/draggable-logo.js', array( 'jquery' ), '20140125' );
@@ -114,7 +117,8 @@ function log_var($var) {
 /*funkcia pre vytiahnutie udalosti s tagom verejne */
 
 function get_public_events(){
-	
+	$today = date( 'Y-m-d' );
+		
 	$args = array(
 		'post_type' => 'tribe_events',
 		'tax_query' => array(
@@ -129,6 +133,14 @@ function get_public_events(){
 				'terms' => 'verejne'
 				)
 			),
+		'meta_query' => array(
+			        array(
+			            'key' => '_EventStartDate',
+			            'value' => $today,
+			            'compare' => '>=',
+			            'type' => 'DATE'
+			        )
+			    ),
 		'orderby' => '_EventStartDate',
 		'order' => 'ASC',
 		

@@ -27,13 +27,8 @@ class Technik_Upcoming_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		/*echo "  logged only: ";
-		echo $instance['logged_only'];
-		echo "  is_user logged_in: " ;
-		echo is_user_logged_in();*/
-
-		//if (!($instance['logged_only']) && !is_user_logged_in()) {
-		if ($instance['logged_only'] && !is_user_logged_in()) {
+		
+		if (isset($instance['logged_only']) && $instance['logged_only'] && !is_user_logged_in()) {
 			 	return;
 		}
 		// outputs the content of the widget
@@ -58,7 +53,7 @@ class Technik_Upcoming_Widget extends WP_Widget {
 
 		$type = ! empty($instance['type']) ? $instance['type'] : 'vystupenie';
 
-		$logged_only = ! empty($instance['logged_only']) ? $instance['logged_only'] : "false";
+		$logged_only = ! empty($instance['logged_only']) ? true : false;
 
 		/*
 		funkcie _e a __ su wordpressovske funkcie urcene na preklad
@@ -89,6 +84,8 @@ class Technik_Upcoming_Widget extends WP_Widget {
 			JLO - refactor constants out
 		*/
 
+		$today = date( 'Y-m-d' );
+		
 		if(!is_user_logged_in()){
 			$args = array(
 				'post_type' => 'tribe_events',
@@ -104,13 +101,21 @@ class Technik_Upcoming_Widget extends WP_Widget {
 						'terms' => 'verejne'
 						)
 					),
+				'meta_query' => array(
+			        array(
+			            'key' => '_EventStartDate',
+			            'value' => $today,
+			            'compare' => '>=',
+			            'type' => 'DATE'
+			        )
+			    ),
 				'orderby' => '_EventStartDate',
 				'order' => 'ASC',
 				
 			);
-		$query = new WP_Query($args);
-		return $query->get_posts();
+			$query = new WP_Query($args);
 
+			return $query->get_posts();
 		}
 
 		$args = array(
@@ -122,6 +127,14 @@ class Technik_Upcoming_Widget extends WP_Widget {
 						'terms' => $instance['type'] //'vystupenie',
 						)
 					),
+				'meta_query' => array(
+			        array(
+			            'key' => '_EventStartDate',
+			            'value' => $today,
+			            'compare' => '>=',
+			            'type' => 'DATE'
+			        )
+			    ),
 				'orderby' => '_EventStartDate',
 				'order' => 'ASC',
 				

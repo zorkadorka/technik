@@ -149,6 +149,15 @@ function get_public_events(){
 	return $query->get_posts();
 }
 
+function get_my_users($role){
+	$arr = array (
+			'role' => $role
+		);
+	$query = new WP_User_Query($arr);
+	return $query->results;
+
+}
+
 // This theme uses wp_nav_menu() in two locations. -- copied from twentyfourteen
 	/*register_nav_menus( array(
 		'primary'   => __( 'Top primary menu', 'technik' ),

@@ -1,16 +1,30 @@
 -- Header zmenit: dat uvodnu nejaku efektnu fotku, pripadne striedat titulnu fotku na zaklade podstranok, 
-   hlavy nas dat do footera kde ich moze byt aj rozny pocet
+   hlavy nas dat do footera kde ich moze byt aj rozny pocet	JARINO
 
--- Napisat tutorial pre Lubicu (to napisem ked to bude hotove)
+-- Napisat tutorial pre Lubicu (to napisem ked to bude hotove)	LOW
 
--- Logo STU, bud do sidebaru alebo footer, a nieco splietala ze sa nazvom technik hned musi byt STU?
+-- Logo STU, bud do sidebaru alebo footer, a nieco splietala ze sa nazvom technik hned musi byt STU?	LOW
 
--- Pridat stranku ponuka CD pod mulitmedia
+-- Pridat stranku ponuka CD pod mulitmedia	ZORA
 
 -- multilanguage robi somarinky -> prekyho hadze hned do en, bud najst iny plugin alebo to nejak poriesit, pridat vyber jazyka a prelozene texty
+- dorobit vlajocky na stranku	JARO
 
--- doriesit log out
+-- doriesit log out	PREKY
 
--- ajax a ciastocne odrolovanie automaticke
+-- ajax a ciastocne odrolovanie automaticke LOW
 
 -- LOW: v kalendari oddelit farebne vystupenia a treningy
+
+-- osetrit prezyvku a profil v dashboarde  -  prepisat profile.phpF
+- dovolit userom zmenu username - mozno plugin	----	AK JE PLUGIN OK NECHAME USER NAME		PREKY
+						----	AK NIE TAK SA BUDEME PRIHLASOVAT MAILOM
+- prelozit profil formular na zrozumitelnejsie (pouzivatelske meno na prihlasovacie)	ZORA
+- dovolit zmenu rol v useroch len pre nas (administrator) user-edit.php			ZORA
+
+-- k verejnym udalostiam pridat nejake info navyse pre verejnost	ZORA
+
+-- chybova hlaska pri zlom prihlaseni	PREKY
+
+kliknutie na jedno nastavajuce vystupenie nech hodi na detail udalosti (ak som prihlaseny tak kalendar, ak nie som tak iba vsetobecne info)
+kliknutie na nadpis nadchadzajuce vystupenia nech da zoznam mozete-nas-vidiet so vsetkymi nadchadzajucimi vystupeniami -->JARINO

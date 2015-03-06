@@ -58,6 +58,7 @@ add_filter('excerpt_more', 'new_excerpt_more');
 add_theme_support( 'post-thumbnails' ); 
 
 
+
 //
 // uz neviem
 //
@@ -157,6 +158,25 @@ function get_my_users($role){
 	return $query->results;
 
 }
+
+add_action( 'personal_options_update', 'save_extra_user_profile_fields' );
+add_action( 'edit_user_profile_update', 'save_extra_user_profile_fields' );
+
+function save_extra_user_profile_fields( $user_id ) {
+
+	if ( !current_user_can( 'edit_user', $user_id ) ) { 
+		return false; 
+	}
+	update_user_meta( $user_id, 'prezyvka', $_POST['prezyvka'] );
+}
+
+function get_user_role() {
+	global $current_user;
+	if($current_user->ID && is_array($current_user->roles)){
+		return $current_user->roles[0];
+	}
+}
+
 
 // This theme uses wp_nav_menu() in two locations. -- copied from twentyfourteen
 	/*register_nav_menus( array(

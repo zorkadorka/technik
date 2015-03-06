@@ -241,7 +241,7 @@ if ( ! IS_PROFILE_PAGE ) {
 <input type="hidden" name="from" value="profile" />
 <input type="hidden" name="checkuser_id" value="<?php echo get_current_user_id(); ?>" />
 </p>
-
+<!--
 <h3><?php _e('Personal Options'); ?></h3>
 
 <table class="form-table">
@@ -297,7 +297,7 @@ if ( !( IS_PROFILE_PAGE && !$user_can_edit ) ) : ?>
 do_action( 'personal_options', $profileuser );
 ?>
 
-</table>
+</table> 
 <?php
 	if ( IS_PROFILE_PAGE ) {
 		/**
@@ -311,35 +311,41 @@ do_action( 'personal_options', $profileuser );
 		 */
 		do_action( 'profile_personal_options', $profileuser );
 	}
-?>
+?>-->
 
-<h3><?php _e('Name') ?></h3>
+<h3><?php _e('Meno') ?></h3>
 
 <table class="form-table">
 	<tr class="user-user-login-wrap">
-		<th><label for="user_login"><?php _e('Username'); ?></label></th>
-		<td><input type="text" name="user_login" id="user_login" value="<?php echo esc_attr($profileuser->user_login); ?>" disabled="disabled" class="regular-text" /> <span class="description"><?php _e('Usernames cannot be changed.'); ?></span></td>
+		<th><label for="user_login"><?php _e('Používateľské meno'); ?></label></th>
+		<td><input type="text" name="user_login" id="user_login" value="<?php echo esc_attr($profileuser->user_login); ?>" disabled="disabled" class="regular-text" /> 
+			<span class="description">
+				<?php _e('Používa sa na prihlasovanie. Nie je možné meniť.'); ?>
+			</span>
+		</td>
 	</tr>
+<?php 
+if(get_user_role() == 'administrator'):
+	if ( !IS_PROFILE_PAGE && !is_network_admin() ) : ?>
+	<tr class="user-role-wrap"><th><label for="role"><?php _e('Role') ?></label></th>
+	<td><select name="role" id="role">
+	<?php
+	// Compare user role against currently editable roles
+	$user_roles = array_intersect( array_values( $profileuser->roles ), array_keys( get_editable_roles() ) );
+	$user_role  = array_shift( $user_roles );
 
-<?php if ( !IS_PROFILE_PAGE && !is_network_admin() ) : ?>
-<tr class="user-role-wrap"><th><label for="role"><?php _e('Role') ?></label></th>
-<td><select name="role" id="role">
-<?php
-// Compare user role against currently editable roles
-$user_roles = array_intersect( array_values( $profileuser->roles ), array_keys( get_editable_roles() ) );
-$user_role  = array_shift( $user_roles );
+	// print the full list of roles with the primary one selected.
+	wp_dropdown_roles($user_role);
 
-// print the full list of roles with the primary one selected.
-wp_dropdown_roles($user_role);
-
-// print the 'no role' option. Make it selected if the user has no role yet.
-if ( $user_role )
-	echo '<option value="">' . __('&mdash; No role for this site &mdash;') . '</option>';
-else
-	echo '<option value="" selected="selected">' . __('&mdash; No role for this site &mdash;') . '</option>';
-?>
-</select></td></tr>
-<?php endif; //!IS_PROFILE_PAGE
+	// print the 'no role' option. Make it selected if the user has no role yet.
+	if ( $user_role )
+		echo '<option value="">' . __('&mdash; No role for this site &mdash;') . '</option>';
+	else
+		echo '<option value="" selected="selected">' . __('&mdash; No role for this site &mdash;') . '</option>';
+	?>
+	</select></td></tr>
+	<?php endif; //!IS_PROFILE_PAGE
+endif;	//$profileuser->user_role == 'Administrator'
 
 if ( is_multisite() && is_network_admin() && ! IS_PROFILE_PAGE && current_user_can( 'manage_network_options' ) && !isset($super_admins) ) { ?>
 <tr class="user-super-admin-wrap"><th><?php _e('Super Admin'); ?></th>

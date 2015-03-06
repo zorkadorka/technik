@@ -177,7 +177,6 @@ function get_user_role() {
 	}
 }
 
-
 // This theme uses wp_nav_menu() in two locations. -- copied from twentyfourteen
 	/*register_nav_menus( array(
 		'primary'   => __( 'Top primary menu', 'technik' ),

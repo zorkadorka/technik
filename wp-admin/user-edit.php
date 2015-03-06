@@ -26,7 +26,7 @@ elseif ( ! get_userdata( $user_id ) )
 
 wp_enqueue_script('user-profile');
 
-$title = IS_PROFILE_PAGE ? __('Profile') : __('Edit User');
+$title = IS_PROFILE_PAGE ? __('Profil') : __('Úprava používateľa');
 if ( current_user_can('edit_users') && !IS_PROFILE_PAGE )
 	$submenu_file = 'users.php';
 else
@@ -319,6 +319,7 @@ do_action( 'personal_options', $profileuser );
 	<tr class="user-user-login-wrap">
 		<th><label for="user_login"><?php _e('Používateľské meno'); ?></label></th>
 		<td><input type="text" name="user_login" id="user_login" value="<?php echo esc_attr($profileuser->user_login); ?>" disabled="disabled" class="regular-text" /> 
+			<br />
 			<span class="description">
 				<?php _e('Používa sa na prihlasovanie. Nie je možné meniť.'); ?>
 			</span>
@@ -327,7 +328,7 @@ do_action( 'personal_options', $profileuser );
 <?php 
 if(get_user_role() == 'administrator'):
 	if ( !IS_PROFILE_PAGE && !is_network_admin() ) : ?>
-	<tr class="user-role-wrap"><th><label for="role"><?php _e('Role') ?></label></th>
+	<tr class="user-role-wrap"><th><label for="role"><?php _e('Rola') ?></label></th>
 	<td><select name="role" id="role">
 	<?php
 	// Compare user role against currently editable roles
@@ -377,17 +378,21 @@ if ( is_multisite() && is_network_admin() && ! IS_PROFILE_PAGE && current_user_c
 <tr>
 	<th><label for="prezyvka"><?php _e("Prezývka"); ?></label></th> 
 	<td>
-		<input type="text" name="prezyvka" id="prezyvka" value="<?php echo esc_attr( get_user_meta( $profileuser->ID,'prezyvka', true) ); ?>" class="regular-text" />
-		<span class="description"><?php _e("Pogo, this is for you"); ?></span>
+		<input type="text" name="prezyvka" id="prezyvka" value="<?php echo get_user_prezyvka( $profileuser->ID) ;?>" class="regular-text" />
+		<br /><span class="description"><?php _e("Pogo, this is for you"); ?></span>
 	</td>
 </tr>
-
+<!--
+	TO DO: nastavit staticke display meno: Meno prezyvka Priezvisko
 <tr class="user-display-name-wrap">
 	<th><label for="display_name"><?php _e('Display name publicly as') ?></label></th>
 	<td>
+		<?php $profileuser->display_name = get_user_prezyvka($profileuser->ID); ?>
+		<input type="text" name="display" id="displa" value="<?php $profileuser->display_name; ?>" class="regular-text" />
+		
 		<select name="display_name" id="display_name">
 		<?php
-			$public_display = array();
+			/*$public_display = array();
 			$public_display['display_nickname']  = $profileuser->nickname;
 			$public_display['display_username']  = $profileuser->user_login;
 
@@ -401,8 +406,13 @@ if ( is_multisite() && is_network_admin() && ! IS_PROFILE_PAGE && current_user_c
 				$public_display['display_firstlast'] = $profileuser->first_name . ' ' . $profileuser->last_name;
 				$public_display['display_lastfirst'] = $profileuser->last_name . ' ' . $profileuser->first_name;
 			}
+			$public_display['display_name_static'] = $profileuser->first_name + " " + 
+														get_user_prezyvka( $profileuser->ID) + " " +
+														$profileuser->last_name;
+	
+			$public_display['display_name_static'] = get_user_prezyvka( $profileuser->ID) ;
 
-			if ( !in_array( $profileuser->display_name, $public_display ) ) // Only add this if it isn't duplicated elsewhere
+			//if ( !in_array( $profileuser->display_name, $public_display ) ) // Only add this if it isn't duplicated elsewhere
 				$public_display = array( 'display_displayname' => $profileuser->display_name ) + $public_display;
 
 			$public_display = array_map( 'trim', $public_display );
@@ -413,17 +423,17 @@ if ( is_multisite() && is_network_admin() && ! IS_PROFILE_PAGE && current_user_c
 			<option <?php selected( $profileuser->display_name, $item ); ?>><?php echo $item; ?></option>
 		<?php
 			}
-		?>
+		*/?>
 		</select>
 	</td>
-</tr>
+</tr>-->
 </table>
 
-<h3><?php _e('Contact Info') ?></h3>
+<h3><?php _e('Kontakt') ?> <i>(povinné)</i></h3>
 
 <table class="form-table">
 <tr class="user-email-wrap">
-	<th><label for="email"><?php _e('E-mail'); ?> <span class="description"><?php _e('(required)'); ?></span></label></th>
+	<th><label for="email"><?php _e('E-mail *'); ?> <span class="description"><?php/* _e('(required)'); */?></span></label></th>
 	<td><input type="email" name="email" id="email" value="<?php echo esc_attr( $profileuser->user_email ) ?>" class="regular-text ltr" />
 	<?php
 	$new_email = get_option( $current_user->ID . '_new_email' );
@@ -434,12 +444,17 @@ if ( is_multisite() && is_network_admin() && ! IS_PROFILE_PAGE && current_user_c
 	<?php endif; ?>
 	</td>
 </tr>
-
+<!--
 <tr class="user-url-wrap">
 	<th><label for="url"><?php _e('Website') ?></label></th>
 	<td><input type="url" name="url" id="url" value="<?php echo esc_attr( $profileuser->user_url ) ?>" class="regular-text code" /></td>
 </tr>
-
+-->
+<tr class="user-telephone-wrap">
+	<th><label for="telephone"><?php _e('Telefónne číslo *') ?></label></th>
+	<td><input type="telephone" name="telephone" id="telephone" value="<?php echo esc_attr( get_user_meta($profileuser->ID,'telephone', true) ); ?>" class="regular-text code" /></td>
+</tr>
+<!--
 <?php
 	foreach ( wp_get_user_contact_methods( $profileuser ) as $name => $desc ) {
 ?>
@@ -463,9 +478,9 @@ if ( is_multisite() && is_network_admin() && ! IS_PROFILE_PAGE && current_user_c
 </tr>
 <?php
 	}
-?>
+?>-->
 </table>
-
+<!--
 <h3><?php IS_PROFILE_PAGE ? _e('About Yourself') : _e('About the user'); ?></h3>
 
 <table class="form-table">
@@ -483,7 +498,7 @@ if ( $show_password_fields ) :
 <tr id="password" class="user-pass1-wrap">
 	<th><label for="pass1"><?php _e( 'New Password' ); ?></label></th>
 	<td>
-		<input class="hidden" value=" " /><!-- #24364 workaround -->
+		<input class="hidden" value=" " /><!-- #24364 workaround --
 		<input type="password" name="pass1" id="pass1" class="regular-text" size="16" value="" autocomplete="off" />
 		<p class="description"><?php _e( 'If you would like to change the password type a new one. Otherwise leave this blank.' ); ?></p>
 	</td>
@@ -536,7 +551,7 @@ if ( IS_PROFILE_PAGE && count( $sessions->get_all() ) === 1 ) : ?>
 	</tr>
 <?php endif; ?>
 
-</table>
+</table>-->
 
 <?php
 	if ( IS_PROFILE_PAGE ) {
@@ -602,7 +617,7 @@ if ( count( $profileuser->caps ) > count( $profileuser->roles )
 <input type="hidden" name="action" value="update" />
 <input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr($user_id); ?>" />
 
-<?php submit_button( IS_PROFILE_PAGE ? __('Update Profile') : __('Update User') ); ?>
+<?php submit_button( IS_PROFILE_PAGE ? __('AKtualizuj') : __('AKtualizuj používateľa') ); ?>
 
 </form>
 </div>

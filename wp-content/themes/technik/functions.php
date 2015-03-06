@@ -168,6 +168,11 @@ function save_extra_user_profile_fields( $user_id ) {
 		return false; 
 	}
 	update_user_meta( $user_id, 'prezyvka', $_POST['prezyvka'] );
+	update_user_meta( $user_id, 'telephone', $_POST['telephone']);
+}
+
+function get_user_prezyvka($user_id){
+	return esc_attr( get_user_meta($user_id,'prezyvka', true) ); 
 }
 
 function get_user_role() {

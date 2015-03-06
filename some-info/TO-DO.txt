@@ -27,4 +27,4 @@
 -- chybova hlaska pri zlom prihlaseni	PREKY
 
 kliknutie na jedno nastavajuce vystupenie nech hodi na detail udalosti (ak som prihlaseny tak kalendar, ak nie som tak iba vsetobecne info)
-kliknutie na nadpis nadchadzajuce vystupenia nech da zoznam mozete-nas-vidiet so vsetkymi nadchadzajucimi vystupeniami -->JARINO
+kliknutie na nadpis nadchadzajuce vystupenia nech da zoznam mozete-nas-vidiet so vsetkymi nadchadzajucimi vystupeniami --> JARINO

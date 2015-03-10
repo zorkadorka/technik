@@ -184,6 +184,7 @@ function get_user_role() {
 	}
 }
 
+<<<<<<< HEAD
 /*add_action('user_register', 'registration_save_displayname');
 function registration_save_displayname($user_id) {
     if ( isset( $_POST['first_name']) &&  isset( $_POST['last_name']) ){
@@ -199,5 +200,10 @@ function registration_save_displayname($user_id) {
 	) );*/
 
 
+=======
+function get_link_to_current_page($lang = 'sk') {
+	return add_query_arg( array('lang' => $lang), NULL );
+}
+>>>>>>> 00b580ec02b12562627bc46df9fa5325e60ca5dc
 
 

@@ -3,19 +3,18 @@ JARO:
    hlavy nas dat do footera kde ich moze byt aj rozny pocet	JARINO
 
 -- kliknutie na jedno nastavajuce vystupenie nech hodi na detail udalosti (ak som prihlaseny tak kalendar, ak nie som tak iba vsetobecne info)
--- kliknutie na nadpis nadchadzajuce vystupenia nech da zoznam mozete-nas-vidiet so vsetkymi nadchadzajucimi vystupeniami --> JARINO
 
--- multilanguage robi somarinky -> prekyho hadze hned do en, bud najst iny plugin alebo to nejak poriesit, pridat vyber jazyka a prelozene texty
--- dorobit vlajocky na stranku	JARO
+-- nejake info pre Vedenie, description, jeden textfield obycajny do profilu -> riesit pop-upom
+		 
+
+
 
 
 **********************************************************************************************************
 ZORA:
--- Pridat stranku ponuka CD pod mulitmedia	ZORA
 
-DONE: osetrit prezyvku a profil v dashboarde  -  prepisat profile.php
-DONE: prelozit profil formular na zrozumitelnejsie (pouzivatelske meno na prihlasovacie)	ZORA
-DONE: dovolit zmenu rol v useroch len pre nas (administrator) user-edit.php			ZORA
+-- Zistit co sa stane ked updatneme wordpress s editaciou profilu
+			- dat to do pluginu
 
 -- k verejnym udalostiam pridat nejake info navyse pre verejnost	ZORA
 
@@ -24,15 +23,23 @@ DONE: dovolit zmenu rol v useroch len pre nas (administrator) user-edit.php			ZO
 PREKY:
 -- doriesit log out	PREKY
 
--- dovolit userom zmenu username - mozno plugin	----	AK JE PLUGIN OK NECHAME USER NAME		PREKY
+-- Pridat stranku ponuka CD pod mulitmedia
+
+-- Preklady -> fstechnik.sk
+
+-- LOW: dovolit userom zmenu username - mozno plugin	----	AK JE PLUGIN OK NECHAME USER NAME		PREKY
 						----	AK NIE TAK SA BUDEME PRIHLASOVAT MAILOM
 -- chybova hlaska pri zlom prihlaseni	PREKY
 
+-- multilanguage robi somarinky -> prekyho hadze hned do en, bud najst iny plugin alebo to nejak poriesit, pridat vyber jazyka a prelozene texty
 
 
 
 ****************************************************
 LOW:
+
+
+
 -- Napisat tutorial pre Lubicu (to napisem ked to bude hotove)	LOW
 
 -- Logo STU, bud do sidebaru alebo footer, a nieco splietala ze sa nazvom technik hned musi byt STU?	LOW

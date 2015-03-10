@@ -184,26 +184,10 @@ function get_user_role() {
 	}
 }
 
-<<<<<<< HEAD
-/*add_action('user_register', 'registration_save_displayname');
-function registration_save_displayname($user_id) {
-    if ( isset( $_POST['first_name']) &&  isset( $_POST['last_name']) ){
-		$pretty_name = $_POST['first_name'] + ' '+ $_POST['prezyvka'] +. $_POST['last_name'];
-		wp_update_user( array ('ID' => $user_id, 'display_name'=> $pretty_name) ) ;
-	}
-}*/
 
-// This theme uses wp_nav_menu() in two locations. -- copied from twentyfourteen
-	/*register_nav_menus( array(
-		'primary'   => __( 'Top primary menu', 'technik' ),
-		'secondary' => __( 'Secondary menu in left sidebar', 'technik' ),
-	) );*/
-
-
-=======
 function get_link_to_current_page($lang = 'sk') {
 	return add_query_arg( array('lang' => $lang), NULL );
 }
->>>>>>> 00b580ec02b12562627bc46df9fa5325e60ca5dc
+
 
 

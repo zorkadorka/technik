@@ -169,6 +169,8 @@ function save_extra_user_profile_fields( $user_id ) {
 	}
 	update_user_meta( $user_id, 'prezyvka', $_POST['prezyvka'] );
 	update_user_meta( $user_id, 'telephone', $_POST['telephone']);
+	$pretty_name = $_POST['first_name'] . ' '. $_POST['prezyvka'] . ' ' . $_POST['last_name'];
+	wp_update_user( array ('ID' => $user_id, 'display_name'=> $pretty_name) ) ;
 }
 
 function get_user_prezyvka($user_id){
@@ -181,6 +183,14 @@ function get_user_role() {
 		return $current_user->roles[0];
 	}
 }
+
+/*add_action('user_register', 'registration_save_displayname');
+function registration_save_displayname($user_id) {
+    if ( isset( $_POST['first_name']) &&  isset( $_POST['last_name']) ){
+		$pretty_name = $_POST['first_name'] + ' '+ $_POST['prezyvka'] +. $_POST['last_name'];
+		wp_update_user( array ('ID' => $user_id, 'display_name'=> $pretty_name) ) ;
+	}
+}*/
 
 // This theme uses wp_nav_menu() in two locations. -- copied from twentyfourteen
 	/*register_nav_menus( array(

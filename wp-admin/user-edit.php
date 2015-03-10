@@ -382,6 +382,14 @@ if ( is_multisite() && is_network_admin() && ! IS_PROFILE_PAGE && current_user_c
 		<br /><span class="description"><?php _e("Pogo, this is for you"); ?></span>
 	</td>
 </tr>
+
+<tr>
+	<th><label for="display name"><?php _e("Zobrazovacie meno"); ?></label></th> 
+	<td>
+		<input type="text" name="display" id="display" value="<?php echo esc_attr($profileuser->display_name) ;?>" class="regular-text" />
+		<br /><span class="description"></span>
+	</td>
+</tr>
 <!--
 	TO DO: nastavit staticke display meno: Meno prezyvka Priezvisko
 <tr class="user-display-name-wrap">

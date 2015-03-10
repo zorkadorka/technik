@@ -29,6 +29,12 @@
 
 <div class="wrap">
 
+<div class="languages">
+	<a href="<?= get_link_to_current_page('sk') ?>"><img src="<?= get_bloginfo('template_url') ?>/images/langs/sk.gif"></a>
+	<a href="<?= get_link_to_current_page('en') ?>"><img src="<?= get_bloginfo('template_url') ?>/images/langs/en.gif"></a>
+	<a href="<?= get_link_to_current_page('de') ?>"><img src="<?= get_bloginfo('template_url') ?>/images/langs/de.gif"></a>
+</div>
+
 <section class="content main-content">
 
 
@@ -40,3 +46,4 @@
 		'container' => 'nav',  ) 
 	);
 ?>
+

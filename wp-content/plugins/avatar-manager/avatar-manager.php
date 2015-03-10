@@ -257,13 +257,13 @@ function avatar_manager_edit_user_profile( $profileuser ) {
 	<table class="form-table" id="avatar-manager">
 		<tr>
 			<th>
-				<?php _e( 'Display this avatar', 'avatar-manager' ); ?>
+				<?php _e( 'Zvoľ obrázok', 'avatar-manager' ); ?>
 			</th>
 			<td>
 				<fieldset>
 					<legend class="screen-reader-text">
 						<span>
-							<?php _e( 'Display this avatar', 'avatar-manager' ); ?>
+							<?php _e( 'Zvoľ obrázok', 'avatar-manager' ); ?>
 						</span><!-- .screen-reader-text -->
 					</legend>
 					<label>
@@ -271,13 +271,13 @@ function avatar_manager_edit_user_profile( $profileuser ) {
 						<?php echo get_avatar( $profileuser->ID, 32, '', false ); ?>
 						<?php _e( 'Gravatar', 'avatar-manager' ); ?>
 					</label>
-					<?php _e( '<a href="http://codex.wordpress.org/How_to_Use_Gravatars_in_WordPress" target="_blank">More information</a>', 'avatar-manager' ); ?>
+					<?php _e( '<a href="http://codex.wordpress.org/How_to_Use_Gravatars_in_WordPress" target="_blank">Zisti viac</a>', 'avatar-manager' ); ?>
 					<?php if ( $user_has_custom_avatar ) : ?>
 						<br>
 						<label>
 							<input <?php checked( $avatar_type, 'custom', true ); ?> name="avatar_manager_avatar_type" type="radio" value="custom">
 							<?php echo avatar_manager_get_custom_avatar( $profileuser->ID, 32, '', false ); ?>
-							<?php _e( 'Custom', 'avatar-manager' ); ?>
+							<?php _e( 'Vlastný', 'avatar-manager' ); ?>
 						</label>
 					<?php endif; ?>
 					<?php
@@ -290,7 +290,7 @@ function avatar_manager_edit_user_profile( $profileuser ) {
 						self_admin_url( IS_PROFILE_PAGE ? 'profile.php' : 'user-edit.php' ) ) );
 						?>
 						<a class="delete" href="<?php echo wp_nonce_url( $href, 'update-user_' . $profileuser->ID ); ?>" onclick="return showNotice.warn();">
-							<?php _e( 'Delete', 'avatar-manager' ); ?>
+							<?php _e( 'Vymaž', 'avatar-manager' ); ?>
 						</a><!-- .delete -->
 						<?php
 					}
@@ -301,7 +301,7 @@ function avatar_manager_edit_user_profile( $profileuser ) {
 		<?php if ( current_user_can( 'upload_files' ) || $options['avatar_uploads'] ) : ?>
 			<tr>
 				<th>
-					<?php _e( 'Select Image', 'avatar-manager' ); ?>
+					<?php _e( 'Vyber obrázok', 'avatar-manager' ); ?>
 				</th>
 				<td>
 					<fieldset>
@@ -311,11 +311,11 @@ function avatar_manager_edit_user_profile( $profileuser ) {
 							</span>
 						</legend><!-- .screen-reader-text -->
 						<label class="description" for="avatar-manager-upload-avatar">
-							<?php _e( 'Choose an image from your computer:', 'avatar-manager' ); ?>
+							<?php _e( 'Vyber obrázok z tvojho počítača', 'avatar-manager' ); ?>
 						</label><!-- .description -->
 						<br>
 						<input name="avatar_manager_import" type="file">
-						<input class="button" id="avatar-manager-upload-avatar" name="avatar-manager-upload-avatar" type="submit" value="<?php esc_attr_e( 'Upload', 'avatar-manager' ); ?>">
+						<input class="button" id="avatar-manager-upload-avatar" name="avatar-manager-upload-avatar" type="submit" value="<?php esc_attr_e( 'Nahraj', 'avatar-manager' ); ?>">
 					</fieldset>
 				</td>
 			</tr>
@@ -323,44 +323,29 @@ function avatar_manager_edit_user_profile( $profileuser ) {
 		<?php if ( $user_has_custom_avatar ) : ?>
 			<tr>
 				<th>
-					<?php _e( 'Avatar Rating', 'avatar-manager' ); ?>
+					<?php /*_e( 'Avatar Rating', 'avatar-manager' );*/ ?>
 				</th>
 				<td>
 					<fieldset>
 						<legend class="screen-reader-text">
-							<span>
+							<!--<span>
 								<?php _e( 'Avatar Rating', 'avatar-manager' ); ?>
-							</span>
-						</legend><!-- .screen-reader-text -->
-						<?php
+							</span>-->
+						</legend>
+						<!--<?php/*
 						$ratings = array(
-							// Translators: Content suitability rating:
-							// http://bit.ly/89QxZA
 							'G'  => __( 'G &#8212; Suitable for all audiences', 'avatar-manager' ),
-							// Translators: Content suitability rating:
-							// http://bit.ly/89QxZA
 							'PG' => __( 'PG &#8212; Possibly offensive, usually for audiences 13 and above', 'avatar-manager' ),
-							// Translators: Content suitability rating:
-							// http://bit.ly/89QxZA
 							'R'  => __( 'R &#8212; Intended for adult audiences above 17', 'avatar-manager' ),
-							// Translators: Content suitability rating:
-							// http://bit.ly/89QxZA
 							'X'  => __( 'X &#8212; Even more mature than above', 'avatar-manager' )
 						);
 
-						foreach ( $ratings as $key => $rating ) {
-							?>
-							<label>
-								<input <?php checked( $custom_avatar_rating, $key, true ); ?> name="avatar_manager_custom_avatar_rating" type="radio" value="<?php echo esc_attr( $key ); ?>">
-								<?php echo $rating; ?>
-							</label>
-							<br>
-							<?php
-						}
-						?>
+						*/
+						?>-->
+						<!--
 						<span class="description">
 							<?php _e( 'Choose a rating for your custom avatar.', 'avatar-manager' ); ?>
-						</span><!-- .description -->
+						</span><!- .description -->
 					</fieldset>
 				</td>
 			</tr>

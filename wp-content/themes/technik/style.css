@@ -13,6 +13,7 @@ body, html {
 	padding: 0;
 	/*text-shadow: 1px 1px 1px #ccc;*/
 	font-size:18px;
+	color: #333;
 }
 
 a {
@@ -44,6 +45,16 @@ aside h5 {
 
 h2 {
 	font-size: 1.4em;
+}
+
+h2 a {
+	text-decoration: none;
+	color: #333;
+	transition: all 0.3s;
+}
+
+h2 a:hover {
+	color: goldenrod;
 }
 
 h3, h4 {
@@ -149,11 +160,16 @@ footer p {
 }
 
 .main-content {
-	box-shadow: inset -18px 10px 90px -55px rgba(50, 50, 50, 1);
+	-webkit-box-shadow: -10px 0px 25px -15px #aaa inset;
+	box-shadow: -10px 0px 25px -15px #aaa inset;
+
+	/*box-shadow: -18px 10px 45px -45px #323232 inset;*/
 	display: inline-block;
 	margin-right: -4px;
 	width: 750px;
 	border-right: 1px solid #aaa;
+
+	min-height: 600px;
 }
 
 aside {
@@ -169,7 +185,7 @@ aside {
 
 .event-item {
 	font-size: 17px;
-	color: #000;
+	color: #333;
 	text-decoration: none;
 	transition: 0.3s color;
 }
@@ -256,46 +272,6 @@ article img:hover,
 	float: right;
 }
 
-.login-submit
-{
-	display: inline-block;
-	float: left;
-}
-
-.login-remember
-{
-	display: inline-block;
-	float: right;
-}
-
-aside #wppb-login-wrap p {
-	padding-bottom: 4px;
-}
-
-#loginform {
-	font-size: 14px;
-	display: none;
-	padding-bottom: 5px;
-}
-
-.login-wrap {
-	border-bottom: 1px solid #aaa;
-box-shadow: 0px 21px 30px -21px rgba(50, 50, 50, 1);
-}
-
-.login-header {
-	margin-bottom: 0;
-}
-
-.login-header a {
-	color: black;
-	text-decoration: none;
-	transition: 0.3s color;
-}
-
-.login-header a:hover {
-	color: goldenrod;
-}
 
 .user {
 	position: relative;

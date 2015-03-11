@@ -34,7 +34,7 @@ DONE: doriesit log out	PREKY
 
 -- chybova hlaska pri zlom prihlaseni	PREKY
 
--- multilanguage robi somarinky -> prekyho hadze hned do en, bud najst iny plugin alebo to nejak poriesit, pridat vyber jazyka a prelozene texty
+Poriesene: multilanguage robi somarinky -> prekyho hadze hned do en, bud najst iny plugin alebo to nejak poriesit
 
 
 
@@ -55,3 +55,4 @@ LOW:
 
 -- zmenit si nase hesla na niake poriadnejsie
 -- po prihlaseni, "Prihlaseny Betka. Odhlasit" -> Betka je link na svoju stranku..nechat/nenechat?
+-- preklikavanie medzi vlajockami blbne: som na "http://localhost/technik/kontakt" -> klik na en vlajocku -> "http://localhost/technik/kontakt?lang=en" ale chcem ist na : "http://localhost/technik/en/kontakt"

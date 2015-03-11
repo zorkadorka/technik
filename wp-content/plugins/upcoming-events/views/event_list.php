@@ -9,14 +9,14 @@ foreach ($list as $event):
 	
 	?>
 		<li>
-			<?php if (is_user_logged_in() ): ?>
+			<?php/* if (is_user_logged_in() ): */?>
 				<a href="<?= $event->guid ?>" class="event-item">
 				<?= date_create($event->EventStartDate)->format('d. m. Y') ?> - <?= $event->post_title; ?>
 				</a> 
-			<?php else: ?>
+			<?php /*else: ?>
 				<a href="<?php echo get_page_link(566); ?>" class="event-item" >
-			 	<?= date_create($event->EventStartDate)->format('d. m. Y') ?> - <?= $event->post_title; ?>
-			<?php endif?>
+			 	<?= date_create($event->EventStartDate)->format('d. m. Y') ?> - <?= $event->post_title; */?>
+			<?php /*endif*/?>
 		</li>
 <?php 
 	endif;

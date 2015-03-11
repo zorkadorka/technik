@@ -159,6 +159,38 @@ function get_my_users($role){
 
 }
 
+add_action( 'show_user_profile', 'add_nickname_custom_field' );
+add_action( 'edit_user_profile', 'add_nickname_custom_field' );
+
+function add_nickname_custom_field( $user ) { ?>
+
+	<table id="custom_fields_profile">
+		<tbody>
+			<tr id="prezyvka_tr">
+				<th><label for="prezyvka">Prezyvka</label></th>
+
+				<td>
+					<input type="text" name="prezyvka" id="prezyvka" value="<?php echo get_user_prezyvka( $user->ID); ?>" class="regular-text" />
+					<br />
+					<span class="description"><?php _e("Pogo, this is for you"); ?></span>
+				</td>
+			</tr>
+			<tr id="telephone_tr">
+			<th><label for="telephone">Telefón</label></th>
+
+			<td>
+				<input type="text" name="telephone" id="telephone" value="<?php echo esc_attr( get_user_meta($user->ID,'telephone', true) ); ?>" 
+				 class="regular-text" />
+				<br />
+				<span class="description"></span>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+
+	
+<?php 
+}
 add_action( 'personal_options_update', 'save_extra_user_profile_fields' );
 add_action( 'edit_user_profile_update', 'save_extra_user_profile_fields' );
 
@@ -184,10 +216,31 @@ function get_user_role() {
 	}
 }
 
-
 function get_link_to_current_page($lang = 'sk') {
 	return add_query_arg( array('lang' => $lang), NULL );
 }
 
+add_action( 'admin_footer-user-edit.php', 'custom_edit_profile_page' );
+add_action( 'admin_footer-profile.php', 'custom_edit_profile_page' );
+add_action( 'admin_footer-user-new.php', 'custom_edit_profile_page' );
 
+// Print jQuery that removes unneeded elements
+function custom_edit_profile_page(){
+	?>
+	<div id="hidden_user_role" class="hidden">
+		<h1><?php echo get_user_role() ?></h1>
+	<div>
+	<script type="text/javascript" src="<?= get_bloginfo('template_url') ?>/js/user-edit.js"></script>
 
+	<?php
+}
+
+add_action( 'admin_footer-post.php', 'custom_edit_event_page' );
+add_action( 'admin_footer-post-new.php', 'custom_edit_event_page' );
+
+// Print jQuery that removes unneeded elements
+function custom_edit_event_page(){
+	?>
+	<script type="text/javascript" src="<?= get_bloginfo('template_url') ?>/js/event-edit.js"></script>
+	<?php
+}

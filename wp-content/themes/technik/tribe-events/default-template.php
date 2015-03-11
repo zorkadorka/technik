@@ -23,10 +23,11 @@ if ( is_user_logged_in() ) :
 		<?php tribe_events_after_html(); ?>
 	</section> <!-- #tribe-events-pg-template -->
 
-<?php else: ?>
-	<h2> Nie si prihlásený, nemáš právo na prístup k týmto informáciám. </h2>
-	<h3> Prosím prihlás sa v pravej časti stránky </h3>
+<?php else: 
 
+?>
+	<p> <?php echo get_the_excerpt();?> </p>
+	
 <?php endif ?>
 </section> <!-- .main-content -->
 

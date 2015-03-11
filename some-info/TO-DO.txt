@@ -56,3 +56,4 @@ LOW:
 -- zmenit si nase hesla na niake poriadnejsie
 -- po prihlaseni, "Prihlaseny Betka. Odhlasit" -> Betka je link na svoju stranku..nechat/nenechat?
 -- preklikavanie medzi vlajockami blbne: som na "http://localhost/technik/kontakt" -> klik na en vlajocku -> "http://localhost/technik/kontakt?lang=en" ale chcem ist na : "http://localhost/technik/en/kontakt"
+-- vsetky obrazky zobrazovat v pop-upe, nie obycajne v prehliadaci

@@ -2,6 +2,18 @@
 
 require_once('widgets/member_widget.php');
 
+
+
+/*
+ * redirect to homepage after "Naozaj sa chcete odhlasit?" page
+ * however, this page is not in use
+ */
+add_action('wp_logout','go_home');
+function go_home(){
+  wp_redirect( home_url() );
+  exit();
+}
+
 /*
  * dashboard cleanup for ordinary mortals
  */

@@ -218,7 +218,7 @@ Indentation URI: http://www.gnu.org/prep/standards/standards.html
 
 ?>
 
-  Don't you forget about me
+  Dont you forget about me
 
 <?php
 

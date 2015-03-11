@@ -14,9 +14,17 @@
 		<p class="login-remember"><label><input name="rememberme" type="checkbox" id="rememberme" value="forever"> Zapamätať</label></p>
 		<p class="login-submit">
 			<input type="submit" name="wp-submit" id="wppb-submit" class="button-primary" value="Prihlásiť sa">
-			<input type="hidden" name="redirect_to" value="<?= get_home_url() ?>">
+			<input type="hidden" name="redirect_to" value=<?php echo $_SERVER['REQUEST_URI']; ?> >  
+			<!-- "<?= get_home_url() ?>"> //Po prihlaseni, ostanes na rovnakej stranke, ako si bol pred tym, nedirectuje ta to na homepage-->
 		</p>
-		<input type="hidden" name="wppb_login" value="true"><input type="hidden" name="wppb_form_location" value="widget"><input type="hidden" name="wppb_request_url" value="http://localhost/technik/event/sustredenie"><input type="hidden" name="wppb_lostpassword_url" value="">
+		
+		<!--
+		<input type="hidden" name="wppb_login" value="true">
+		<input type="hidden" name="wppb_form_location" value="widget">
+		<input type="hidden" name="wppb_request_url" value="<?= get_home_url() ?>/zly_login"  >
+		<input type="hidden" name="wppb_lostpassword_url" value="">
+		-->
+		
 		<div style="clear: both"></div>
 	</form>
 </div>

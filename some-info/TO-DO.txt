@@ -21,7 +21,9 @@ ZORA:
 
 **********************************************************************************************************
 PREKY:
--- doriesit log out	PREKY
+
+DONE: doriesit log out	PREKY
+	-Po prihlaseni ostanes na stranke, nepresmeruje ta to na homepage
 
 -- Pridat stranku ponuka CD pod mulitmedia
 
@@ -29,6 +31,7 @@ PREKY:
 
 -- LOW: dovolit userom zmenu username - mozno plugin	----	AK JE PLUGIN OK NECHAME USER NAME		PREKY
 						----	AK NIE TAK SA BUDEME PRIHLASOVAT MAILOM
+
 -- chybova hlaska pri zlom prihlaseni	PREKY
 
 -- multilanguage robi somarinky -> prekyho hadze hned do en, bud najst iny plugin alebo to nejak poriesit, pridat vyber jazyka a prelozene texty
@@ -48,3 +51,7 @@ LOW:
 
 -- LOW: v kalendari oddelit farebne vystupenia a treningy
 
+************************************************************************************************************
+
+-- zmenit si nase hesla na niake poriadnejsie
+-- po prihlaseni, "Prihlaseny Betka. Odhlasit" -> Betka je link na svoju stranku..nechat/nenechat?

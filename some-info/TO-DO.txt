@@ -25,14 +25,15 @@ PREKY:
 DONE: doriesit log out	PREKY
 	-Po prihlaseni ostanes na stranke, nepresmeruje ta to na homepage
 
--- Pridat stranku ponuka CD pod mulitmedia
+DONE: Pridat stranku ponuka CD pod mulitmedia
 
--- Preklady -> fstechnik.sk
+DONE: Preklady -> fstechnik.sk
 
 -- LOW: dovolit userom zmenu username - mozno plugin	----	AK JE PLUGIN OK NECHAME USER NAME		PREKY
 						----	AK NIE TAK SA BUDEME PRIHLASOVAT MAILOM
 
 -- chybova hlaska pri zlom prihlaseni	PREKY
+	-- zatial iba presmerovanie na stranku ze zly login
 
 Poriesene: multilanguage robi somarinky -> prekyho hadze hned do en, bud najst iny plugin alebo to nejak poriesit
 

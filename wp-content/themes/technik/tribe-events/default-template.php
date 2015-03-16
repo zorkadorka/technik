@@ -24,9 +24,10 @@ if ( is_user_logged_in() ) :
 	</section> <!-- #tribe-events-pg-template -->
 
 <?php else: 
-
+$test = get_post_meta(get_the_ID(), '_EventPublicInfo', true);
 ?>
-	<p> <?php echo get_the_excerpt();?> </p>
+
+	<?= htmlspecialchars_decode($test) ?>
 	
 <?php endif ?>
 </section> <!-- .main-content -->

@@ -256,3 +256,30 @@ function custom_edit_event_page(){
 	<script type="text/javascript" src="<?= get_bloginfo('template_url') ?>/js/event-edit.js"></script>
 	<?php
 }
+
+//
+// Custom field for adding public info of event
+//
+add_action( 'add_meta_boxes', 'event_public_info_metabox' );              
+function event_public_info_metabox() 
+{   
+    add_meta_box('event_public_info', 'Verejné info o udalosti', 'output_public_info_metabox', 'tribe_events');
+}
+
+function output_public_info_metabox( $post ) 
+{
+	// TODO osetrit ak needitujeme ale vytvarame novy post
+	$value =  get_post_meta($_GET['post'], '_EventPublicInfo' , true );
+	wp_editor( htmlspecialchars_decode($value), 'mettaabox_ID_stylee', $settings = array('textarea_name'=>'event_public_info_input') );
+}
+
+
+function save_my_postdata( $post_id ) 
+{                   
+	if (!empty($_POST['event_public_info_input']))
+	{
+	    $data = htmlspecialchars($_POST['event_public_info_input']);
+	    update_post_meta($post_id, '_EventPublicInfo', $data );
+	}
+}
+add_action( 'save_post', 'save_my_postdata' );  

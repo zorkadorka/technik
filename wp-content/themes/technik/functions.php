@@ -268,9 +268,18 @@ function event_public_info_metabox()
 
 function output_public_info_metabox( $post ) 
 {
-	// TODO osetrit ak needitujeme ale vytvarame novy post
-	$value =  get_post_meta($_GET['post'], '_EventPublicInfo' , true );
-	wp_editor( htmlspecialchars_decode($value), 'mettaabox_ID_stylee', $settings = array('textarea_name'=>'event_public_info_input') );
+	$settings = array(
+		'textarea_name'=>'event_public_info_input');
+
+	
+	$prefill_content = '';
+
+	if (array_key_exists('post', $_GET)) {
+		$value =  get_post_meta($_GET['post'], '_EventPublicInfo' , true );
+		$prefill_content = htmlspecialchars_decode($value);
+	}
+
+	wp_editor($prefill_content , 'mettaabox_ID_stylee', $settings );	
 }
 
 

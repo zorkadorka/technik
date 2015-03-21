@@ -24,11 +24,19 @@ if ( is_user_logged_in() ) :
 	</section> <!-- #tribe-events-pg-template -->
 
 <?php else: 
-$test = get_post_meta(get_the_ID(), '_EventPublicInfo', true);
+
+$post_id = get_the_ID();
+
+$title = get_the_title($post_id);
+$public_description = get_post_meta($post_id, '_EventPublicInfo', true);
+
 ?>
 
-	<?= htmlspecialchars_decode($test) ?>
-	
+	<h1><?= $title ?></h1>
+
+	<div class="public-info">
+		<?= htmlspecialchars_decode($public_description) ?>
+	</div>
 <?php endif ?>
 </section> <!-- .main-content -->
 

@@ -7,22 +7,30 @@ get_header(); ?>
 
 <section class="predstavenia">
 	<h1>Môžete nás vidieť </h1>
+	<table class="public-events">
+	
 	<?php 
 		$events = get_public_events();
 		
 		foreach ($events as $event): 
 			if(date_create($event->EventStartDate) >= new DateTime("now") ) :	
 	?>
-			<div class= "public-event">	
+		<tr>
+
+			<td>
 	 			<strong><?= date_create($event->EventStartDate)->format('d. m. Y'); ?></strong>
-	 			<?= $event->post_title; ?>
-	 			
-	 		</div>
+ 			</td>
+ 			<td>
+ 				<a href="<?= $event->guid ?>"><?= $event->post_title; ?></a>
+ 			</td>
+	 	</tr>
+
 	 		<?php
 			endif;
 		endforeach; 
 			?>
-	
+			
+	</table>
 </section>
 
 </section> <!-- .main-content -->

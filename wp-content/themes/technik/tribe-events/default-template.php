@@ -37,6 +37,7 @@ $public_description = get_post_meta($post_id, '_EventPublicInfo', true);
 	<div class="public-info">
 		<?= htmlspecialchars_decode($public_description) ?>
 	</div>
+	
 <?php endif ?>
 </section> <!-- .main-content -->
 

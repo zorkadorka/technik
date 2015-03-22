@@ -308,3 +308,15 @@ article img:hover,
 {
 	margin-left: 10px;
 }
+
+.public-events a 
+{
+	text-decoration: none;
+	color: black;
+		transition: color 0.3s;
+}
+
+.public-events a:hover
+{
+	color: goldenrod;
+};

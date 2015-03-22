@@ -26,7 +26,6 @@ if ( is_user_logged_in() ) :
 <?php else: 
 
 $post_id = get_the_ID();
-
 $title = get_the_title($post_id);
 $public_description = get_post_meta($post_id, '_EventPublicInfo', true);
 
@@ -37,8 +36,11 @@ $public_description = get_post_meta($post_id, '_EventPublicInfo', true);
 	<div class="public-info">
 		<?= htmlspecialchars_decode($public_description) ?>
 	</div>
-	
+
 <?php endif ?>
+
+<a href="<?php echo get_page_link(566); ?>">Zoznam všetkých vystúpení</a>
+
 </section> <!-- .main-content -->
 
 <aside class="content aside-content">

@@ -292,3 +292,32 @@ function save_my_postdata( $post_id )
 	}
 }
 add_action( 'save_post', 'save_my_postdata' );  
+
+
+
+/*
+*
+* funkcia na rekurzivne prehladavanie pola
+*
+*/
+
+function in_array_r($needle, $haystack, $strict = false) {
+    foreach ($haystack as $item) {
+        if (($strict ? $item === $needle : $item == $needle) || (is_array($item) && in_array_r($needle, $item, $strict))) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function is_public_event($tags)
+{
+	if (!is_array($tags)) return false;
+
+	foreach ($tags as $index => $tag) {
+		if (isset($tag->name) && $tag->name === 'verejne') {
+				return true;
+		}
+	}
+	return false;
+}

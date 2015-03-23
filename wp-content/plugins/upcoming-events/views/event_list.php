@@ -1,4 +1,4 @@
-<h2><a href="<?php echo get_page_link(566); ?>"><?= $instance['title'] ?></a></h2>
+<h2><a href="<?= tribe_get_listview_link() ?>"><?= $instance['title'] ?></a></h2>
 <ul>
 <?php 
 $c = 0;

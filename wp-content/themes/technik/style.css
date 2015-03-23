@@ -20,6 +20,19 @@ a {
 	color: #E68117;
 }
 
+a:hover {
+	text-decoration: none;
+}
+
+a.event-anchor {
+	color: #333;
+	transition: color 0.3s;
+}
+
+a.event-anchor:hover {
+	color: #E68117;
+	text-decoration: none;
+}
 
 header {
 	position: relative;

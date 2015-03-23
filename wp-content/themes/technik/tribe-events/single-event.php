@@ -30,7 +30,7 @@ $event_id = get_the_ID();
 <?php
 if (!is_user_logged_in()):
 ?>
-	<a href="<?php echo get_page_link(566); ?>">Zoznam všetkých vystúpení</a>
+	<a href="<?= tribe_get_listview_link() ?>">Zoznam všetkých vystúpení</a>
 <?php
 endif;
 ?>

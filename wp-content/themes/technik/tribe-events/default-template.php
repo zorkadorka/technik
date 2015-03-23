@@ -15,31 +15,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header(); 
-if ( is_user_logged_in() ) :
-?>
-	<section id="tribe-events-pg-template">
-		<?php tribe_events_before_html(); ?>
-		<?php tribe_get_view(); ?>
-		<?php tribe_events_after_html(); ?>
-	</section> <!-- #tribe-events-pg-template -->
-
-<?php else: 
-
-$post_id = get_the_ID();
-$title = get_the_title($post_id);
-$public_description = get_post_meta($post_id, '_EventPublicInfo', true);
 
 ?>
 
-	<h1><?= $title ?></h1>
-
-	<div class="public-info">
-		<?= htmlspecialchars_decode($public_description) ?>
-	</div>
-
-<?php endif ?>
-
-<a href="<?php echo get_page_link(566); ?>">Zoznam všetkých vystúpení</a>
+<section id="tribe-events-pg-template">
+	<?php tribe_events_before_html(); ?>
+	<?php tribe_get_view(); ?>
+	<?php tribe_events_after_html(); ?>
+</section>
 
 </section> <!-- .main-content -->
 

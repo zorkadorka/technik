@@ -6,7 +6,7 @@ Template Name: Clenovia
 get_header(); ?>
 
 <section class="clenovia">
-	<h1>Členovia </h1>
+	<h1>Členovia</h1>
 	<h2>Tanec<h2>
 	<?php 
 	$users = get_my_users('Tanec');

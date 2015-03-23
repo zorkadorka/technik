@@ -17,7 +17,7 @@ body, html {
 }
 
 a {
-	color: goldenrod;
+	color: #E68117;
 }
 
 
@@ -54,7 +54,7 @@ h2 a {
 }
 
 h2 a:hover {
-	color: goldenrod;
+	color: #E68117;
 }
 
 h3, h4 {
@@ -203,7 +203,7 @@ aside {
 }
 
 .event-item:hover {
-	color: goldenrod;
+	color: #E68117;
 }
 
 .featured-image {
@@ -222,7 +222,7 @@ article img,
 
 article img:hover,
 .post-image img:hover {
-	border-color: goldenrod;
+	border-color: #E68117;
 	border-width: 3px;
 }
 
@@ -318,5 +318,5 @@ article img:hover,
 
 .public-events a:hover
 {
-	color: goldenrod;
+	color: #E68117;
 };

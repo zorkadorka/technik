@@ -15,26 +15,41 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $event_id = get_the_ID();
-
 ?>
+
+<?php 
+	$public_description = get_post_meta($event_id, '_EventPublicInfo', true);
+?>
+
+<?php the_title( '<h2 class="tribe-events-single-event-title summary entry-title">', '</h2>' ); ?>
+
+	<div class="public-info">
+		<?= htmlspecialchars_decode($public_description) ?>
+	</div>
+
+<?php
+if (!is_user_logged_in()):
+?>
+	<a href="<?php echo get_page_link(566); ?>">Zoznam všetkých vystúpení</a>
+<?php
+endif;
+?>
+
+
+<?php
+if (is_user_logged_in()):
+?>
+
+<h1>Organizančné pokyny</h1>
 
 <div id="tribe-events-content" class="tribe-events-single vevent hentry">
 
-	<p class="tribe-events-back">
-		<a href="<?php echo tribe_get_events_link() ?>"> <?php _e( '&laquo; All Events', 'tribe-events-calendar' ) ?></a>
-	</p>
-
 	<!-- Notices -->
 	<?php tribe_events_the_notices() ?>
-
-	<?php the_title( '<h2 class="tribe-events-single-event-title summary entry-title">', '</h2>' ); ?>
+	
 
 	<div class="tribe-events-schedule updated published tribe-clearfix">
-		<?php echo tribe_events_event_schedule_details( $event_id, '<h3>', '</h3>' ); ?>
-		<?php if ( tribe_get_cost() ) : ?>
-			<span class="tribe-events-divider">|</span>
-			<span class="tribe-events-cost"><?php echo tribe_get_cost( null, true ) ?></span>
-		<?php endif; ?>
+		<?php echo tribe_events_event_schedule_details( $event_id, '<i>', '</i>' ); ?>
 	</div>
 
 	<!-- Event header -->
@@ -65,6 +80,10 @@ $event_id = get_the_ID();
 		<?php if ( get_post_type() == TribeEvents::POSTTYPE && tribe_get_option( 'showComments', false ) ) comments_template() ?>
 	<?php endwhile; ?>
 
+		<p class="tribe-events-back">
+		<a href="<?php echo tribe_get_events_link() ?>"> <?php _e( '&laquo; Všetky vystúpenia', 'tribe-events-calendar' ) ?></a>
+	</p>
+
 	<ul class="tribe-events-sub-nav">
 		<li class="tribe-events-nav-previous"><?php tribe_the_prev_event_link( '<span>&laquo;</span> Predchádzajúca udalosť'  ) ?></li>
 		<li class="tribe-events-nav-next"><?php tribe_the_next_event_link( 'Nasledujúca udalosť <span>&raquo;</span>' ) ?></li>
@@ -72,3 +91,7 @@ $event_id = get_the_ID();
 
 
 </div><!-- #tribe-events-content -->
+
+<?php
+endif;
+?>

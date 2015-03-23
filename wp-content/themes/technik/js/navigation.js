@@ -9,8 +9,7 @@ $(function() {
 		var self = $(this),
 			submenu = self.find('.sub-menu');//,
 			prevSubmenu = $('.current_page_item .sub-menu, .current_page_ancestor .sub-menu');
-
-
+			
 
 		// na detaile stranky, kde current page item je polozka zo
 		// submenu ma top level polozka triedu current_page_ancestor

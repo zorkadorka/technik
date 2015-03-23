@@ -37,7 +37,7 @@ ul.sub-menu {
 }
 
 .menu-item a:hover {
-	color: goldenrod;
+	color: #E68117;
 }
 
 .current_page_ancestor .sub-menu {
@@ -45,12 +45,12 @@ ul.sub-menu {
 }
 
 .current-menu-ancestor>a {
-	color: goldenrod;
+	color: #E68117;
 }
 
 .current-menu-item>a {
-	color: goldenrod;
-/*	border-bottom: 2px solid goldenrod;*/
+	color: #E68117;
+/*	border-bottom: 2px solid #E68117;*/
 }
 
 .sub-menu .menu-item a {

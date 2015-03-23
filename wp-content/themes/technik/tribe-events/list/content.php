@@ -61,6 +61,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	</div>
 	<!-- #tribe-events-footer -->
-	<?php do_action( 'tribe_events_after_footer' ) ?>
+
+	<?php 
+	if (is_user_logged_in()):
+		do_action( 'tribe_events_after_footer' ) ;
+	endif;
+	?>
 
 </div><!-- #tribe-events-content -->

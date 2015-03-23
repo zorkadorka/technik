@@ -12,7 +12,6 @@ get_header(); ?>
   	$link = admin_url('admin-ajax.php?action=demo&nonce='.$nonce);
 ?>
 
-	<a id="ajax_test" href="<?= $link ?>" data-nonce="<?= $nonce ?>">AJAX test</a>
 
 
 	<h1>Členovia</h1>
@@ -28,6 +27,7 @@ get_header(); ?>
 				<span class="photo"><?= get_avatar($user->ID, 150) ?></span>
 				<span class="name"><?= $user->display_name ?></span>
 		</div>
+		<span class="description-placeholder"></span>
  	<?php endforeach; ?>
 	</div>
 

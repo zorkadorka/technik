@@ -90,6 +90,7 @@ function technik_scripts() {
 	//wp_enqueue_script( 'jquery-fancybox', get_template_directory_uri() . '/js/fancybox/jquery.easing-1.4.pack.js');
 	wp_enqueue_script( 'jquery-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '20140918' );
 	wp_enqueue_script( 'jquery-login-form', get_template_directory_uri() . '/js/login-form.js', array( 'jquery' ), '20140918' );
+	wp_enqueue_script( 'jquery-members', get_template_directory_uri() . '/js/members.js', array( 'jquery' ), '20140918' );
 	
 	//wp_enqueue_script( 'jquery-scrolling', get_template_directory_uri() . '/js/vertical-scroll.js', array( 'jquery' ), '20140918' );
 	//wp_enqueue_script( 'jquery-oculus', get_template_directory_uri() . '/js/oculus.js', array( 'jquery' ), '20140918' );
@@ -294,28 +295,16 @@ function save_my_postdata( $post_id )
 add_action( 'save_post', 'save_my_postdata' );  
 
 
-
-/*
-*
-* funkcia na rekurzivne prehladavanie pola
-*
-*/
-
-function in_array_r($needle, $haystack, $strict = false) {
-    foreach ($haystack as $item) {
-        if (($strict ? $item === $needle : $item == $needle) || (is_array($item) && in_array_r($needle, $item, $strict))) {
-            return true;
-        }
-    }
-    return false;
-}
-
-function is_public_event($tags)
+/**
+ * Ako argument zobere tagy ziskane z postu, prezre ich a pokúsi sa nájsť v nich ten
+ * čo je zadaný ako druhý argument
+ */
+function is_public_event($tags, $needle)
 {
 	if (!is_array($tags)) return false;
 
 	foreach ($tags as $index => $tag) {
-		if (isset($tag->name) && $tag->name === 'verejne') {
+		if (isset($tag->name) && $tag->name === $needle) {
 				return true;
 		}
 	}

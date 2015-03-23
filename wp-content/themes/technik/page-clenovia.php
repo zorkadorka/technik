@@ -7,14 +7,24 @@ get_header(); ?>
 
 <section class="members-list">
 
+	<?php
+ 		$nonce = wp_create_nonce("my_user_vote_nonce");
+  	$link = admin_url('admin-ajax.php?action=demo&nonce='.$nonce);
+?>
+
+	<a id="ajax_test" href="<?= $link ?>" data-nonce="<?= $nonce ?>">AJAX test</a>
+
+
 	<h1>Členovia</h1>
+
+
 	
 	<?php 
 		$users = get_my_users('Vedenie');
 	?>
 	<div class="users">
 	<?php foreach ($users as $user): ?>
-		<div class="user">
+		<div class="user ajax-description" data-user-id="<?= $user->ID ?>" data-nonce="<?= $nonce ?>">
 				<span class="photo"><?= get_avatar($user->ID, 150) ?></span>
 				<span class="name"><?= $user->display_name ?></span>
 		</div>

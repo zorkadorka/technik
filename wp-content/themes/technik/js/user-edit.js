@@ -6,7 +6,7 @@ jQuery(document).ready( function($) {
 	var rows_ids = ['#nickname',
 					'#display_name',
 					'#url',
-					'#description']; 
+					]; 
 	for (var i = 0; i < table_ids.length; i++) {
 	$(table_ids[i]).closest('table').remove();
 	}

@@ -9,6 +9,10 @@
 	position: relative;
 }
 
+.user.ajax-description {
+	cursor: pointer;
+}
+
 .user .name {
 	position: absolute;
 	bottom: 5px;

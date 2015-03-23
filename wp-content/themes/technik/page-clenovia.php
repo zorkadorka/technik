@@ -17,7 +17,7 @@ get_header(); ?>
 	<h1>Členovia</h1>
 
 
-	
+	<h2>Vedenie</h2>
 	<?php 
 		$users = get_my_users('Vedenie');
 	?>

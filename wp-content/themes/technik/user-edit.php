@@ -13,7 +13,7 @@
 		</td>
 	</tr>
 <?php 
-if(get_user_role() == 'administrator'):
+if(is_user_role('administrator')):
 	if ( !IS_PROFILE_PAGE && !is_network_admin() ) : ?>
 	<tr class="user-role-wrap"><th><label for="role"><?php _e('Rola') ?></label></th>
 	<td><select name="role" id="role">

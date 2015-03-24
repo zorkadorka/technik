@@ -5,10 +5,5 @@
 	get_currentuserinfo(); 
 	$user = $current_user->user_login;
 ?>
-
-<a href="<?= get_home_url() ?>/archives/author/<?php echo $user ?>" class="wppb-author-url" title="<?php echo $user ?>"> 
-	<?php echo $user ?>
-</a>.  
+<?php echo $user ?>.  
 <a href="<?= wp_logout_url( home_url() ) ?>">Odhlásiť »</a></h2>
-
-<h1></h1>

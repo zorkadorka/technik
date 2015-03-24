@@ -2,7 +2,9 @@
 
 require_once('widgets/member_widget.php');
 
+require_once( TEMPLATEPATH . '/lib/helper.php' );
 
+require_once( TEMPLATEPATH . '/lib/avatar_manager_overrides.php');
 
 /*
  * redirect to homepage after "Naozaj sa chcete odhlasit?" page
@@ -90,8 +92,8 @@ function technik_scripts() {
 	//wp_enqueue_script( 'jquery-fancybox', get_template_directory_uri() . '/js/fancybox/jquery.easing-1.4.pack.js');
 	wp_enqueue_script( 'jquery-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '20140918' );
 	wp_enqueue_script( 'jquery-login-form', get_template_directory_uri() . '/js/login-form.js', array( 'jquery' ), '20140918' );
-	wp_enqueue_script( 'jquery-members', get_template_directory_uri() . '/js/members.js', array( 'jquery' ), '20140918' );
-	wp_localize_script( 'jquery-members', 'membersAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
+	wp_enqueue_script( 'jquery-ajax-calls', get_template_directory_uri() . '/js/ajax-calls.js', array( 'jquery' ), '20140918' );
+	wp_localize_script( 'jquery-ajax-calls', 'membersAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));
 	//wp_enqueue_script( 'jquery-scrolling', get_template_directory_uri() . '/js/vertical-scroll.js', array( 'jquery' ), '20140918' );
 	//wp_enqueue_script( 'jquery-oculus', get_template_directory_uri() . '/js/oculus.js', array( 'jquery' ), '20140918' );
 	//wp_enqueue_script( 'draggable-logo', get_template_directory_uri() . '/js/draggable-logo.js', array( 'jquery' ), '20140125' );
@@ -128,52 +130,9 @@ function log_var($var) {
  	echo '</pre>';
 }
 
-/*funkcia pre vytiahnutie udalosti s tagom verejne */
 
-function get_public_events(){
-	$today = date( 'Y-m-d' );
-		
-	$args = array(
-		'post_type' => 'tribe_events',
-		'tax_query' => array(
-			array(
-				'taxonomy' => 'tribe_events_cat',
-				'field' => 'slug',
-				'terms' => 'vystupenie' 
-				),
-			array(
-				'taxonomy' => 'post_tag',
-				'field' => 'slug',
-				'terms' => 'verejne'
-				)
-			),
-		'meta_query' => array(
-			        array(
-			            'key' => '_EventStartDate',
-			            'value' => $today,
-			            'compare' => '>=',
-			            'type' => 'DATE'
-			        )
-			    ),
-		'orderby' => '_EventStartDate',
-		'order' => 'ASC',
-		
-	);
-	$query = new WP_Query($args);
-	return $query->get_posts();
-}
-
-function get_my_users($role){
-	$arr = array (
-			'role' => $role
-		);
-	$query = new WP_User_Query($arr);
-	return $query->results;
-
-}
-
-add_action( 'show_user_profile', 'add_nickname_custom_field' );
-add_action( 'edit_user_profile', 'add_nickname_custom_field' );
+/*add_action( 'show_user_profile', 'add_nickname_custom_field' );
+add_action( 'edit_user_profile', 'add_nickname_custom_field' );*/
 
 function add_nickname_custom_field( $user ) { ?>
 
@@ -204,8 +163,8 @@ function add_nickname_custom_field( $user ) { ?>
 	
 <?php 
 }
-add_action( 'personal_options_update', 'save_extra_user_profile_fields' );
-add_action( 'edit_user_profile_update', 'save_extra_user_profile_fields' );
+/*add_action( 'personal_options_update', 'save_extra_user_profile_fields' );
+add_action( 'edit_user_profile_update', 'save_extra_user_profile_fields' );*/
 
 function save_extra_user_profile_fields( $user_id ) {
 
@@ -218,20 +177,12 @@ function save_extra_user_profile_fields( $user_id ) {
 	wp_update_user( array ('ID' => $user_id, 'display_name'=> $pretty_name) ) ;
 }
 
+// TODO REFACTOR TO HELPER CLASS
 function get_user_prezyvka($user_id){
 	return esc_attr( get_user_meta($user_id,'prezyvka', true) ); 
 }
 
-function get_user_role() {
-	global $current_user;
-	if($current_user->ID && is_array($current_user->roles)){
-		return $current_user->roles[0];
-	}
-}
 
-function get_link_to_current_page($lang = 'sk') {
-	return add_query_arg( array('lang' => $lang), NULL );
-}
 
 add_action( 'admin_footer-user-edit.php', 'custom_edit_profile_page' );
 add_action( 'admin_footer-profile.php', 'custom_edit_profile_page' );
@@ -241,7 +192,7 @@ add_action( 'admin_footer-user-new.php', 'custom_edit_profile_page' );
 function custom_edit_profile_page(){
 	?>
 	<div id="hidden_user_role" class="hidden">
-		<h1><?php echo get_user_role() ?></h1>
+		<h1><?= Helper::get_user_role() ?></h1>
 	<div>
 	<script type="text/javascript" src="<?= get_bloginfo('template_url') ?>/js/user-edit.js"></script>
 
@@ -294,49 +245,87 @@ function save_my_postdata( $post_id )
 }
 add_action( 'save_post', 'save_my_postdata' );  
 
+add_action('wp_ajax_delete_avatar', 'delete_avatar');
+add_action('wp_ajax_nopriv_delete_avatar', 'delete_avatar_nopriv');
 
-/**
- * Ako argument zobere tagy ziskane z postu, prezre ich a pokúsi sa nájsť v nich ten
- * čo je zadaný ako druhý argument
- */
-function is_public_event($tags, $needle)
-{
-	if (!is_array($tags)) return false;
-
-	foreach ($tags as $index => $tag) {
-		if (isset($tag->name) && $tag->name === $needle) {
-				return true;
-		}
-	}
-	return false;
-}
-
-add_action('wp_ajax_demo', 'handle_demo');
-add_action('wp_ajax_nopriv_demo', 'handle_demo');
-
-function handle_demo() {
-	// ??????
-	if ( !wp_verify_nonce( $_REQUEST['nonce'], "my_user_vote_nonce")) {
-		exit("No naughty business please");
-	}
-
-	$user_id = $_REQUEST["user_id"];
-
-	$description = get_user_meta($user_id, 'description', true);
-
-
-	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-		// ak je AJAXovy request
-	  $res = json_encode(array(
-	  	'description' => $description,
-  	));
-
-  	echo $res;
-	}
-	else {
-		// ak nie je AJAXovy request
-	  header("Location: ".$_SERVER["HTTP_REFERER"]);
-	}
+function delete_avatar() {
+	global $current_user;
+	get_currentuserinfo();
+	echo 'text';
+	AvatarManagerOverrides::avatar_manager_delete_avatar($current_user->ID);
 
 	die();
 }
+
+function delete_avatar_nopriv() {
+	echo 'Get out';
+}
+
+
+add_action('admin_post_update_user', 'update_user');
+
+
+function update_user() {
+	
+	global $current_user;
+	get_currentuserinfo();
+
+	$fields = array(
+		'first_name', 
+		'last_name', 
+		'nickname',
+		'description',
+		'phone1',
+		'user_email',
+		);
+	$userdata = post_request_to_userdata($fields, $_POST);
+
+	// NOTE
+	// do wp_update_user by sa dal pre pohodlnost rovno poslat
+	// $_POST objekt a nemusel by som si ani robit starost
+	// s mapovanim jednotlivych poli...
+	// problem je, ze vo wp_update_user viem zmenit aj rolu pouzivatela
+	// a potom by sa nejaky spekulant vedel temperingom stat adminom...
+	
+	wp_update_user($userdata);
+
+	update_user_meta(get_current_user_id(), 'phone1', $_POST['phone1']);
+
+	// ak su vyplnene polia pre hesla, tak skusime updatetnut
+
+	$old_pass = $_POST['old_pass'];
+	$new_pass = $_POST['new_pass'];
+	if (!empty($old_pass) && !empty($new_pass)) 
+	{
+		echo $current_user->user_pass;
+
+		if (wp_check_password($old_pass, $current_user->user_pass, $current_user->ID)) {
+			wp_set_password($new_pass, $current_user->ID);
+
+			//
+			// ked sa zmeni heslo, wordpress automaticky odfajci prihlasenie
+			// takze treba pred presmerovanim usera znova prihlasit, tentoraz
+			// uz s novym heslom
+			//
+			wp_signon(array(
+				'user_login' => $current_user->user_login,
+				'user_password' => $new_pass), 
+			true);
+		}
+	}
+
+	AvatarManagerOverrides::avatar_manager_edit_user_profile_update($current_user->ID, $_POST,$_FILES, $_GET);
+
+	wp_redirect( get_page_link(664) );
+}
+
+function post_request_to_userdata($array_of_fields, $post_request)
+{
+	$userdata = array('ID' => get_current_user_id());
+	foreach ($array_of_fields as $value) {
+		$userdata[$value] = $post_request[$value];
+	}
+	return $userdata;
+}
+
+require_once( TEMPLATEPATH . '/lib/helper.php' );

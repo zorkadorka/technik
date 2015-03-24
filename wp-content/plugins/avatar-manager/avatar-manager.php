@@ -217,6 +217,7 @@ function avatar_manager_default_size_settings_field() {
  * @param array $profileuser User to edit.
  */
 function avatar_manager_edit_user_profile( $profileuser ) {
+
 	// Retrieves plugin options.
 	$options = avatar_manager_get_options();
 
@@ -274,24 +275,31 @@ function avatar_manager_edit_user_profile( $profileuser ) {
 					<?php _e( '<a href="http://codex.wordpress.org/How_to_Use_Gravatars_in_WordPress" target="_blank">Zisti viac</a>', 'avatar-manager' ); ?>
 					<?php if ( $user_has_custom_avatar ) : ?>
 						<br>
-						<label>
-							<input <?php checked( $avatar_type, 'custom', true ); ?> name="avatar_manager_avatar_type" type="radio" value="custom">
-							<?php echo avatar_manager_get_custom_avatar( $profileuser->ID, 32, '', false ); ?>
-							<?php _e( 'Vlastný', 'avatar-manager' ); ?>
-						</label>
-					<?php endif; ?>
-					<?php
-					if ( $user_has_custom_avatar && ( current_user_can( 'upload_files' ) || $options['avatar_uploads'] ) ) {
-						$href = esc_attr( add_query_arg( array(
-							'action'                       => 'update',
-							'avatar_manager_action'        => 'remove-avatar',
-							'user_id'                      => $profileuser->ID
-						),
-						self_admin_url( IS_PROFILE_PAGE ? 'profile.php' : 'user-edit.php' ) ) );
-						?>
-						<a class="delete" href="<?php echo wp_nonce_url( $href, 'update-user_' . $profileuser->ID ); ?>" onclick="return showNotice.warn();">
-							<?php _e( 'Vymaž', 'avatar-manager' ); ?>
-						</a><!-- .delete -->
+						<span class="custom-avatar-line">
+							<label>
+								<input <?php checked( $avatar_type, 'custom', true ); ?> name="avatar_manager_avatar_type" type="radio" value="custom">
+								<?php echo avatar_manager_get_custom_avatar( $profileuser->ID, 32, '', false ); ?>
+								<?php _e( 'Vlastný', 'avatar-manager' ); ?>
+							</label>
+						<?php endif; ?>
+						<?php
+						if ( $user_has_custom_avatar && ( current_user_can( 'upload_files' ) || $options['avatar_uploads'] ) ) {
+							$href = esc_attr( add_query_arg( array(
+								'action'                       => 'update',
+								'avatar_manager_action'        => 'remove-avatar',
+								'user_id'                      => $profileuser->ID
+							),
+							//self_admin_url( IS_PROFILE_PAGE ? 'profile.php' : 'user-edit.php' ) ) );
+							self_admin_url( true ? 'profile.php' : 'user-edit.php' ) ) );
+							
+							$nonce = wp_create_nonce('update-user_' . $profileuser->ID);
+
+							?>
+
+							<a class="avatar-photo delete" href="admin-ajax.php?action=delete_avatar" data-user-id="<?= $profileuser->ID ?>" data-nonce="<?= $nonce ?>">
+								<?php _e( 'Vymaž', 'avatar-manager' ); ?>
+							</a><!-- .delete -->
+						</span>
 						<?php
 					}
 					?>
@@ -467,7 +475,7 @@ function avatar_manager_generate_avatar_url( $attachment_id, $size ) {
 function avatar_manager_resize_avatar( $attachment_id, $size ) {
 	// Generates a file path of an avatar image based on attachment ID and size.
 	$dest_path = avatar_manager_generate_avatar_path( $attachment_id, $size );
-
+	
 	if ( file_exists( $dest_path ) ) {
 		$skip = true;
 	} else {
@@ -490,7 +498,7 @@ function avatar_manager_resize_avatar( $attachment_id, $size ) {
 
 	// Calls the functions added to avatar_manager_resize_avatar action hook.
 	do_action( 'avatar_manager_resize_avatar', $attachment_id, $size );
-
+	
 	return $skip;
 }
 
@@ -623,6 +631,7 @@ add_action( 'delete_attachment', 'avatar_manager_delete_attachment' );
  * @param int $user_id ID of the user to update.
  */
 function avatar_manager_edit_user_profile_update( $user_id ) {
+	
 	// Retrieves plugin options.
 	$options = avatar_manager_get_options();
 
@@ -644,6 +653,7 @@ function avatar_manager_edit_user_profile_update( $user_id ) {
 	}
 
 	if ( isset( $_POST['avatar-manager-upload-avatar'] ) && $_POST['avatar-manager-upload-avatar'] ) {
+		echo 'isset avatar manager upload avatar';
 		if ( ! function_exists( 'wp_handle_upload' ) )
 			require_once( ABSPATH . 'wp-admin/includes/file.php' );
 
@@ -742,9 +752,9 @@ function avatar_manager_edit_user_profile_update( $user_id ) {
 		}
 
 		// Redirects the user to a specified absolute URI.
-		wp_redirect( $redirect );
+		//wp_redirect( $redirect );
 
-		exit;
+		//exit;
 	}
 }
 

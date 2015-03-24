@@ -10,7 +10,7 @@ get_header(); ?>
 	<table class="public-events">
 	
 	<?php 
-		$events = get_public_events();
+		$events = Helper::get_public_events();
 		
 		foreach ($events as $event): 
 			if(date_create($event->EventStartDate) >= new DateTime("now") ) :	

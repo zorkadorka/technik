@@ -8,7 +8,7 @@ get_header(); ?>
 <section class="members-list">
 
 	<?php
- 		$nonce = wp_create_nonce("'update-user_' . $profileuser->ID");
+ 		$nonce = wp_create_nonce("some_random_text");
   	$link = admin_url('admin-ajax.php?action=demo&nonce='.$nonce);
 ?>
 

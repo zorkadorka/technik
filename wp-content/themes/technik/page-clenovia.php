@@ -22,12 +22,12 @@ get_header(); ?>
 	?>
 	<div class="users">
 	<?php foreach ($users as $user): ?>
-		<div class="user ajax-description" data-user-id="<?= $user->ID ?>" data-nonce="<?= $nonce ?>">
+		<div class="user ajax-description" data-user-id="<?= $user->ID ?>" data-nonce="<?= $nonce ?>">  
 				<span class="photo"><?= get_avatar($user->ID, 150) ?></span>
 				<span class="name"><?= Helper::get_user_name($user) ?></span>
 		</div>
-		<span class="description-placeholder"></span>
- 	<?php endforeach; ?>
+		<span class="description-placeholder"><?= get_user_meta( $user->ID, 'description', true ) ?></span>	
+		<?php endforeach; ?>
 	</div>
 
 	<h2>Tanec</h2>
@@ -81,5 +81,8 @@ get_header(); ?>
 </aside>
 
 </div> <!-- .wrap -->
+
+<script type="text/javascript" src = "<?= get_template_directory_uri() .'/js/user-description.js';?>" > 
+</script>
 
 <?php get_footer(); ?>

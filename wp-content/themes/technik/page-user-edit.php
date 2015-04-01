@@ -49,6 +49,7 @@ $link = admin_url('admin-post.php?action=update_user');
 			toggleUploadButton();
 
 			input.on( 'change', toggleUploadButton );
+			
 		} )();
 	} );
 } )( jQuery );
@@ -61,41 +62,48 @@ $link = admin_url('admin-post.php?action=update_user');
 	<input type="hidden" name="action" value="update_user">
 
 	<h2>Basic info</h2>
-	<label for="first_name">Meno: </label>
-	<input type="text" name="first_name" value="<?= $user->first_name ?>">
-	<br>
+	<div class='user_edit-form_row'>
+		<label for="first_name">Meno: </label>
+		<input type="text" name="first_name" value="<?= $user->first_name ?>">
+	</div>
 
-	<label for="last_name">Priezvisko: </label>
-	<input type="text" name="last_name" value="<?= $user->last_name ?>">
-	<br>
+	<div class='user_edit-form_row'>
+		<label for="last_name">Priezvisko: </label>
+		<input type="text" name="last_name" value="<?= $user->last_name ?>">	
+	</div>
 
-	<label for="description">Opis: </label>
-	<textarea name="description"><?= $user->description ?></textarea>
-	<br>
+	<div class='user_edit-form_row edit-opis'>		
+		<label for="description">Opis: </label>
+		<textarea name="description"><?= $user->description ?></textarea>
+	</div>
 
-	<label for="user_email">Email: </label>
-	<input type="text" name="user_email" value="<?= $user->user_email ?>">
-	<br>
+	<div class='user_edit-form_row'>
+		<label for="user_email">Email: </label>
+		<input type="text" name="user_email" value="<?= $user->user_email ?>">
+	</div>
 
-	<label for="nickname">Prezývka: </label>
-	<input type="text" name="nickname" value="<?= $user->nickname ?>">
-	<br>
-
-	<label for="phone1">Telefón: </label>
-	<input type="text" name="phone1" value="<?= $user->phone1 ?>">
-	<br>
+	<div class='user_edit-form_row'>
+		<label for="nickname">Prezývka: </label>
+		<input type="text" name="nickname" value="<?= $user->nickname ?>">
+	</div>
+	<div class='user_edit-form_row'>
+		<label for="phone1">Telefón: </label>
+		<input type="text" name="phone1" value="<?= $user->phone1 ?>">
+	</div>
 
 	<h2>Zmena hesla</h2>
-	<label for="old_pass">Staré heslo: </label>
-	<input type="password" name="old_pass">
-	<br>
 
-	<label for="new_pass">Nové heslo: </label>
-	<input type="password" name="new_pass">
-	<br>
+	<div class='user_edit-form_row edit-password'>
+		<label for="old_pass">Staré heslo: </label>
+		<input type="password" name="old_pass">
+	</div>
 
+	<div class='user_edit-form_row edit-password'>
+		<label for="new_pass">Nové heslo: </label>
+		<input type="password" name="new_pass">
+	</div>
 
-	<input type="submit" value="funguj">
+	<input type="submit" value="Aktualizuj profil">
 
 <?php
 	avatar_manager_init();

@@ -258,28 +258,30 @@ function avatar_manager_edit_user_profile( $profileuser ) {
 	<table class="form-table" id="avatar-manager">
 		<tr>
 			<th>
-				<?php _e( 'Zvoľ obrázok', 'avatar-manager' ); ?>
+				<?php _e( 'Zvoľ obrázok:', 'avatar-manager' ); ?>
 			</th>
 			<td>
 				<fieldset>
 					<legend class="screen-reader-text">
 						<span>
-							<?php _e( 'Zvoľ obrázok', 'avatar-manager' ); ?>
+							<?php _e( 'Zvoľ obr', 'avatar-manager' ); ?>
 						</span><!-- .screen-reader-text -->
 					</legend>
-					<label>
-						<input <?php checked( $avatar_type, 'gravatar', true ); ?> name="avatar_manager_avatar_type" type="radio" value="gravatar">
-						<?php echo get_avatar( $profileuser->ID, 32, '', false ); ?>
-						<?php _e( 'Gravatar', 'avatar-manager' ); ?>
-					</label>
-					<?php _e( '<a href="http://codex.wordpress.org/How_to_Use_Gravatars_in_WordPress" target="_blank">Zisti viac</a>', 'avatar-manager' ); ?>
+					<div class = 'gravatar-row' style="display: inline-block">
+						<label>
+							<input <?php checked( $avatar_type, 'gravatar', true ); ?> name="avatar_manager_avatar_type" type="radio" value="gravatar">
+							<?php echo get_avatar( $profileuser->ID, 32, '', false ); ?>
+							<span><?php _e( 'Gravatar', 'avatar-manager' ); ?></span>
+						</label>
+						<?php _e( '<a href="http://codex.wordpress.org/How_to_Use_Gravatars_in_WordPress" target="_blank">Zisti viac</a>', 'avatar-manager' ); ?>
+					</div>
 					<?php if ( $user_has_custom_avatar ) : ?>
-						<br>
+						
 						<span class="custom-avatar-line">
 							<label>
 								<input <?php checked( $avatar_type, 'custom', true ); ?> name="avatar_manager_avatar_type" type="radio" value="custom">
 								<?php echo avatar_manager_get_custom_avatar( $profileuser->ID, 32, '', false ); ?>
-								<?php _e( 'Vlastný', 'avatar-manager' ); ?>
+								<span><?php _e( 'Vlastný', 'avatar-manager' ); ?></span>
 							</label>
 						<?php endif; ?>
 						<?php
@@ -309,7 +311,7 @@ function avatar_manager_edit_user_profile( $profileuser ) {
 		<?php if ( current_user_can( 'upload_files' ) || $options['avatar_uploads'] ) : ?>
 			<tr>
 				<th>
-					<?php _e( 'Vyber obrázok', 'avatar-manager' ); ?>
+					<?php _e( 'Vyber obrázok:', 'avatar-manager' ); ?>
 				</th>
 				<td>
 					<fieldset>
@@ -318,11 +320,12 @@ function avatar_manager_edit_user_profile( $profileuser ) {
 								<?php _e( 'Select Image', 'avatar-manager' ); ?>
 							</span>
 						</legend><!-- .screen-reader-text -->
+						<input name="avatar_manager_import" type="file">
+						<br>
 						<label class="description" for="avatar-manager-upload-avatar">
 							<?php _e( 'Vyber obrázok z tvojho počítača', 'avatar-manager' ); ?>
 						</label><!-- .description -->
-						<br>
-						<input name="avatar_manager_import" type="file">
+						
 						<input class="button" id="avatar-manager-upload-avatar" name="avatar-manager-upload-avatar" type="submit" value="<?php esc_attr_e( 'Nahraj', 'avatar-manager' ); ?>">
 					</fieldset>
 				</td>

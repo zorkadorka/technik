@@ -366,7 +366,7 @@ article img:hover,
 
 .user-edit textarea
 {
-	max-width: 351px;
+	max-width: 340px;
 	max-height: 200px;
 }
 
@@ -375,9 +375,14 @@ article img:hover,
 	background-color: #ebebeb;
 	display: block;
 	width: 40%;
-	/* margin: auto; */
 	margin-top: 2em;
 	margin-bottom: 2em;
+	transition: 0.3s;
+}
+
+.user-edit input[type=submit]:hover
+{
+	background-color: #e0e0e0;
 }
 
 .user_edit-form_row:not(.edit-opis)
@@ -408,11 +413,6 @@ article img:hover,
 	margin-bottom: 10px;
 }
 
-.user-edit #avatar-manager tr
-{
-	/* margin-bottom: 20px; */
-}
-
 .user-edit #avatar-manager fieldset
 {
 	border: none !important;
@@ -429,7 +429,6 @@ article img:hover,
 	font-size: 0.9em;
 	display: block;
 	padding-right: 10px;
-	/* padding: 0; */
 }
 
 .user-edit #avatar-manager input,
@@ -441,8 +440,6 @@ article img:hover,
 
 .user-edit #avatar-manager a
 {
-	/* line-height: 32px; */
-	/* padding: 3px 8px; */
 	font-size: 0.9em;
 	vertical-align: bottom;
 	margin-left: 10px;
@@ -450,7 +447,6 @@ article img:hover,
 
 .user-edit #avatar-manager input[type=file]
 {
-	/* background-color: #ebebeb; */
 	padding: 4px;
 	margin-left: 5px;
 }

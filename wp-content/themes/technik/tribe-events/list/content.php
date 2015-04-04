@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<!-- List Title -->
 	<?php do_action( 'tribe_events_before_the_title' ); ?>
 	<?php if (is_user_logged_in()): ?>
-	<h2>Nadchádzajúce vystúpenia</h2>
+	<h2>Nadchádzajúce tréningy a vystúpenia</h2>
 	<?php else: ?>
 	<h2>Nadchádzajúce vystúpenia</h2>
 	<?php endif; ?>

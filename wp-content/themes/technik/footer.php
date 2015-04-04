@@ -6,7 +6,7 @@
 		<img src="<?= get_bloginfo('template_url') ?>/images/mosaic.jpg">
 	</div>
 	<div class="footer-content">
-		<p>FS Technik - ANNO 1953 - Powered By Wordpress</p>
+		<p>FS Technik STU - ANNO 1953 - Powered By Wordpress</p>
 	</div>
 </footer>
 

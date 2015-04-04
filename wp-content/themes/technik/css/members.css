@@ -23,8 +23,8 @@
 section.description-placeholder
 {
 	display: none;
-	background-color: black;
-	opacity: 0.3;
+	background-color: #bbbbbb;
+	opacity: 0.7;
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -36,14 +36,18 @@ section.description-placeholder
 .user.ajax-description.clicked + .description-placeholder
 {
 	display: block;	
-	width: 70%;
-	height: 500px;
+	width: 1000px;
+	height: 250px;
 	opacity: 1;
 	left: 15%;
+	top: 30%;
 	z-index: 10;
-	position: absolute;
-	background-color: #ebebeb;
+	position: fixed;
+	/* background-color: #ebebeb; */
+	/* max-width: 60%; */
 	z-index: 10;
+	padding-bottom: 10px;
+	background: url(subtle_white_feathers.png);
 }
 
 @desc-anim
@@ -62,7 +66,7 @@ section.description-placeholder
 	}
 }
 
-span.description-placeholder 
+div.description-placeholder 
 {
 	display: none;
 }
@@ -93,4 +97,33 @@ opacity: 1;
 
 	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
   -webkit-filter: grayscale(0%);	
+}
+
+.photo_des
+{
+	margin-left: 10px;
+	margin-top: 10px;
+	
+	display: inline-block;
+}
+
+.name_des
+{
+    display:  inline-block;
+    vertical-align: top;
+    margin-top: 10px;
+    margin-left: 7px;
+}
+
+span.description
+{
+	display: block;
+	width: 800px;
+	margin-left: 10px;
+	vertical-align: top;
+	margin-right: 0;
+	vertical-align: bottom;
+	position: relative;
+	top: -120px;
+	left: 160px;
 }

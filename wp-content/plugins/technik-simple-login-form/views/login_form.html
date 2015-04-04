@@ -1,7 +1,7 @@
 
 <div class="login-wrap">
 	<h2 class="login-header"><a href="#" class="login-form-toggle">Prihlásenie</a></h2>
-	<form name="loginform" id="loginform" action="http://localhost/technik/wp-login.php" method="post">
+	<form name="loginform" id="loginform" action="<?= get_home_url() ?>/wp-login.php" method="post">
 		<p class="login-username">
 			<label for="user_login">Meno</label>
 			<input type="text" name="log" id="user_login" class="input" value="" size="20">

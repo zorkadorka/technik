@@ -28,9 +28,10 @@ get_header(); ?>
 		</div>
 		<div class="description-placeholder">
 			<span class="photo_des"><?= get_avatar($user->ID, 150) ?></span>
-			<h3 class="name_des"><?= Helper::get_user_name($user) ?></h3>	
-			<span class="description"><?= get_user_meta( $user->ID, 'description', true ) ?></span>
-			
+			<div class = "div_des">
+				<h3 class="name_des"><?= Helper::get_user_name($user) ?></h3>	
+				<span class="description"><?= get_user_meta( $user->ID, 'description', true ) ?></span>
+			</div>
 		</div>
 		<?php endforeach; ?>
 	</div>

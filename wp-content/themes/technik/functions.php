@@ -328,4 +328,12 @@ function post_request_to_userdata($array_of_fields, $post_request)
 	return $userdata;
 }
 
+/*add_filter('the_author_description', 'lb_to_auth_desc');
+function lb_to_auth_desc($content){
+	return nl2br($content);
+}*/
+
+remove_filter('pre_user_description', 'wp_filter_kses');  
+add_filter( 'pre_user_description', 'wp_filter_post_kses' );
+
 require_once( TEMPLATEPATH . '/lib/helper.php' );

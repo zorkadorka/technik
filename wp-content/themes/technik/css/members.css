@@ -37,7 +37,7 @@ section.description-placeholder
 {
 	display: block;	
 	width: 1000px;
-	height: 250px;
+	/* height: 250px; */
 	opacity: 1;
 	left: 15%;
 	top: 30%;
@@ -48,6 +48,7 @@ section.description-placeholder
 	z-index: 10;
 	padding-bottom: 10px;
 	background: url(subtle_white_feathers.png);
+	box-shadow: 17px 21px 18px -21px rgba(50, 50, 50, 1);
 }
 
 @desc-anim
@@ -105,6 +106,7 @@ opacity: 1;
 	margin-top: 10px;
 	
 	display: inline-block;
+	vertical-align: top;
 }
 
 .name_des
@@ -123,7 +125,12 @@ span.description
 	vertical-align: top;
 	margin-right: 0;
 	vertical-align: bottom;
-	position: relative;
-	top: -120px;
-	left: 160px;
+	/* position: relative; */
+	/* top: -120px; */
+	/* left: 160px; */
+}
+
+.div_des
+{
+	display: inline-block;
 }

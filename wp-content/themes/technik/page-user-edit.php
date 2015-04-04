@@ -85,7 +85,7 @@ $link = admin_url('admin-post.php?action=update_user');
 	<div class='user_edit-form_row'>
 		<label for="nickname">Prezývka: </label>
 		<!--<input type="text" name="nickname" value="<?= $user->nickname ?>">-->
-		<input type="text" name="nickname" id="prezyvka" value="<?php echo get_user_prezyvka( $user->ID); ?>" class="regular-text" />
+		<input type="text" name="prezyvka" id="prezyvka" value="<?php echo get_user_prezyvka( $user->ID); ?>" class="regular-text" />
 	</div>
 	<div class='user_edit-form_row'>
 		<label for="phone1">Telefón: </label>

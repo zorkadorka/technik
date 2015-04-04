@@ -168,6 +168,9 @@ add_action( 'edit_user_profile_update', 'save_extra_user_profile_fields' );*/
 
 function save_extra_user_profile_fields( $user_id ) {
 
+	global $current_user;
+	get_currentuserinfo();
+
 	if ( !current_user_can( 'edit_user', $user_id ) ) { 
 		return false; 
 	}
@@ -181,8 +184,6 @@ function save_extra_user_profile_fields( $user_id ) {
 function get_user_prezyvka($user_id){
 	return esc_attr( get_user_meta($user_id,'prezyvka', true) ); 
 }
-
-
 
 add_action( 'admin_footer-user-edit.php', 'custom_edit_profile_page' );
 add_action( 'admin_footer-profile.php', 'custom_edit_profile_page' );
@@ -264,7 +265,6 @@ function delete_avatar_nopriv() {
 
 add_action('admin_post_update_user', 'update_user');
 
-
 function update_user() {
 	
 	global $current_user;
@@ -273,7 +273,7 @@ function update_user() {
 	$fields = array(
 		'first_name', 
 		'last_name', 
-		'nickname',
+		'prezyvka',
 		'description',
 		'phone1',
 		'user_email',
@@ -288,7 +288,7 @@ function update_user() {
 	// a potom by sa nejaky spekulant vedel temperingom stat adminom...
 	
 	wp_update_user($userdata);
-
+	update_user_meta(get_current_user_id(), 'prezyvka', $_POST['prezyvka']);
 	update_user_meta(get_current_user_id(), 'phone1', $_POST['phone1']);
 
 	// ak su vyplnene polia pre hesla, tak skusime updatetnut

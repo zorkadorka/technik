@@ -332,4 +332,129 @@ article img:hover,
 .public-events a:hover
 {
 	color: #E68117;
-};
+}
+
+.user-edit form
+{
+	width: 500px;
+}
+
+.user-edit label
+{
+	display: inline-block;
+	width: 25%;
+	font-size: 1em;
+	line-height: 1em;
+	padding: 5px 7px;
+	vertical-align: top;
+}
+
+.user-edit input[type=text],
+.user-edit input[type=password],
+.user-edit input[type=submit],
+.user-edit textarea
+{
+	display: inline-block;
+	width: 68%;
+	line-height: 1em;
+	padding: 5px 7px;
+	color: #333 !important;
+	border-radius: 5px;
+	font-size: 0.9em;
+	border: 1px solid #ccc;
+}
+
+.user-edit textarea
+{
+	max-width: 340px;
+	max-height: 200px;
+}
+
+.user-edit input[type=submit]
+{
+	background-color: #ebebeb;
+	display: block;
+	width: 40%;
+	margin-top: 2em;
+	margin-bottom: 2em;
+	transition: 0.3s;
+}
+
+.user-edit input[type=submit]:hover
+{
+	background-color: #e0e0e0;
+}
+
+.user_edit-form_row:not(.edit-opis)
+{
+	margin-bottom: 4px;
+}
+
+.user-edit table
+{
+	width: 500px;
+}
+
+.user-edit #avatar-manager th
+{
+	display: inline-block;
+	width: 28%;
+	font-size: 1em;
+	line-height: 1em;
+	vertical-align: top;
+	font-weight: normal;
+	text-align: left;
+	margin-top: 7px;
+}
+.user-edit #avatar-manager td
+{
+	display: inline-block;
+	width: 70%;
+	margin-bottom: 10px;
+}
+
+.user-edit #avatar-manager fieldset
+{
+	border: none !important;
+	padding: 0;
+}
+.user-edit #avatar-manager fieldset legend
+{
+	display: none;
+}
+
+.user-edit #avatar-manager label
+{
+	width: auto;
+	font-size: 0.9em;
+	display: block;
+	padding-right: 10px;
+}
+
+.user-edit #avatar-manager input,
+.user-edit #avatar-manager span,
+.user-edit #avatar-manager a
+{
+	display: inline-block;
+}
+
+.user-edit #avatar-manager a
+{
+	font-size: 0.9em;
+	vertical-align: bottom;
+	margin-left: 10px;
+}
+
+.user-edit #avatar-manager input[type=file]
+{
+	padding: 4px;
+	margin-left: 5px;
+}
+
+.user-edit #avatar-manager input[type=submit]
+{
+	margin-top: 5px;
+	width: 90px;
+	margin-left: 5px;
+	font-size: 0.8em;
+}

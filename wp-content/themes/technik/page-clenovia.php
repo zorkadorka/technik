@@ -36,9 +36,9 @@ get_header(); ?>
 		<?php endforeach; ?>
 	</div>
 
-	<h2>Tanec</h2>
+	<h2>Hudba</h2>
 	<?php 
-	$users = Helper::get_users_by_role('Tanec');
+		$users = Helper::get_users_by_role('Hudba');
 	?>
 	<div class="users">
 	<?php foreach ($users as $user): ?>
@@ -51,7 +51,7 @@ get_header(); ?>
 
 	<h2>Spev</h2>
 	<?php 
-	$users = Helper::get_users_by_role('Spev');
+		$users = Helper::get_users_by_role('Spev');
 	?>
 	<div class="users">
 	<?php foreach ($users as $user): ?>
@@ -62,9 +62,9 @@ get_header(); ?>
  	<?php endforeach; ?>
 	</div>
 
-	<h2>Hudba</h2>
+	<h2>Tanec</h2>
 	<?php 
-	$users = Helper::get_users_by_role('Hudba');
+		$users = Helper::get_users_by_role('Tanec');
 	?>
 	<div class="users">
 	<?php foreach ($users as $user): ?>

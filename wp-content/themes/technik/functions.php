@@ -328,11 +328,7 @@ function post_request_to_userdata($array_of_fields, $post_request)
 	return $userdata;
 }
 
-/*add_filter('the_author_description', 'lb_to_auth_desc');
-function lb_to_auth_desc($content){
-	return nl2br($content);
-}*/
-
+/*vymena filtra pri ukladani description v profile, aby brala aj html tagy*/
 remove_filter('pre_user_description', 'wp_filter_kses');  
 add_filter( 'pre_user_description', 'wp_filter_post_kses' );
 

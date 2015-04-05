@@ -36,22 +36,6 @@ class Technik_Member_Menu_Widget extends WP_Widget {
 					'container_class' => 'member-menu',
 					'container' => 'nav', ) );
 			?>
-			
-
-			
-					
-			<!-- HTML kod vygenerovany funkciou hore, musel som zmenit link na Profil a nevedel som ako inak to spravit -
-			<nav class="member-menu">
-				<ul id="menu-left-menu" class="nav-menu">
-					<li id="menu-item-427" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-427">
-						<a href="http://localhost/technik/events">Kalendár</a>
-					</li>
-					<li id="menu-item-410" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-410">
-						<a href="http://localhost/technik/wp-admin/profile.php">Profil</a>
-					</li>
-				</ul>
-			</nav>	
--->
 
 		</nav>
 		<?php endif; ?>

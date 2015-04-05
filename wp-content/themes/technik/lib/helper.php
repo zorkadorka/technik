@@ -6,13 +6,13 @@ class Helper
 	// Vysklada meno pouzivatela v zavislosti od toho ci ma, alebo nema prezyvku
 	//
 	public static function get_user_name($user) {
-		if (empty($user->nickname)) {
+		if (empty(get_user_prezyvka( $user->ID))) {
 			return $user->first_name." ".$user->last_name; 
 		}
 		else {
-			return $user->first_name." ".$user->nickname." ".$user->last_name;
+			return $user->first_name." '".get_user_prezyvka($user->ID)."' ".$user->last_name;
 		}
-	}
+	} 
 
 	/**
 	 * Ako argument zobere tagy ziskane z postu, prezre ich a pokúsi sa nájsť v nich ten

@@ -6,7 +6,7 @@ class Helper
 	// Vysklada meno pouzivatela v zavislosti od toho ci ma, alebo nema prezyvku
 	//
 	public static function get_user_name($user) {
-		if (empty(get_user_prezyvka( $user->ID))) {
+		if (strcmp(get_user_prezyvka( $user->ID), "") == 0) {
 			return $user->first_name." ".$user->last_name; 
 		}
 		else {

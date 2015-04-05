@@ -21,7 +21,7 @@
 
 	<hgroup>
 		<img src="<?= get_bloginfo('template_url') ?>/images/logo-cropped.png" alt="technik-logo" class="logo">
-		<h1>Slovak folklore ensemble Technik STU</h1>
+		<h1>FS Technik STU</h1>
 	</hgroup>	
 	
 </header>

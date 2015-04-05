@@ -5,7 +5,7 @@ jQuery(document).ready( function($) {
 					'#event_organizer',
 					'#event_url',
 					'#event_cost',
-					'#envira-gallery',
+					/*'#envira-gallery',*/
 					'#postcustom',
 					'#commentstatusdiv',
 					'#commentsdiv',

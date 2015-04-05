@@ -17,6 +17,7 @@
 .user .name {
 	position: absolute;
 	bottom: 5px;
+	left: 0px;
 	padding: 7px;
 }
 

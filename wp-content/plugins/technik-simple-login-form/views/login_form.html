@@ -14,11 +14,19 @@
 		<p class="login-remember"><label><input name="rememberme" type="checkbox" id="rememberme" value="forever"> Zapamätať</label></p>
 		<p class="login-submit">
 			<input type="submit" name="wp-submit" id="wppb-submit" class="button-primary" value="Prihlásiť sa">
-			<input type="hidden" name="redirect_to" value=<?php echo $_SERVER['REQUEST_URI']; ?> >  
-			<!--  //Po prihlaseni, ostanes na rovnakej stranke, ako si bol pred tym, nedirectuje ta to na homepage    -->
-		</p>
-		
-		
+			<input type="hidden" name="redirect_to" value=<?php 
+
+				$uri = $_SERVER['REQUEST_URI']; 
+				if (strpos($uri, "zly_login") > 0){
+					echo get_home_url();
+				}else{
+					echo $uri;
+				}
+
+			?> >  
+			<!--  //Po prihlaseni, ostanes na rovnakej stranke, ako si bol pred tym. Ak si bol predtym na stranke zly_login, redirectuje ta to na homepage-->
+		</p>	
+
 		<input type="hidden" name="wppb_login" value="true">
 		<input type="hidden" name="wppb_form_location" value="widget">
 		<input type="hidden" name="wppb_request_url" value="<?= get_home_url() ?>/zly_login"  >

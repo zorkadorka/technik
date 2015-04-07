@@ -61,7 +61,7 @@ $link = admin_url('admin-post.php?action=update_user');
 <form method="POST" action="<?= $link ?>" enctype="multipart/form-data">
 	<input type="hidden" name="action" value="update_user">
 
-	<h2>Basic info</h2>
+	<h2>Basic infooo</h2>
 	<div class='user_edit-form_row'>
 		<label for="first_name">Meno: </label>
 		<input type="text" name="first_name" value="<?= $user->first_name ?>">

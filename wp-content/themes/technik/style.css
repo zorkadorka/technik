@@ -458,3 +458,29 @@ article img:hover,
 	margin-left: 5px;
 	font-size: 0.8em;
 }
+
+.tribe-events-category-vystupenie
+.tribe-events-month-event-title.summary
+a
+{
+	color: #8A0808;
+}
+
+.tribe-events-category-trening
+.tribe-events-month-event-title.summary
+a
+{
+	color: #443104;
+}
+
+.tribe-events-category-vystupenie
+.tribe-events-month-event-title.summary
+{
+	background-color: rgba(255,155,255,0.3);
+}
+
+.tribe-events-category-trening
+.tribe-events-month-event-title.summary
+{
+	background-color: rgba(55,155,105,0.3)
+}

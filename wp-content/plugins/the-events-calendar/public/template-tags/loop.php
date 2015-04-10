@@ -327,9 +327,11 @@ if ( class_exists( 'TribeEvents' ) ) {
 			 * If the event month changed since the last event in the loop,
 			 * or is the same month but the year changed.
 			 *
+			 *
+			 * -- zasah do kodu, pridanie classy events-separator, zmena farby ;)
 			 */
 			if ( $wp_query->current_post === 0 || ( $prev_event_month != $event_month || ( $prev_event_month == $event_month && $prev_event_year != $event_year ) ) ) {
-				$html .= sprintf( "<span class='tribe-events-list-separator-month'><span>%s</span></span>", tribe_get_start_date( $post, false, $month_year_format ) );
+				$html .= sprintf( "<span class='tribe-events-list-separator-month events-separator'><span>%s</span></span>", tribe_get_start_date( $post, false, $month_year_format ) );
 			}
 
 			echo apply_filters( 'tribe_events_list_the_date_headers', $html, $event_month, $event_year );

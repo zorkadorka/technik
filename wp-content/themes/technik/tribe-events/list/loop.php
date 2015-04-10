@@ -24,7 +24,7 @@ $more = false;
 		<?php do_action( 'tribe_events_inside_before_loop' ); ?>
 
 		<!-- Month / Year Headers -->
-		<?php tribe_events_list_the_date_headers(); ?>
+		<?php tribe_events_list_the_date_headers(); ?>	
 
 		<!-- Event  -->
 		<?php 
@@ -32,9 +32,12 @@ $more = false;
 
 		if (is_user_logged_in() || Helper::is_public_event($posttags, 'verejne')): ?>
 
-		<div id="post-<?php the_ID() ?>" class="<?php tribe_events_event_classes() ?>">
+
+		
+		<div onclick="location.href='<?php echo tribe_get_event_link() ?>';" style="cursor: pointer;" id="post-<?php the_ID() ?>" class="<?php tribe_events_event_classes() ?> event-wrap event-last event-first">
 			<?php tribe_get_template_part( 'list/single', 'event' ) ?>
 		</div><!-- .hentry .vevent -->
+
 
 		<?php endif; ?>
 		

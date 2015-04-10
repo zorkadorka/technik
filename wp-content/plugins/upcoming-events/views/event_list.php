@@ -16,5 +16,12 @@ foreach ($list as $event):
 <?php 
 	endif;
 endforeach; 
+
+if($c == 0):
+	?>
+		<div> <p>--nothing to display--</p> </div>
+	<?php
+endif;
+
 ?>
 </ul>

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/css/gallery.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/css/login-form.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/css/members.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php echo get_bloginfo('template_url'); ?>/css/events-listing.css" type="text/css" media="screen" />
 	<?php wp_head(); ?>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 </head>

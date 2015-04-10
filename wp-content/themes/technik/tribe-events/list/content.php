@@ -52,7 +52,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<!-- List Footer -->
 	<?php do_action( 'tribe_events_before_footer' ); ?>
-	<div id="tribe-events-footer">
+	<div id="tribe-events-footer" class="event-footer">
 
 		<!-- Footer Navigation -->
 		<?php do_action( 'tribe_events_before_footer_nav' ); ?>

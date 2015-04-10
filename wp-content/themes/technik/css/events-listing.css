@@ -1,0 +1,27 @@
+/* event listing do blokov na sprehladnenie */
+
+.tribe-events-list-separator-month.events-separator {
+	background-color: #ECDCBE;
+}
+
+.event-footer{
+	margin-top: 20px;
+}
+
+.tribe-events-list-separator-month+.type-tribe_events.tribe-events-first.event-first{
+	padding: 20px;
+}
+
+.tribe-events-list .type-tribe_events.tribe-event-end-month.event-last {
+	padding: 20px;
+}
+
+.tribe-events-list .type-tribe_events.event-wrap {
+	padding: 20px;
+	margin-top: 20px;
+    border-left: 1px solid #ddd;
+  	border-right: 1px solid #ddd;
+  	border-top: 1px solid #ddd;
+	box-shadow: 0px 21px 18px -21px rgba(50, 50, 50, 1);
+}
+/**/

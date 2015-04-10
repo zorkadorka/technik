@@ -22,6 +22,36 @@
     border-left: 1px solid #ddd;
   	border-right: 1px solid #ddd;
   	border-top: 1px solid #ddd;
-	box-shadow: 0px 21px 18px -21px rgba(50, 50, 50, 1);
+	box-shadow: 0px 21px 18px -21px rgba(50,50,50,1);
+	transition: all 0.3s;
+}
+
+.tribe-events-list 
+.type-tribe_events.event-wrap.tribe-events-category-trening
+{
+	background-color: rgba(240, 150, 68, 0.1);
+}
+
+.tribe-events-list 
+.type-tribe_events.event-wrap.tribe-events-category-vystupenie
+{
+	background-color: rgba(75, 192, 156, 0.1);
+}
+
+.tribe-events-list .type-tribe_events.event-wrap:hover
+{
+	box-shadow: none;
+	background-color: rgba(250, 250, 250, 0.3);
+}
+
+.tribe-events-list .type-tribe_events.event-wrap a:hover
+{
+	color: #333;
+}
+
+.tribe-events-loop .type-tribe_events.tribe-events-last,
+.tribe-events-list .type-tribe_events.tribe-event-end-month
+{
+	border-bottom: 1px solid #ddd !important;
 }
 /**/

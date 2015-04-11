@@ -34,4 +34,21 @@ get_header();
 
 <h1 class="dev-page-type">tribe-events default-template.php</h1>
 
+<script type="text/javascript">
+( function( $ ) {
+
+	$( document ).ready( function() {
+	
+		$("td.tribe-events-has-events").each( function(){
+			var n = $(this).children("div.tribe_events").length;
+			($(this).children("div.tribe_events")).each( function(){
+				$(this).css("height",100/n);
+				/*$(this).children("h3").css("height",100/n);*/
+			})
+		});
+	});
+
+} )( jQuery );
+</script>
+
 <?php get_footer(); ?>

@@ -459,30 +459,3 @@ article img:hover,
 	font-size: 0.8em;
 }
 
-.tribe-events-month-event-title.summary
-a
-{
-	color: #330;
-}
-
-.tribe-events-category-trening
-.tribe-events-month-event-title
-{
-	background-color: rgba(240, 150, 68, 0.72); 
-	padding: 3px !important;
-	/* height: 100%; */
-
-}
-
-.tribe-events-category-vystupenie
-.tribe-events-month-event-title
-{
-	background-color:  rgba(75, 192, 156, 0.58);
-	padding: 3px !important;
-}
-
-td.tribe-events-has-events
-{
-	background-color: rgba(231, 146, 70, 0.32);
-
-}

@@ -54,4 +54,52 @@
 {
 	border-bottom: 1px solid #ddd !important;
 }
+
+.tribe-events-month-event-title.summary
+a
+{
+	color: #330;
+}
+
+.tribe-events-month-event-title.summary
+a:hover
+{
+	text-decoration: underline !important;
+}
+/*
+.tribe-events-category-vystupenie
+.tribe-events-month-event-title,
+.tribe-events-category-trening
+.tribe-events-month-event-title,
+.tribe-events-category-trening,
+.tribe-events-category-vystupenie
+{
+	height: 100%;
+}*/
+
+
+
+td.tribe-events-has-events
+.tribe-events-month-event-title 
+{
+	 padding: 3px !important; 
+}
+
+.tribe-events-category-trening
+/*.tribe-events-month-event-title*/
+{
+	background-color: rgba(240, 150, 68, 0.5); 
+}
+
+.tribe-events-category-vystupenie
+/*.tribe-events-month-event-title*/
+{
+	background-color:  rgba(75, 192, 156, 0.5);
+}
+
+td.tribe-events-has-events
+{
+	overflow: hidden;
+	padding: 0 !important;
+}
 /**/

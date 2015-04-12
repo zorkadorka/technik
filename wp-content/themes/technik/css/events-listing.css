@@ -102,4 +102,10 @@ td.tribe-events-has-events
 	overflow: hidden;
 	padding: 0 !important;
 }
+
+.hentry.vevent
+{
+	height: 100px 
+} 
+
 /**/

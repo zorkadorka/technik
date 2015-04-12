@@ -19,9 +19,11 @@ get_header();
 ?>
 
 <section id="tribe-events-pg-template">
-	<?php tribe_events_before_html(); ?>
-	<?php tribe_get_view(); ?>
-	<?php tribe_events_after_html(); ?>
+	<?php if ( is_user_logged_in() ) : ?>
+		<?php tribe_events_before_html(); ?>
+		<?php tribe_get_view(); ?>
+		<?php tribe_events_after_html(); ?>
+	<?php endif ?>
 </section>
 
 </section> <!-- .main-content -->

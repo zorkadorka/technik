@@ -264,10 +264,12 @@ function delete_avatar_nopriv() {
 add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2); 
 function add_login_logout_link($items, $args) {	     
 	if($args->theme_location == 'secondary'){
-		$addevent = get_home_url(null,'wp-admin/post-new.php?post_type=tribe_events');
-		$items .= '<li class = "menu-item"><a class = "addevent" href='. $addevent . '>Pridať udalosť </a></li>';
+		$add = get_home_url(null,'wp-admin/post-new.php?post_type=tribe_events');
+		$items .= '<li class = "menu-item" style = "margin-top: 15px"><a class = "addnew" href='. $add . '>Pridať novú udalosť </a></li>';
+		$add = get_home_url(null,'wp-admin/post-new.php');
+		$items .= '<li class = "menu-item"><a class = "addnew" href='. $add . '>Pridať novú aktualitu </a></li>';
 		$logoutlink = wp_logout_url( home_url() );
-		$items .= '<li class = "menu-item"><a class = "logout" href='. $logoutlink . '>Odhlásiť </a></li>';
+		$items .= '<li class = "menu-item" style = "margin-top: 15px"><a class = "logout" href='. $logoutlink . '>Odhlásiť </a></li>';
 	}		
 	return $items; 
 }

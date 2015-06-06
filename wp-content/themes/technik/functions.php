@@ -261,13 +261,18 @@ function delete_avatar_nopriv() {
 
 
 /**pridanie odhlasit sa a odkazu na pridanie novej udalosti do left menu***/
-add_filter('wp_nav_menu_items', 'add_login_logout_link', 10, 2); 
-function add_login_logout_link($items, $args) {	     
+add_filter('wp_nav_menu_items', 'add_links_leftmenu', 10, 2); 
+function add_links_leftmenu($items, $args) {	     
+
 	if($args->theme_location == 'secondary'){
-		$add = get_home_url(null,'wp-admin/post-new.php?post_type=tribe_events');
-		$items .= '<li class = "menu-item" style = "margin-top: 15px"><a class = "addnew" href='. $add . '>Pridať novú udalosť </a></li>';
-		$add = get_home_url(null,'wp-admin/post-new.php');
-		$items .= '<li class = "menu-item"><a class = "addnew" href='. $add . '>Pridať novú aktualitu </a></li>';
+		$role = get_role(Helper::get_user_role()) ;
+		//$items .= $role[name];
+		if(current_user_can('edit_posts') ){
+			$add = get_home_url(null,'wp-admin/post-new.php?post_type=tribe_events');
+			$items .= '<li class = "menu-item" style = "margin-top: 15px"><a class = "addnew" href='. $add . '>Pridať novú udalosť </a></li>';
+			$add = get_home_url(null,'wp-admin/post-new.php');
+			$items .= '<li class = "menu-item"><a class = "addnew" href='. $add . '>Pridať novú aktualitu </a></li>';
+		}
 		$logoutlink = wp_logout_url( home_url() );
 		$items .= '<li class = "menu-item" style = "margin-top: 15px"><a class = "logout" href='. $logoutlink . '>Odhlásiť </a></li>';
 	}		

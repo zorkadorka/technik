@@ -47,9 +47,28 @@ section.description-placeholder
 	/* background-color: #ebebeb; */
 	/* max-width: 60%; */
 	z-index: 10;
-	padding-bottom: 10px;
+	padding-bottom: 5px;
 	background: url(subtle_white_feathers.png);
 	box-shadow: 17px 21px 18px -21px rgba(50, 50, 50, 1);
+}
+
+.user.ajax-description.clicked 
++ .description-placeholder.logout
+{
+	width: 276px;
+	text-align: center;	
+}
+
+.user.ajax-description.clicked 
++ .description-placeholder.logged
+{
+	width: auto;
+	padding-right: 50px;
+}
+.user.ajax-description.clicked 
++ .description-placeholder.logout span
+{
+	margin-left: 0;
 }
 
 @desc-anim

@@ -19,13 +19,24 @@ $event_id = get_the_ID();
 
 <?php 
 	$public_description = get_post_meta($event_id, '_EventPublicInfo', true);
+	$excerpt_description = get_post($event_id)->post_excerpt;
 ?>
 
 <?php the_title( '<h2 class="tribe-events-single-event-title summary entry-title">', '</h2>' ); ?>
-
-	<div class="public-info">
-		<?= htmlspecialchars_decode($public_description) ?>
+	
+	<div class="excerpt-info">
+		<h3>V skratke</h3>
+		<?= htmlspecialchars_decode($excerpt_description) ?>
 	</div>
+
+	<?php if(strlen($public_description) > 0): ?>
+		<div class="public-info">
+			<h3>Pre verejnosť</h3>
+			<?= htmlspecialchars_decode($public_description) ?>
+		</div>
+	<?php endif?>
+
+
 
 <?php
 if (!is_user_logged_in()):
@@ -35,21 +46,30 @@ if (!is_user_logged_in()):
 endif;
 ?>
 
-
 <?php
 if (is_user_logged_in()):
 ?>
 
-<h1>Organizančné pokyny</h1>
+<h1>Pre nás</h1>
 
 <div id="tribe-events-content" class="tribe-events-single vevent hentry">
 
 	<!-- Notices -->
-	<?php tribe_events_the_notices() ?>
-	
+	<?php tribe_events_the_notices() ?>	
 
 	<div class="tribe-events-schedule updated published tribe-clearfix">
-		<?php echo tribe_events_event_schedule_details( $event_id, '<i>', '</i>' ); ?>
+		<b>Dátum:</b>
+		<!--<?php echo tribe_events_event_schedule_details( $event_id, '<i>', '</i>' ); ?>-->
+		<?php echo tribe_get_start_date( $event_id, false, 'd. M Y' ); ?> 
+		-
+		<?php echo tribe_get_end_date( $event_id, false, 'd. M Y' ); ?>
+		<br />
+		<b>Čas:</b>
+		<?php echo tribe_get_start_date( $event_id, false, 'H:i' ); ?>
+		-
+		<?php echo tribe_get_end_date( $event_id, false, 'H:i' ); ?>
+
+
 	</div>
 
 	<!-- Event header -->

@@ -2,9 +2,7 @@
 
 	$( document ).ready( function() {
 		$('.user.ajax-description').click(function () {
-			console.log("kliky klik");
-			//$('.user.ajax-description .description-placeholder').css('display','none');
-			//$('.user.ajax-description .description-placeholder').css('opacity','0');
+			
 			var yes = true;
 			if($(this).hasClass('clicked'))
 			{

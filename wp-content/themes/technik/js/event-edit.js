@@ -1,11 +1,13 @@
 jQuery(document).ready( function($) {
 /************uprava post.php pre eventy**********************/
 	
+	console.log(window.location.search);
+//http://localhost/technik/wp-admin/post.php?post=755&action=edit
 	var ids = ['#event_venue',
 					'#event_organizer',
 					'#event_url',
 					'#event_cost',
-					/*'#envira-gallery',*/
+					'#envira-gallery',
 					'#postcustom',
 					'#commentstatusdiv',
 					'#commentsdiv',
